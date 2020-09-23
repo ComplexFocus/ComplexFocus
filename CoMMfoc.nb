@@ -1,0 +1,423 @@
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[StyleBox["CoMMfoc: Complex-Focus fields in Mathematica",
+ FontSize->
+  24]], "Title",ExpressionUUID->"4f97aa06-5237-417d-a3de-abc5fa8e4b58"],
+
+Cell["\<\
+\[Copyright] Rodrigo Guiti\[EAcute]rrez-Cuevas & Emilio Pisanty (2020). \
+Licensed under GPL and CC-BY-SA.\
+\>", "Text",ExpressionUUID->"e4423e52-691d-4b3a-910a-227a5f4c9d8a"],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subchapter",
+ CellTags->
+  "Introduction",ExpressionUUID->"c6192770-807e-4c6d-bd69-7a28378f3924"],
+
+Cell[CellGroupData[{
+
+Cell["Readme", \
+"Subsection",ExpressionUUID->"f6463701-603f-47b6-b7bc-2cff5fb56a45"],
+
+Cell[CellGroupData[{
+
+Cell["Text.", "Text",
+ CellGroupingRules->{
+  GroupTogetherGrouping, 
+   10000.},ExpressionUUID->"6ac175a7-f178-4dfe-9bdc-458722381b12"],
+
+Cell[BoxData[
+ RowBox[{"(*", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"This", " ", "is", " ", "the", " ", "CoMMfoc", " ", 
+    RowBox[{"package", ".", " ", "For"}], " ", "the", " ", "notebook", " ", 
+    "that", " ", "generated", " ", "this", " ", "package", " ", "file", " ", 
+    "and", " ", "additional", " ", "documentaion"}], ",", " ", 
+   RowBox[{
+    RowBox[{"see", " ", 
+     RowBox[{"https", ":"}]}], "//", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"github", ".", "com"}], "/", "CoMMfoc"}], "/", "CoMMfoc"}]}]}], 
+  "\[IndentingNewLine]", "*)"}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ InitializationCell->
+  True,ExpressionUUID->"82d38177-9df9-4b82-9d60-a29240b5c273"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Implementation", \
+"Subchapter",ExpressionUUID->"92eba27c-32a2-4778-b937-12004504f118"],
+
+Cell[CellGroupData[{
+
+Cell["Supporting functions", \
+"Section",ExpressionUUID->"63ce1fac-976b-4ffb-9096-45068b912d68"],
+
+Cell[CellGroupData[{
+
+Cell["Initialization", \
+"Subsection",ExpressionUUID->"5aeda15b-76fe-4aed-a4a6-75764c3d3231"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeginPackage", "[", "\"\<CoMMfoc`\>\"", "]"}], ";"}]], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"d8194a12-20ba-4527-9da4-5c21f77858c8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Package admin", \
+"Subsection",ExpressionUUID->"b342e1b8-f293-4421-bf51-03eecc098c29"],
+
+Cell[CellGroupData[{
+
+Cell["Version number", "Subsubsection",
+ CellTags->
+  "version-section",ExpressionUUID->"4a58faea-5e89-4a18-8638-f58dbf15ff2e"],
+
+Cell["\<\
+The command RBSFAversion prints the version of the RB-SFA package currently \
+loaded and its timestamp\
+\>", "Text",ExpressionUUID->"3cc4e9c7-4560-4484-b6a1-3feb4291ed7c"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"$CoMMfocVersion", "::", "usage"}], "=", 
+   "\"\<$CoMMfocVersion prints the current version of the RB-SFA package in \
+use and its timestamp.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"$CoMMfocTimestamp", "::", "usage"}], "=", 
+   "\"\<$CoMMfocTimestamp prints the timestamp of the current version of the \
+RB-SFA package.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$CoMMfocVersion", ":=", 
+   RowBox[{"\"\<CoMMfoc v0.1, \>\"", "<>", "$CoMMfoctimestamp"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"aa97ee0f-f35a-441d-9482-ce45b1a816f6"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], \
+"Input",ExpressionUUID->"2f40f4dd-5630-46c8-a89d-7ff471ed3995"],
+
+Cell["\<\
+The timestamp is updated every time the notebook is saved via an appropriate \
+notebook option, which is set by the code below.\
+\>", "Text",ExpressionUUID->"887427dc-d969-4eef-9ca3-6df9cab14874"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetOptions", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"EvaluationNotebook", "[", "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"NotebookEventActions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"\"\<MenuCommand\>\"", ",", "\"\<Save\>\""}], "}"}], 
+        "\[RuleDelayed]", 
+        RowBox[{"(", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"NotebookWrite", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Cells", "[", 
+              RowBox[{"CellTags", "\[Rule]", "\"\<version-timestamp\>\""}], 
+              "]"}], "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"Cell", "[", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"BoxData", "[", 
+               RowBox[{"RowBox", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                 "\"\<Begin[\\\"`Private`\\\"];\\n$CoMMfocTimestamp=\\\"\>\"",
+                   "<>", 
+                  RowBox[{"DateString", "[", "]"}], "<>", 
+                  "\"\<\\\";\\nEnd[];\>\""}], "}"}], "]"}], "]"}], 
+              "\[IndentingNewLine]", ",", "\"\<Input\>\"", ",", 
+              RowBox[{"InitializationCell", "\[Rule]", "True"}], ",", 
+              RowBox[{"CellTags", "\[Rule]", "\"\<version-timestamp\>\""}]}], 
+             "\[IndentingNewLine]", "]"}], ",", "None", ",", 
+            RowBox[{"AutoScroll", "\[Rule]", "False"}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"NotebookSave", "[", "]"}]}], "\[IndentingNewLine]", 
+         ")"}]}], ",", 
+       RowBox[{"PassEventsDown", "\[Rule]", "True"}]}], "}"}]}]}], 
+   "\[IndentingNewLine]", "]"}], 
+  ";"}]], "Input",ExpressionUUID->"9fc2d5fa-1617-4717-8d93-fc3b81379664"],
+
+Cell["To reset this behaviour to normal, evaluate the cell below", \
+"Text",ExpressionUUID->"bc795509-3913-49b6-84f3-de50f36f2b1a"],
+
+Cell[BoxData[
+ RowBox[{"SetOptions", "[", 
+  RowBox[{
+   RowBox[{"EvaluationNotebook", "[", "]"}], ",", 
+   RowBox[{"NotebookEventActions", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\"\<MenuCommand\>\"", ",", "\"\<Save\>\""}], "}"}], 
+       "\[RuleDelayed]", 
+       RowBox[{"(", 
+        RowBox[{"NotebookSave", "[", "]"}], ")"}]}], ",", 
+      RowBox[{"PassEventsDown", "\[Rule]", "True"}]}], "}"}]}]}], 
+  "]"}]], "Input",ExpressionUUID->"45760a97-ec43-42f5-a401-6d3b7f33f832"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Timestamp", \
+"Subsubsection",ExpressionUUID->"2ac2d3ad-8207-436c-afb8-bc0ae16d4c35"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"$CoMMfocTimestamp", "=", "\"\<Wed 23 Sep 2020 17:24:38\>\""}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellTags->
+  "version-timestamp",ExpressionUUID->"d1b0a605-c163-4538-9c75-b1f50fa93858"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Directory", \
+"Subsubsection",ExpressionUUID->"d265a8f6-abd3-4556-b1e7-2a394098c33f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"$CoMMfocDirectory", "::", "usage"}], "=", 
+   "\"\<$CoMMfocDirectory is the directory where the current RB-SFA package \
+instance is located.\>\""}], ";"}]], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"c87f6883-8e5e-4a34-a1b9-2f3cdfa24230"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"softLinkTestString", "=", 
+      RowBox[{"StringSplit", "[", 
+       RowBox[{
+        RowBox[{"StringJoin", "[", 
+         RowBox[{"ReadList", "[", 
+          RowBox[{
+           RowBox[{"\"\<! ls -la \>\"", "<>", 
+            RowBox[{"StringReplace", "[", 
+             RowBox[{"$InputFileName", ",", 
+              RowBox[{"{", 
+               RowBox[{"\"\< \>\"", "\[Rule]", "\"\<\\\\ \>\""}], "}"}]}], 
+             "]"}]}], ",", "String"}], "]"}], "]"}], ",", "\"\< -> \>\""}], 
+       "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Length", "[", "softLinkTestString", "]"}], ">", "1"}], ",", 
+      RowBox[{"(*", 
+       RowBox[{
+       "Testing", " ", "in", " ", "case", " ", "$InputFileName", " ", "is", 
+        " ", "a", " ", "soft", " ", "link", " ", "to", " ", "the", " ", 
+        "actual", " ", 
+        RowBox[{"directory", "."}]}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"$CoMMfocDirectory", "=", 
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"DirectoryName", "[", 
+          RowBox[{
+          "softLinkTestString", "\[LeftDoubleBracket]", "2", 
+           "\[RightDoubleBracket]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\< \>\"", "\[Rule]", "\"\<\\\\ \>\""}], "}"}]}], "]"}]}],
+       ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"$CoMMfocDirectory", "=", 
+        RowBox[{"StringReplace", "[", 
+         RowBox[{
+          RowBox[{"DirectoryName", "[", "$InputFileName", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"\"\< \>\"", "\[Rule]", "\"\<\\\\ \>\""}], "}"}]}], 
+         "]"}]}], ";"}]}], "\[IndentingNewLine]", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"f4003c50-c4bf-43a7-96de-6f1292ddff7e"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Git commit hash and message", \
+"Subsubsection",ExpressionUUID->"b01571eb-22a0-4ae9-bcdf-68217bd8bd00"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"$CoMMfocCommit", "::", "usage"}], "=", 
+   "\"\<$CoMMfocCommit returns the git commit log at the location of the \
+RB-SFA package if there is one.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"$CoMMfocCommit", "::", "OS"}], "=", 
+   "\"\<$CoMMfocCommit has only been tested on Linux.\>\""}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"fce25619-8923-4995-9cae-ebb712b0cd01"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$CoMMfocCommit", ":=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"$OperatingSystem", "\[NotEqual]", "\"\<Unix\>\""}], ",", 
+       RowBox[{"Message", "[", 
+        RowBox[{"$CoMMfocCommit", "::", "OS"}], "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"Riffle", "[", 
+       RowBox[{
+        RowBox[{"ReadList", "[", 
+         RowBox[{
+          RowBox[{
+          "\"\<!cd \>\"", "<>", "$CoMMfocDirectory", "<>", 
+           "\"\< && git log -1\>\""}], ",", "String"}], "]"}], ",", 
+        RowBox[{"{", "\"\<\\n\>\"", "}"}]}], "]"}], "]"}]}], ")"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"56b69d2c-3f13-4848-bcc7-6db05f85bf58"]
+}, Closed]]
+}, Open  ]],
+
+Cell["Package code goes here", \
+"Subsection",ExpressionUUID->"ce066b21-33f3-4900-bb2d-ab254654ae24"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Package closure", \
+"Section",ExpressionUUID->"9ef34194-5bc5-402e-b25a-b6b648543098"],
+
+Cell[CellGroupData[{
+
+Cell["End of package", \
+"Subsubsection",ExpressionUUID->"08b5aa74-0de0-4690-976b-1c4972ab6314"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EndPackage", "[", "]"}], ";"}]], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"7bfde5e2-e60e-49b0-9216-395b306e3c3c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Add to distributed contexts.", \
+"Subsubsection",ExpressionUUID->"627f2346-484c-48d4-9453-1b9800679ff6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DistributeDefinitions", "[", "\"\<CoMMfoc`\>\"", "]"}], 
+  ";"}]], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"0b59eb5f-39e5-4fe3-a624-8b4b88bac2fa"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
+     Part[
+      Cells[CellTags -> "version-timestamp"], 1], 
+     Cell[
+      BoxData[
+       RowBox[{
+         StringJoin["Begin[\"`Private`\"];\n$CoMMfocTimestamp=\"", 
+          DateString[], "\";\nEnd[];"]}]], "Input", InitializationCell -> 
+      True, CellTags -> "version-timestamp"], None, AutoScroll -> False]; 
+   NotebookSave[]), PassEventsDown -> True},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+PrintingCopies->1,
+PrintingStartingPageNumber->1,
+PrintingPageRange->{Automatic, Automatic},
+PageHeaders->{{None, None, 
+   Cell[
+    TextData[{
+     "RB", "-", "SFA", ":", " ", "Rotating", " ", "Bicircular", " ", "HHG", 
+      " ", "in", " ", "the", " ", "Strong", " ", "Field", " ", 
+      "Approximation", "|", "   ", 
+      StyleBox[
+       CounterBox["Page"], "PageNumber"]}], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}, {None, None, 
+   Cell[
+    TextData[{
+     "RB", "-", "SFA", ":", " ", "Rotating", " ", "Bicircular", " ", "HHG", 
+      " ", "in", " ", "the", " ", "Strong", " ", "Field", " ", 
+      "Approximation", "|", "   ", 
+      StyleBox[
+       CounterBox["Page"], "PageNumber"]}], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}},
+PageFooters->{{None, None, None}, {None, None, None}},
+PageHeaderLines->{False, False},
+PageFooterLines->{False, False},
+PrintingOptions->{"FacingPages"->True,
+"FirstPageFace"->Right,
+"FirstPageFooter"->True,
+"FirstPageHeader"->False,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{594.75, 842.25},
+"PostScriptOutputFile"->"~/Desktop/print.pdf",
+"PrintingMargins"->{{19.84251968503, 19.84251968503}, {72., 72.}}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+ShowSelection->True,
+TrackCellChangeTimes->False,
+SpellingDictionaries->{"CorrectWords"->{
+ "subpackage", "Pisanty", "subpackages"}},
+Background->None,
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Code"], FontWeight -> "Plain", FontSlant -> "Plain", 
+    FontTracking -> "Plain", 
+    FontVariations -> {
+     "Outline" -> False, "Shadow" -> False, "StrikeThrough" -> False, 
+      "Underline" -> False}]}, Visible -> False, FrontEndVersion -> 
+  "11.2 for Microsoft Windows (64-bit) (September 10, 2017)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
+]
+
