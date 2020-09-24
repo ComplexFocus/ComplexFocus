@@ -39,7 +39,7 @@ End[];
 
 (* ::Input::Initialization:: *)
 Begin["`Private`"];
-$CoMMfocTimestamp="Wed 23 Sep 2020 17:24:38";
+$CoMMfocTimestamp="Wed 23 Sep 2020 17:56:08";
 End[];
 
 
@@ -66,6 +66,45 @@ $CoMMfocCommit::OS="$CoMMfocCommit has only been tested on Linux.";
 Begin["`Private`"];
 $CoMMfocCommit:=(If[$OperatingSystem!="Unix",Message[$CoMMfocCommit::OS]];
 StringJoin[Riffle[ReadList["!cd "<>$CoMMfocDirectory<>" && git log -1",String],{"\n"}]]);
+End[];
+
+
+(* ::Input::Initialization:: *)
+SolidHarmonicS::usage="SolidHarmonicS[l,m,x,y,z] calculates the solid harmonic \!\(\*SubscriptBox[\(S\), \(lm\)]\)(x,y,z)=\!\(\*SuperscriptBox[\(r\), \(l\)]\)\!\(\*SubscriptBox[\(Y\), \(lm\)]\)(x,y,z).
+
+SolidHarmonicS[l,m,{x,y,z}] does the same.";
+Begin["`Private`"];
+SolidHarmonicS[\[Lambda]_Integer,\[Mu]_Integer,x_,y_,z_]/;\[Lambda]>=Abs[\[Mu]]:=Sqrt[(2 \[Lambda]+1)/(4 \[Pi])] Sqrt[Gamma[\[Lambda]-Abs[\[Mu]]+1]/Gamma[\[Lambda]+Abs[\[Mu]]+1]] 2^-\[Lambda] (-1)^((\[Mu]-Abs[\[Mu]])/2)*
+If[Rationalize[\[Mu]]==0,1,(x+Sign[\[Mu]]I y)^Abs[\[Mu]]]*
+Sum[
+(-1)^(\[Mu]+k) Binomial[\[Lambda],k] Binomial[2 \[Lambda]-2 k,\[Lambda]] Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]] *
+If[TrueQ[Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]]==0],1,
+If[Rationalize[k]==0,1,(x^2+y^2+z^2)^k]If[Rationalize[\[Lambda]-Abs[\[Mu]]-2 k]==0,1,z^(\[Lambda]-Abs[\[Mu]]-2 k)]
+]
+,{k,0,Quotient[\[Lambda],2]}]
+SolidHarmonicS[\[Lambda]_Integer,\[Mu]_Integer,{x_,y_,z_}]/;\[Lambda]>=Abs[\[Mu]]:=SolidHarmonicS[\[Lambda],\[Mu],x,y,z]
+End[];
+
+
+(* ::Input::Initialization:: *)
+AnalyticalBesselJ::usage="AnalyticalBesselJ[m,{x,y,z}] returns the analytical form of the spherical Bessel function, \!\(\*SubscriptBox[\(j\), \(m\)]\)(r)/\!\(\*SuperscriptBox[\(r\), \(m\)]\).";
+
+Begin["`Private`"];
+AnalyticalBesselJ[m_,{x_?NumericQ,y_?NumericQ,z_?NumericQ}]:=SphericalBesselJ[Abs[m],Sqrt[x^2+y^2+z^2]]/(x^2+y^2+z^2)^(Abs[m]/2)
+Derivative[0,{1,0,0}][AnalyticalBesselJ][m_,{x_,y_,z_}]:=(-1)x AnalyticalBesselJ[m+1,{x,y,z}]
+Derivative[0,{0,1,0}][AnalyticalBesselJ][m_,{x_,y_,z_}]:=(-1)y AnalyticalBesselJ[m+1,{x,y,z}]
+Derivative[0,{0,0,1}][AnalyticalBesselJ][m_,{x_,y_,z_}]:=(-1)z AnalyticalBesselJ[m+1,{x,y,z}]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+Multipole\[CapitalLambda]::usage="Multipole\[CapitalLambda][l,m,{x,y,z}] calculates the multipole function \!\(\*SubscriptBox[\(\[CapitalLambda]\), \(l, m\)]\)(x,y,z)=4\!\(\*SuperscriptBox[\(\[Pi]i\), \(l\)]\)\!\(\*SubscriptBox[\(j\), \(l\)]\)(r)\!\(\*SubscriptBox[\(Y\), \(lm\)]\)(\[Theta],\[Phi])=4\!\(\*SuperscriptBox[\(\[Pi]i\), \(l\)]\)\!\(\*SubscriptBox[\(aj\), \(l\)]\)(r)\!\(\*SubscriptBox[\(S\), \(lm\)]\)(x,y,z).";
+
+Begin["`Private`"];
+
+Multipole\[CapitalLambda][l_,m_,{x_,y_,z_}]:=4\[Pi] I^l AnalyticalBesselJ[l,{x,y,z}]SolidHarmonicS[l,m,x,y,z]
+
 End[];
 
 

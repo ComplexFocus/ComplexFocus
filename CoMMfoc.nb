@@ -56,7 +56,7 @@ Cell["Implementation", \
 
 Cell[CellGroupData[{
 
-Cell["Supporting functions", \
+Cell["Package admin", \
 "Section",ExpressionUUID->"63ce1fac-976b-4ffb-9096-45068b912d68"],
 
 Cell[CellGroupData[{
@@ -192,13 +192,13 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\n", 
  RowBox[{
-  RowBox[{"$CoMMfocTimestamp", "=", "\"\<Wed 23 Sep 2020 17:24:38\>\""}], 
+  RowBox[{"$CoMMfocTimestamp", "=", "\"\<Wed 23 Sep 2020 17:56:08\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"d1b0a605-c163-4538-9c75-b1f50fa93858"]
+  "version-timestamp",ExpressionUUID->"b5ac87a8-e351-4d78-9b05-a5c3930eff4c"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -318,10 +318,336 @@ Cell[BoxData[{
  InitializationCell->
   True,ExpressionUUID->"56b69d2c-3f13-4848-bcc7-6db05f85bf58"]
 }, Closed]]
+}, Open  ]]
 }, Open  ]],
 
-Cell["Package code goes here", \
-"Subsection",ExpressionUUID->"ce066b21-33f3-4900-bb2d-ab254654ae24"]
+Cell[CellGroupData[{
+
+Cell["Package code", \
+"Section",ExpressionUUID->"3844a50e-ebb3-4a6c-8d34-f82b94b045bd"],
+
+Cell[CellGroupData[{
+
+Cell["SolidHarmonicS", \
+"Subsection",ExpressionUUID->"ce066b21-33f3-4900-bb2d-ab254654ae24"],
+
+Cell[TextData[{
+ "This function implements the solid harmonic ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["S", 
+      RowBox[{"l", ",", "m"}]], "(", 
+     StyleBox["r",
+      FontWeight->"Bold"], ")"}], "=", 
+    RowBox[{
+     SuperscriptBox["r", "l"], 
+     RowBox[{
+      SubscriptBox["Y", 
+       RowBox[{"l", ",", "m"}]], "(", 
+      RowBox[{"\[Theta]", ",", "\[Phi]"}], ")"}]}]}], TraditionalForm]],
+  ExpressionUUID->"ff1a7c97-fd16-4e84-a045-0d295246ab11"],
+ ", which is a homogeneous polynomial of degree ",
+ Cell[BoxData[
+  FormBox["l", TraditionalForm]],ExpressionUUID->
+  "1a7df1cc-f549-49c6-a885-447a0d80d3ac"],
+ ", and lends itself much better to symbolic differentiation than explicit \
+spherical harmonics.\n\nCode provided by J.M. at \
+http://mathematica.stackexchange.com/a/124336/1000 under the WTFPL."
+}], "Text",ExpressionUUID->"5ffc79c6-f6d8-4512-8151-b93a8d9cc9b5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"SolidHarmonicS", "::", "usage"}], "=", 
+   "\"\<SolidHarmonicS[l,m,x,y,z] calculates the solid harmonic \
+\!\(\*SubscriptBox[\(S\), \(lm\)]\)(x,y,z)=\!\(\*SuperscriptBox[\(r\), \(l\)]\
+\)\!\(\*SubscriptBox[\(Y\), \(lm\)]\)(x,y,z).\n\nSolidHarmonicS[l,m,{x,y,z}] \
+does the same.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SolidHarmonicS", "[", 
+    RowBox[{
+    "\[Lambda]_Integer", ",", "\[Mu]_Integer", ",", "x_", ",", "y_", ",", 
+     "z_"}], "]"}], "/;", 
+   RowBox[{"\[Lambda]", "\[GreaterEqual]", 
+    RowBox[{"Abs", "[", "\[Mu]", "]"}]}]}], ":=", 
+  RowBox[{
+   RowBox[{"Sqrt", "[", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"2", " ", "\[Lambda]"}], "+", "1"}], 
+     RowBox[{"4", " ", "\[Pi]"}]], "]"}], " ", 
+   RowBox[{"Sqrt", "[", 
+    FractionBox[
+     RowBox[{"Gamma", "[", 
+      RowBox[{"\[Lambda]", "-", 
+       RowBox[{"Abs", "[", "\[Mu]", "]"}], "+", "1"}], "]"}], 
+     RowBox[{"Gamma", "[", 
+      RowBox[{"\[Lambda]", "+", 
+       RowBox[{"Abs", "[", "\[Mu]", "]"}], "+", "1"}], "]"}]], "]"}], " ", 
+   SuperscriptBox["2", 
+    RowBox[{"-", "\[Lambda]"}]], " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"-", "1"}], ")"}], 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\[Mu]", "-", 
+       RowBox[{"Abs", "[", "\[Mu]", "]"}]}], ")"}], "/", "2"}]], "\[Times]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Rationalize", "[", "\[Mu]", "]"}], "\[Equal]", "0"}], ",", "1",
+      ",", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"x", "+", 
+        RowBox[{
+         RowBox[{"Sign", "[", "\[Mu]", "]"}], "\[ImaginaryI]", " ", "y"}]}], 
+       ")"}], 
+      RowBox[{"Abs", "[", "\[Mu]", "]"}]]}], "]"}], "\[Times]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Sum", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], 
+       RowBox[{"\[Mu]", "+", "k"}]], " ", 
+      RowBox[{"Binomial", "[", 
+       RowBox[{"\[Lambda]", ",", "k"}], "]"}], " ", 
+      RowBox[{"Binomial", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"2", " ", "\[Lambda]"}], "-", 
+         RowBox[{"2", " ", "k"}]}], ",", "\[Lambda]"}], "]"}], " ", 
+      RowBox[{"Pochhammer", "[", 
+       RowBox[{
+        RowBox[{"\[Lambda]", "-", 
+         RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
+         RowBox[{"2", " ", "k"}], "+", "1"}], ",", 
+        RowBox[{"Abs", "[", "\[Mu]", "]"}]}], "]"}], " ", "\[Times]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"TrueQ", "[", 
+         RowBox[{
+          RowBox[{"Pochhammer", "[", 
+           RowBox[{
+            RowBox[{"\[Lambda]", "-", 
+             RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
+             RowBox[{"2", " ", "k"}], "+", "1"}], ",", 
+            RowBox[{"Abs", "[", "\[Mu]", "]"}]}], "]"}], "\[Equal]", "0"}], 
+         "]"}], ",", "1", ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Rationalize", "[", "k", "]"}], "\[Equal]", "0"}], ",", 
+           "1", ",", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              SuperscriptBox["x", "2"], "+", 
+              SuperscriptBox["y", "2"], "+", 
+              SuperscriptBox["z", "2"]}], ")"}], "k"]}], "]"}], 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Rationalize", "[", 
+             RowBox[{"\[Lambda]", "-", 
+              RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
+              RowBox[{"2", " ", "k"}]}], "]"}], "\[Equal]", "0"}], ",", "1", 
+           ",", 
+           SuperscriptBox["z", 
+            RowBox[{"\[Lambda]", "-", 
+             RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
+             RowBox[{"2", " ", "k"}]}]]}], "]"}]}]}], "\[IndentingNewLine]", 
+       "]"}]}], "\[IndentingNewLine]", ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "0", ",", 
+       RowBox[{"Quotient", "[", 
+        RowBox[{"\[Lambda]", ",", "2"}], "]"}]}], "}"}]}], 
+    "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SolidHarmonicS", "[", 
+    RowBox[{"\[Lambda]_Integer", ",", "\[Mu]_Integer", ",", 
+     RowBox[{"{", 
+      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], "/;", 
+   RowBox[{"\[Lambda]", "\[GreaterEqual]", 
+    RowBox[{"Abs", "[", "\[Mu]", "]"}]}]}], ":=", 
+  RowBox[{"SolidHarmonicS", "[", 
+   RowBox[{"\[Lambda]", ",", "\[Mu]", ",", "x", ",", "y", ",", "z"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"53f36aab-68fb-4989-8c67-cfe0a0e9f7dd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["AnalyticalBesselJ", \
+"Subsection",ExpressionUUID->"9b9e0ef1-5a30-4169-a872-3cfb1a95a411"],
+
+Cell["\<\
+Define the analytical Bessel functions that go with the solid harmonics, as \
+well as their differentiation rules.\
+\>", "Text",ExpressionUUID->"76a6b390-5a4e-4a6a-95ac-68d711efaa97"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"AnalyticalBesselJ", "::", "usage"}], "=", 
+    "\"\<AnalyticalBesselJ[m,{x,y,z}] returns the analytical form of the \
+spherical Bessel function, \!\(\*SubscriptBox[\(j\), \
+\(m\)]\)(r)/\!\(\*SuperscriptBox[\(r\), \(m\)]\).\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AnalyticalBesselJ", "[", 
+   RowBox[{"m_", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"x_", "?", "NumericQ"}], ",", 
+      RowBox[{"y_", "?", "NumericQ"}], ",", 
+      RowBox[{"z_", "?", "NumericQ"}]}], "}"}]}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{"SphericalBesselJ", "[", 
+    RowBox[{
+     RowBox[{"Abs", "[", "m", "]"}], ",", 
+     SqrtBox[
+      RowBox[{
+       SuperscriptBox["x", "2"], "+", 
+       SuperscriptBox["y", "2"], "+", 
+       SuperscriptBox["z", "2"]}]]}], "]"}], 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox["x", "2"], "+", 
+      SuperscriptBox["y", "2"], "+", 
+      SuperscriptBox["z", "2"]}], ")"}], 
+    RowBox[{
+     RowBox[{"Abs", "[", "m", "]"}], "/", "2"}]]]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Derivative", "[", 
+     RowBox[{"0", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "]"}], "[", 
+    "AnalyticalBesselJ", "]"}], "[", 
+   RowBox[{"m_", ",", 
+    RowBox[{"{", 
+     RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"-", "1"}], ")"}], "x", " ", 
+   RowBox[{"AnalyticalBesselJ", "[", 
+    RowBox[{
+     RowBox[{"m", "+", "1"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], 
+    "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Derivative", "[", 
+     RowBox[{"0", ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "]"}], "[", 
+    "AnalyticalBesselJ", "]"}], "[", 
+   RowBox[{"m_", ",", 
+    RowBox[{"{", 
+     RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"-", "1"}], ")"}], "y", " ", 
+   RowBox[{"AnalyticalBesselJ", "[", 
+    RowBox[{
+     RowBox[{"m", "+", "1"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], 
+    "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Derivative", "[", 
+      RowBox[{"0", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}], "[", 
+     "AnalyticalBesselJ", "]"}], "[", 
+    RowBox[{"m_", ",", 
+     RowBox[{"{", 
+      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"-", "1"}], ")"}], "z", " ", 
+    RowBox[{"AnalyticalBesselJ", "[", 
+     RowBox[{
+      RowBox[{"m", "+", "1"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"2595089e-5a75-43d8-87be-ae8274f74fca"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Multipole\[CapitalLambda]", \
+"Subsection",ExpressionUUID->"4f41a858-1216-4f69-a0a9-6de6b815f17c"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Multipole\[CapitalLambda]", "::", "usage"}], "=", 
+    "\"\<Multipole\[CapitalLambda][l,m,{x,y,z}] calculates the multipole \
+function \!\(\*SubscriptBox[\(\[CapitalLambda]\), \(l, \
+m\)]\)(x,y,z)=4\!\(\*SuperscriptBox[\(\[Pi]i\), \
+\(l\)]\)\!\(\*SubscriptBox[\(j\), \(l\)]\)(r)\!\(\*SubscriptBox[\(Y\), \
+\(lm\)]\)(\[Theta],\[Phi])=4\!\(\*SuperscriptBox[\(\[Pi]i\), \
+\(l\)]\)\!\(\*SubscriptBox[\(aj\), \(l\)]\)(r)\!\(\*SubscriptBox[\(S\), \
+\(lm\)]\)(x,y,z).\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Multipole\[CapitalLambda]", "[", 
+    RowBox[{"l_", ",", "m_", ",", 
+     RowBox[{"{", 
+      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], ":=", 
+   RowBox[{"4", "\[Pi]", " ", 
+    SuperscriptBox["\[ImaginaryI]", "l"], 
+    RowBox[{"AnalyticalBesselJ", "[", 
+     RowBox[{"l", ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}], 
+    RowBox[{"SolidHarmonicS", "[", 
+     RowBox[{"l", ",", "m", ",", "x", ",", "y", ",", "z"}], "]"}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"97bacd18-5916-4ffd-9528-2285cc18b967"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -353,7 +679,7 @@ Cell[BoxData[
  InitializationCell->
   True,ExpressionUUID->"0b59eb5f-39e5-4fe3-a624-8b4b88bac2fa"]
 }, Open  ]]
-}, Open  ]]
+}, Closed]]
 }, Open  ]]
 }, Open  ]]
 },
