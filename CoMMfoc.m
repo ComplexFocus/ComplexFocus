@@ -39,7 +39,7 @@ End[];
 
 (* ::Input::Initialization:: *)
 Begin["`Private`"];
-$CoMMfocTimestamp="Wed 23 Sep 2020 17:56:08";
+$CoMMfocTimestamp="Thu 24 Sep 2020 18:45:53";
 End[];
 
 
@@ -91,6 +91,8 @@ AnalyticalBesselJ::usage="AnalyticalBesselJ[m,{x,y,z}] returns the analytical fo
 
 Begin["`Private`"];
 AnalyticalBesselJ[m_,{x_?NumericQ,y_?NumericQ,z_?NumericQ}]:=SphericalBesselJ[Abs[m],Sqrt[x^2+y^2+z^2]]/(x^2+y^2+z^2)^(Abs[m]/2)
+AnalyticalBesselJ[m_,{x_?NumericQ,y_?NumericQ,z_?NumericQ}/;(x^2+y^2+z^2==0||x^2+y^2+z^2==0.)]:=1/(2m+1)!!
+
 Derivative[0,{1,0,0}][AnalyticalBesselJ][m_,{x_,y_,z_}]:=(-1)x AnalyticalBesselJ[m+1,{x,y,z}]
 Derivative[0,{0,1,0}][AnalyticalBesselJ][m_,{x_,y_,z_}]:=(-1)y AnalyticalBesselJ[m+1,{x,y,z}]
 Derivative[0,{0,0,1}][AnalyticalBesselJ][m_,{x_,y_,z_}]:=(-1)z AnalyticalBesselJ[m+1,{x,y,z}]
@@ -106,6 +108,53 @@ Begin["`Private`"];
 Multipole\[CapitalLambda][l_,m_,{x_,y_,z_}]:=4\[Pi] I^l AnalyticalBesselJ[l,{x,y,z}]SolidHarmonicS[l,m,x,y,z]
 
 End[];
+
+
+(* ::Input::Initialization:: *)
+UnitE[s:(1|-1)]:=1/Sqrt[2] {1,s I,0}
+UnitE[0]:={0,0,1}
+
+
+(* ::Input::Initialization:: *)
+PolarizationVElectric[vector_,scalarFunction_,variables_]:=Curl[Curl[Times[vector,scalarFunction],variables],variables]
+PolarizationVMagnetic[vector_,scalarFunction_,variables_]:=-I Curl[Times[vector,scalarFunction],variables]
+PolarizationVHelicity[s:(1|-1),scalarFunction_,variables_]:=PolarizationVElectric[UnitE[s],scalarFunction,variables]+I s PolarizationVMagnetic[UnitE[s],scalarFunction,variables]
+
+
+(* ::Input::Initialization:: *)
+CFnormTEM[l_,m_,qvar_]:=Block[{q},
+CFnormTEM[l,m,q_]=Simplify[Integrate[SphericalHarmonicY[l,m,\[Theta],\[Phi]]SphericalHarmonicY[l,-m,\[Theta],\[Phi]]Exp[2q Cos[\[Theta]]](Sin[\[Theta]])^2 Sin[\[Theta]],{\[Theta],0,\[Pi]},{\[Phi],0,2\[Pi]}]];
+CFnormTEM[l,m,qvar]
+]
+CFnormTEM[l_,m_,0]:=CFnormTEM[l,m,0]=Limit[CFnormTEM[l,m,q],q->0]
+
+
+(* ::Input::Initialization:: *)
+CFnormQC[l_,m_,qvar_]:=Block[{q},
+CFnormQC[l,m,q_]=Simplify[Integrate[SphericalHarmonicY[l,m,\[Theta],\[Phi]]SphericalHarmonicY[l,-m,\[Theta],\[Phi]]Exp[2q Cos[\[Theta]]](1+Cos[\[Theta]])^2 Sin[\[Theta]],{\[Theta],0,\[Pi]},{\[Phi],0,2\[Pi]}]];
+CFnormQC[l,m,qvar]
+]
+CFnormQC[l_,m_,0]:=CFnormQC[l,m,0]=Limit[CFnormQC[l,m,q],q->0]
+
+
+(* ::Input::Initialization:: *)
+(*This cell is auto-generated. Any changes will be over-ridden if the cell above is evaluated.*)
+CFnormTEM[0,0,q_]:=-(-2*q*Cosh[2*q] + Sinh[2*q])/(4*q^3)
+CFnormTEM[1,-1,q_]:=(18*q*Cosh[2*q] - 3*(3 + 4*q^2)*Sinh[2*q])/(8*q^5)
+CFnormTEM[1,0,q_]:=(6*q*(3 + q^2)*Cosh[2*q] - 3*(3 + 5*q^2)*Sinh[2*q])/(4*q^5)
+CFnormTEM[1,1,q_]:=(18*q*Cosh[2*q] - 3*(3 + 4*q^2)*Sinh[2*q])/(8*q^5)
+CFnormTEM[2,-2,q_]:=(45*(2*q*(15 + 4*q^2)*Cosh[2*q] - 3*(5 + 8*q^2)*Sinh[2*q]))/(64*q^7)
+CFnormTEM[2,-1,q_]:=(15*(18*q*(5 + 2*q^2)*Cosh[2*q] - (45 + 78*q^2 + 8*q^4)*Sinh[2*q]))/(16*q^7)
+CFnormTEM[2,0,q_]:=(5*(2*q*(405 + 180*q^2 + 8*q^4)*Cosh[2*q] - (405 + 720*q^2 + 104*q^4)*Sinh[2*q]))/(32*q^7)
+CFnormTEM[2,1,q_]:=(15*(18*q*(5 + 2*q^2)*Cosh[2*q] - (45 + 78*q^2 + 8*q^4)*Sinh[2*q]))/(16*q^7)
+CFnormTEM[2,2,q_]:=(45*(2*q*(15 + 4*q^2)*Cosh[2*q] - 3*(5 + 8*q^2)*Sinh[2*q]))/(64*q^7)
+CFnormTEM[3,-3,q_]:=(105*(10*q*(21 + 8*q^2)*Cosh[2*q] - (105 + 180*q^2 + 16*q^4)*Sinh[2*q]))/(64*q^9)
+CFnormTEM[3,-2,q_]:=(315*(2*q*(210 + 95*q^2 + 4*q^4)*Cosh[2*q] - (210 + 375*q^2 + 56*q^4)*Sinh[2*q]))/(64*q^9)
+CFnormTEM[3,-1,q_]:=(21*(6*q*(2625 + 1300*q^2 + 96*q^4)*Cosh[2*q] - (7875 + 64*q^2*(225 + 42*q^2 + q^4))*Sinh[2*q]))/(64*q^9)
+CFnormTEM[3,0,q_]:=(7*(2*q*(15750 + 8025*q^2 + 684*q^4 + 8*q^6)*Cosh[2*q] - (15750 + 29025*q^2 + 5784*q^4 + 200*q^6)*Sinh[2*q]))/(32*q^9)
+CFnormTEM[3,1,q_]:=(21*(6*q*(2625 + 1300*q^2 + 96*q^4)*Cosh[2*q] - (7875 + 64*q^2*(225 + 42*q^2 + q^4))*Sinh[2*q]))/(64*q^9)
+CFnormTEM[3,2,q_]:=(315*(2*q*(210 + 95*q^2 + 4*q^4)*Cosh[2*q] - (210 + 375*q^2 + 56*q^4)*Sinh[2*q]))/(64*q^9)
+CFnormTEM[3,3,q_]:=(105*(10*q*(21 + 8*q^2)*Cosh[2*q] - (105 + 180*q^2 + 16*q^4)*Sinh[2*q]))/(64*q^9)
 
 
 (* ::Input::Initialization:: *)
