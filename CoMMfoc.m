@@ -39,7 +39,7 @@ End[];
 
 (* ::Input::Initialization:: *)
 Begin["`Private`"];
-$CoMMfocTimestamp="Thu 24 Sep 2020 18:45:53";
+$CoMMfocTimestamp="Sun 27 Sep 2020 18:33:28";
 End[];
 
 
@@ -111,35 +111,94 @@ End[];
 
 
 (* ::Input::Initialization:: *)
+UnitE::usage="UnitE[s] gives the unit vectors \!\(\*SubscriptBox[\(e\), \(s\)]\) for s=-1,0,1, equal to (1,-i,0)/\!\(\*SqrtBox[\(2\)]\), (0,0,1) and (1,i,0)/\!\(\*SqrtBox[\(2\)]\), respectively.";
+
+Begin["`Private`"];
 UnitE[s:(1|-1)]:=1/Sqrt[2] {1,s I,0}
 UnitE[0]:={0,0,1}
+End[];
 
 
 (* ::Input::Initialization:: *)
+PolarizationVElectric::usage="PolarizationVElectric[v,f[x,y,z],{x,y,z}] gives the electric-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(r\), \((E)\)]\)(v,f)=\[Del]\[Times](\[Del]\[Times](v f)) for a vector v and a scalar function f.
+PolarizationVElectric[v,f] gives the functional form of \!\(\*SubsuperscriptBox[\(V\), \(r\), \((E)\)]\)(v,f). The vector v can be a fixed object or an explicit Function object.";
+PolarizationVMagnetic::usage="PolarizationVMagnetic[v,f[x,y,z],{x,y,z}] gives the magnetic-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(r\), \((M)\)]\)(v,f)=-i\[Del]\[Times](v f) for a vector v and a scalar function f.
+PolarizationVMagnetic[v,f] gives the functional form of \!\(\*SubsuperscriptBox[\(V\), \(r\), \((M)\)]\)(v,f). The vector v can be a fixed object or an explicit Function object.";
+PolarizationVHelicity::usage="PolarizationVHelicity[\[Sigma],f[x,y,z],{x,y,z}] gives the helicity-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(r\), \((\[PlusMinus])\)]\)(f)=\!\(\*SubsuperscriptBox[\(V\), \(r\), \((E)\)]\)(\!\(\*SubscriptBox[\(e\), \(\[PlusMinus]\)]\),f)\[PlusMinus]\!\(\*SubsuperscriptBox[\(iV\), \(r\), \((M)\)]\)(\!\(\*SubscriptBox[\(e\), \(\[PlusMinus]\)]\),f) for a helicity \[Sigma]=\[PlusMinus]1 and a scalar function f.
+PolarizationVHelicity[\[Sigma],f] gives the functional form of \!\(\*SubsuperscriptBox[\(V\), \(r\), \((\[PlusMinus])\)]\)(f).";
+
+Begin["`Private`"];
+
 PolarizationVElectric[vector_,scalarFunction_,variables_]:=Curl[Curl[Times[vector,scalarFunction],variables],variables]
 PolarizationVMagnetic[vector_,scalarFunction_,variables_]:=-I Curl[Times[vector,scalarFunction],variables]
 PolarizationVHelicity[s:(1|-1),scalarFunction_,variables_]:=PolarizationVElectric[UnitE[s],scalarFunction,variables]+I s PolarizationVMagnetic[UnitE[s],scalarFunction,variables]
 
+PolarizationVElectric[vector_,scalarFunction_]:=Block[{x,y,z},
+Function[{x,y,z},Evaluate[
+PolarizationVElectric[vector,scalarFunction[x,y,z],{x,y,z}]
+]]
+]
+PolarizationVElectric[vector_Function,scalarFunction_]:=Block[{x,y,z},
+Function[{x,y,z},Evaluate[
+PolarizationVElectric[vector[x,y,z],scalarFunction[x,y,z],{x,y,z}]
+]]
+]
+
+PolarizationVMagnetic[vector_,scalarFunction_]:=Block[{x,y,z},
+Function[{x,y,z},Evaluate[
+PolarizationVMagnetic[vector,scalarFunction[x,y,z],{x,y,z}]
+]]
+]
+PolarizationVMagnetic[vector_Function,scalarFunction_]:=Block[{x,y,z},
+Function[{x,y,z},Evaluate[
+PolarizationVMagnetic[vector[x,y,z],scalarFunction[x,y,z],{x,y,z}]
+]]
+]
+
+PolarizationVHelicity[s:(1|-1),scalarFunction_]:=Block[{x,y,z},
+Function[{x,y,z},Evaluate[
+PolarizationVElectric[UnitE[s],scalarFunction[x,y,z],{x,y,z}]+I s PolarizationVMagnetic[UnitE[s],scalarFunction[x,y,z],{x,y,z}]
+]]
+]
+
+End[];
+
 
 (* ::Input::Initialization:: *)
-CFnormTEM[l_,m_,qvar_]:=Block[{q},
-CFnormTEM[l,m,q_]=Simplify[Integrate[SphericalHarmonicY[l,m,\[Theta],\[Phi]]SphericalHarmonicY[l,-m,\[Theta],\[Phi]]Exp[2q Cos[\[Theta]]](Sin[\[Theta]])^2 Sin[\[Theta]],{\[Theta],0,\[Pi]},{\[Phi],0,2\[Pi]}]];
-CFnormTEM[l,m,qvar]
+ComplexFocusHelicityE[l_,m_,s:(1|-1),{x_,y_,z_},q_]:=Block[{xInt,yInt,zInt,qInt},
+ComplexFocusHelicityE[l,m,s,{xInt_,yInt_,zInt_},qInt_]=Simplify[PolarizationVHelicity[s,Multipole\[CapitalLambda][l,m,{xInt,yInt,zInt-I qInt}],{xInt,yInt,zInt}]];
+ComplexFocusHelicityE[l,m,s,{x,y,z},q]
+]
+ComplexFoxusElectricE[l_,m_,{x_,y_,z_},q_]:=Block[{xInt,yInt,zInt,qInt},
+ComplexFoxusElectricE[l,m,{xInt_,yInt_,zInt_},qInt_]=Simplify[PolarizationVElectric[{0,0,1},Multipole\[CapitalLambda][l,m,{xInt,yInt,zInt-I qInt}],{xInt,yInt,zInt}]];
+ComplexFoxusElectricE[l,m,{x,y,z},q]
+]
+ComplexFocusMagneticE[l_,m_,{x_,y_,z_},q_]:=Block[{xInt,yInt,zInt,qInt},
+ComplexFocusMagneticE[l,m,{xInt_,yInt_,zInt_},qInt_]=Simplify[PolarizationVMagnetic[{0,0,1},Multipole\[CapitalLambda][l,m,{xInt,yInt,zInt-I qInt}],{xInt,yInt,zInt}]];
+ComplexFocusMagneticE[l,m,{x,y,z},q]
+]
+
+
+(* ::Input::Initialization:: *)
+CFnormTEM::usage="CFnormTEM[l,m,q] returns the normalization integral \[Integral]|\!\(\*SubscriptBox[\(Y\), \(lm\)]\)(\[Theta],\[Phi])\!\(\*SuperscriptBox[\(|\), \(2\)]\)\!\(\*SuperscriptBox[\(e\), \(2  q\\\ cos \((\[Theta])\)\)]\)sin(\[Theta]\!\(\*SuperscriptBox[\()\), \(2\)]\)d\[CapitalOmega] for the TEM complex-focus fields.";
+
+\[Alpha]TEM::usage="\[Alpha]TEM[l,m,q] returns the normalization constant CFnormTEM[l,m,q\!\(\*SuperscriptBox[\(]\), \(\(-1\)/2\)]\) for the TEM complex-focus fields.";
+
+Begin["`Private`"];
+\[Alpha]TEM[l_,m_,q_]:=CFnormTEM[l,m,q]^(-1/2)
+
+CFnormTEM[l_,m_,q_]:=Block[{qInt},
+CFnormTEM[l,m,qInt_]=Simplify[Integrate[SphericalHarmonicY[l,m,\[Theta],\[Phi]]SphericalHarmonicY[l,-m,\[Theta],\[Phi]]Exp[2qInt Cos[\[Theta]]](Sin[\[Theta]])^2 Sin[\[Theta]],{\[Theta],0,\[Pi]},{\[Phi],0,2\[Pi]}]];
+CFnormTEM[l,m,q]
 ]
 CFnormTEM[l_,m_,0]:=CFnormTEM[l,m,0]=Limit[CFnormTEM[l,m,q],q->0]
-
-
-(* ::Input::Initialization:: *)
-CFnormQC[l_,m_,qvar_]:=Block[{q},
-CFnormQC[l,m,q_]=Simplify[Integrate[SphericalHarmonicY[l,m,\[Theta],\[Phi]]SphericalHarmonicY[l,-m,\[Theta],\[Phi]]Exp[2q Cos[\[Theta]]](1+Cos[\[Theta]])^2 Sin[\[Theta]],{\[Theta],0,\[Pi]},{\[Phi],0,2\[Pi]}]];
-CFnormQC[l,m,qvar]
-]
-CFnormQC[l_,m_,0]:=CFnormQC[l,m,0]=Limit[CFnormQC[l,m,q],q->0]
+End[];
 
 
 (* ::Input::Initialization:: *)
 (*This cell is auto-generated. Any changes will be over-ridden if the cell above is evaluated.*)
-CFnormTEM[0,0,q_]:=-(-2*q*Cosh[2*q] + Sinh[2*q])/(4*q^3)
+Begin["`Private`"];
+CFnormTEM[0,0,q_]:=(2*q*Cosh[2*q] - Sinh[2*q])/(4*q^3)
 CFnormTEM[1,-1,q_]:=(18*q*Cosh[2*q] - 3*(3 + 4*q^2)*Sinh[2*q])/(8*q^5)
 CFnormTEM[1,0,q_]:=(6*q*(3 + q^2)*Cosh[2*q] - 3*(3 + 5*q^2)*Sinh[2*q])/(4*q^5)
 CFnormTEM[1,1,q_]:=(18*q*Cosh[2*q] - 3*(3 + 4*q^2)*Sinh[2*q])/(8*q^5)
@@ -155,6 +214,45 @@ CFnormTEM[3,0,q_]:=(7*(2*q*(15750 + 8025*q^2 + 684*q^4 + 8*q^6)*Cosh[2*q] - (157
 CFnormTEM[3,1,q_]:=(21*(6*q*(2625 + 1300*q^2 + 96*q^4)*Cosh[2*q] - (7875 + 64*q^2*(225 + 42*q^2 + q^4))*Sinh[2*q]))/(64*q^9)
 CFnormTEM[3,2,q_]:=(315*(2*q*(210 + 95*q^2 + 4*q^4)*Cosh[2*q] - (210 + 375*q^2 + 56*q^4)*Sinh[2*q]))/(64*q^9)
 CFnormTEM[3,3,q_]:=(105*(10*q*(21 + 8*q^2)*Cosh[2*q] - (105 + 180*q^2 + 16*q^4)*Sinh[2*q]))/(64*q^9)
+End[];
+
+
+(* ::Input::Initialization:: *)
+CFnormQuasiCircular::usage="CFnormQuasiCircular[l,m,q] returns the normalization integral \[Integral]|\!\(\*SubscriptBox[\(Y\), \(lm\)]\)(\[Theta],\[Phi])\!\(\*SuperscriptBox[\(|\), \(2\)]\)\!\(\*SuperscriptBox[\(e\), \(2  q\\\ cos \((\[Theta])\)\)]\)(1+cos(\[Theta])\!\(\*SuperscriptBox[\()\), \(2\)]\)d\[CapitalOmega] for the quasi-circular complex-focus fields.";
+
+\[Alpha]QC::usage="\[Alpha]QC[l,m,q] returns the normalization constant CFnormQuasiCircular[l,m,q\!\(\*SuperscriptBox[\(]\), \(\(-1\)/2\)]\) for the quasi-circular complex-focus fields.";
+
+Begin["`Private`"];
+\[Alpha]QC[l_,m_,q_]:=CFnormQuasiCircular[l,m,q]^(-1/2)
+
+CFnormQuasiCircular[l_,m_,q_]:=Block[{qInt},
+CFnormQuasiCircular[l,m,qInt_]=Simplify[Integrate[SphericalHarmonicY[l,m,\[Theta],\[Phi]]SphericalHarmonicY[l,-m,\[Theta],\[Phi]]Exp[2qIntCos[\[Theta]]](1+Cos[\[Theta]])^2 Sin[\[Theta]],{\[Theta],0,\[Pi]},{\[Phi],0,2\[Pi]}]];
+CFnormQuasiCircular[l,m,q]
+]
+CFnormQuasiCircular[l_,m_,0]:=CFnormQuasiCircular[l,m,0]=Limit[CFnormQuasiCircular[l,m,q],q->0]
+End[];
+
+
+(* ::Input::Initialization:: *)
+(*This cell is auto-generated. Any changes will be over-ridden if the cell above is evaluated.*)
+Begin["`Private`"];
+CFnormQuasiCircular[0,0,q_]:=(-1 + E^(4*q)*(1 - 4*q + 8*q^2))/(8*E^(2*q)*q^3)
+CFnormQuasiCircular[1,-1,q_]:=(-3*(3*(1 + q) + E^(4*q)*(-3 + 9*q - 12*q^2 + 8*q^3)))/(16*E^(2*q)*q^5)
+CFnormQuasiCircular[1,0,q_]:=(3*(-3 - 3*q - q^2 + E^(4*q)*(3 - 9*q + 13*q^2 - 12*q^3 + 8*q^4)))/(8*E^(2*q)*q^5)
+CFnormQuasiCircular[1,1,q_]:=(-3*(3*(1 + q) + E^(4*q)*(-3 + 9*q - 12*q^2 + 8*q^3)))/(16*E^(2*q)*q^5)
+CFnormQuasiCircular[2,-2,q_]:=(15*(-3*(15 + 20*q + 8*q^2) + E^(4*q)*(45 - 120*q + 144*q^2 - 96*q^3 + 32*q^4)))/(128*E^(2*q)*q^7)
+CFnormQuasiCircular[2,-1,q_]:=(-15*(45 + 60*q + 30*q^2 + 6*q^3 + E^(4*q)*(-45 + 120*q - 150*q^2 + 114*q^3 - 56*q^4 + 16*q^5)))/(32*E^(2*q)*q^7)
+CFnormQuasiCircular[2,0,q_]:=(5*(-405 - 4*q*(135 + 2*q*(36 + q*(9 + q))) + E^(4*q)*(405 + 8*q*(-135 + q*(171 + q*(-135 + q*(73 + 4*q*(-7 + 2*q))))))))/(64*E^(2*q)*q^7)
+CFnormQuasiCircular[2,1,q_]:=(-15*(45 + 60*q + 30*q^2 + 6*q^3 + E^(4*q)*(-45 + 120*q - 150*q^2 + 114*q^3 - 56*q^4 + 16*q^5)))/(32*E^(2*q)*q^7)
+CFnormQuasiCircular[2,2,q_]:=(15*(-3*(15 + 20*q + 8*q^2) + E^(4*q)*(45 - 120*q + 144*q^2 - 96*q^3 + 32*q^4)))/(128*E^(2*q)*q^7)
+CFnormQuasiCircular[3,-3,q_]:=(-525*(42 + q*(63 + 4*q*(9 + 2*q))) - 105*E^(4*q)*(-210 + q*(525 + 8*q*(-75 + 2*q*(25 + 2*(-5 + q)*q)))))/(256*E^(2*q)*q^9)
+CFnormQuasiCircular[3,-2,q_]:=(105*(-3*(210 + q*(315 + q*(195 + 60*q + 8*q^2))) + E^(4*q)*(630 + q*(-1575 + q*(1845 + 8*q*(-165 + 2*q*(39 + 2*(-6 + q)*q)))))))/(128*E^(2*q)*q^9)
+CFnormQuasiCircular[3,-1,q_]:=(-63*(5250 + q*(7875 + 4*q*(1275 + 2*q*(225 + 4*q*(11 + q))))) - 21*E^(4*q)*(-15750 + q*(39375 + 16*q*(-2925 + q*(2175 + 4*q*(-279 + 2*q*(51 + q*(-13 + 2*q))))))))/(256*E^(2*q)*q^9)
+CFnormQuasiCircular[3,0,q_]:=(-55125*(2 + 3*q) - 7*q^2*(15525 + 4*q*(1425 + 2*q*(153 + q*(18 + q)))) + 7*E^(4*q)*(15750 + q*(-39375 + q*(47025 + 8*q*(-4425 + q*(2328 + q*(-894 + q*(253 - 52*q + 8*q^2))))))))/(64*E^(2*q)*q^9)
+CFnormQuasiCircular[3,1,q_]:=(-63*(5250 + q*(7875 + 4*q*(1275 + 2*q*(225 + 4*q*(11 + q))))) - 21*E^(4*q)*(-15750 + q*(39375 + 16*q*(-2925 + q*(2175 + 4*q*(-279 + 2*q*(51 + q*(-13 + 2*q))))))))/(256*E^(2*q)*q^9)
+CFnormQuasiCircular[3,2,q_]:=(105*(-3*(210 + q*(315 + q*(195 + 60*q + 8*q^2))) + E^(4*q)*(630 + q*(-1575 + q*(1845 + 8*q*(-165 + 2*q*(39 + 2*(-6 + q)*q)))))))/(128*E^(2*q)*q^9)
+CFnormQuasiCircular[3,3,q_]:=(-525*(42 + q*(63 + 4*q*(9 + 2*q))) - 105*E^(4*q)*(-210 + q*(525 + 8*q*(-75 + 2*q*(25 + 2*(-5 + q)*q)))))/(256*E^(2*q)*q^9)
+End[];
 
 
 (* ::Input::Initialization:: *)
