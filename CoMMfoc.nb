@@ -67,13 +67,13 @@ Cell["Package admin", \
 
 Cell[CellGroupData[{
 
-Cell["Version number", "Subsubsection",
+Cell["Version number and timestamp managing", "Subsubsection",
  CellTags->
   "version-section",ExpressionUUID->"4a58faea-5e89-4a18-8638-f58dbf15ff2e"],
 
 Cell["\<\
-The command RBSFAversion prints the version of the RB-SFA package currently \
-loaded and its timestamp\
+The variable $CoMMfocVersion gives the version of the CoMMfoc package \
+currently loaded as well as its timestamp\
 \>", "Text",ExpressionUUID->"3cc4e9c7-4560-4484-b6a1-3feb4291ed7c"],
 
 Cell[BoxData[{
@@ -86,28 +86,13 @@ use and its timestamp.\>\""}], ";"}], "\[IndentingNewLine]",
   RowBox[{
    RowBox[{"$CoMMfocTimestamp", "::", "usage"}], "=", 
    "\"\<$CoMMfocTimestamp prints the timestamp of the current version of the \
-RB-SFA package.\>\""}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"$CoMMfocVersion", ":=", 
-   RowBox[{"\"\<CoMMfoc v0.1, \>\"", "<>", "$CoMMfoctimestamp"}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+RB-SFA package.\>\""}], ";"}]}], "Input",
  InitializationCell->
-  True,ExpressionUUID->"aa97ee0f-f35a-441d-9482-ce45b1a816f6"]
-}, Closed]],
-
-Cell[CellGroupData[{
-
-Cell["Timestamp managing", \
-"Subsubsection",ExpressionUUID->"bab1b316-b4f7-41a1-afe2-2f4c639c1d6d"],
+  True,ExpressionUUID->"aa97ee0f-f35a-441d-9482-ce45b1a816f6"],
 
 Cell["\<\
-The timestamp is updated every time the notebook is saved via an appropriate \
-notebook option, which is set by the code below.\
+The timestamp is updated every time this notebook is saved, via an \
+appropriate notebook option which is set by the code below.\
 \>", "Text",ExpressionUUID->"887427dc-d969-4eef-9ca3-6df9cab14874"],
 
 Cell[BoxData[
@@ -136,9 +121,7 @@ Cell[BoxData[
               RowBox[{"BoxData", "[", 
                RowBox[{"RowBox", "[", 
                 RowBox[{"{", 
-                 RowBox[{
-                 "\"\<Begin[\\\"`Private`\\\"];\\n$CoMMfocTimestamp=\\\"\>\"",
-                   "<>", 
+                 RowBox[{"\"\<$CoMMfocTimestamp=\\\"\>\"", "<>", 
                   RowBox[{"DateString", "[", "]"}], "<>", 
                   "\"\<\\\";\\nEnd[];\>\""}], "}"}], "]"}], "]"}], 
               "\[IndentingNewLine]", ",", "\"\<Input\>\"", ",", 
@@ -175,20 +158,28 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
-Cell["Timestamp", \
+Cell["Version number and timestamp", \
 "Subsubsection",ExpressionUUID->"2ac2d3ad-8207-436c-afb8-bc0ae16d4c35"],
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\n", 
  RowBox[{
-  RowBox[{"$CoMMfocTimestamp", "=", "\"\<Mon 28 Sep 2020 12:30:17\>\""}], 
+  RowBox[{"$CoMMfocVersion", ":=", 
+   RowBox[{"\"\<CoMMfoc v0.1, \>\"", "<>", "$CoMMfocTimestamp"}]}], 
+  ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"90617182-59d4-4545-b4c7-e01a2308359e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$CoMMfocTimestamp", "=", "\"\<Mon 28 Sep 2020 12:32:39\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"3608fb72-2e1c-411f-bb28-43c352c71b74"]
+  "version-timestamp",ExpressionUUID->"60d882c1-60ef-49ea-9784-a1dacdef2ed8"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4736,7 +4727,7 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
      Cell[
       BoxData[
        RowBox[{
-         StringJoin["Begin[\"`Private`\"];\n$CoMMfocTimestamp=\"", 
+         StringJoin["$CoMMfocTimestamp=\"", 
           DateString[], "\";\nEnd[];"]}]], "Input", InitializationCell -> 
       True, CellTags -> "version-timestamp"], None, AutoScroll -> False]; 
    NotebookSave[]), PassEventsDown -> True},

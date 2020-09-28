@@ -32,14 +32,15 @@ BeginPackage["CoMMfoc`"];
 (* ::Input::Initialization:: *)
 $CoMMfocVersion::usage="$CoMMfocVersion prints the current version of the RB-SFA package in use and its timestamp.";
 $CoMMfocTimestamp::usage="$CoMMfocTimestamp prints the timestamp of the current version of the RB-SFA package.";
-Begin["`Private`"];
-$CoMMfocVersion:="CoMMfoc v0.1, "<>$CoMMfoctimestamp;
-End[];
 
 
 (* ::Input::Initialization:: *)
 Begin["`Private`"];
-$CoMMfocTimestamp="Mon 28 Sep 2020 12:30:17";
+$CoMMfocVersion:="CoMMfoc v0.1, "<>$CoMMfocTimestamp;
+
+
+(* ::Input::Initialization:: *)
+$CoMMfocTimestamp="Mon 28 Sep 2020 12:32:39";
 End[];
 
 
