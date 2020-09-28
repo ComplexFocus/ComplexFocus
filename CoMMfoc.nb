@@ -171,7 +171,7 @@ Cell[BoxData[
         RowBox[{"NotebookSave", "[", "]"}], ")"}]}], ",", 
       RowBox[{"PassEventsDown", "\[Rule]", "True"}]}], "}"}]}]}], 
   "]"}]], "Input",ExpressionUUID->"45760a97-ec43-42f5-a401-6d3b7f33f832"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -182,13 +182,13 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\n", 
  RowBox[{
-  RowBox[{"$CoMMfocTimestamp", "=", "\"\<Sun 27 Sep 2020 18:33:28\>\""}], 
+  RowBox[{"$CoMMfocTimestamp", "=", "\"\<Mon 28 Sep 2020 12:30:17\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"2980eb04-fc88-4d24-9afd-595d0373dba4"]
+  "version-timestamp",ExpressionUUID->"3608fb72-2e1c-411f-bb28-43c352c71b74"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -480,7 +480,7 @@ does the same.\>\""}], ";"}], "\[IndentingNewLine]",
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"53f36aab-68fb-4989-8c67-cfe0a0e9f7dd"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -497,10 +497,10 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{
     RowBox[{"AnalyticalBesselJ", "::", "usage"}], "=", 
-    "\"\<AnalyticalBesselJ[m,{x,y,z}] returns the analytical form of the \
-spherical Bessel function, \!\(\*SubscriptBox[\(j\), \
-\(m\)]\)(r)/\!\(\*SuperscriptBox[\(r\), \(m\)]\).\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    "\"\<AnalyticalBesselJ[m,{x,y,z}] gives the analytical form of the \
+spherical Bessel function, \!\(\*SubscriptBox[\(aj\), \
+\(m\)]\)(r)=\!\(\*SubscriptBox[\(j\), \(m\)]\)(r)/\!\(\*SuperscriptBox[\(r\), \
+\(m\)]\).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
   ";"}], "\[IndentingNewLine]", 
@@ -819,7 +819,7 @@ Cell[BoxData[
   RowBox[{"Sin", "[", "\[Theta]", "]"}], 
   "2"]], "Output",ExpressionUUID->"2ef4d52d-4a9c-4c16-8ac3-9ee748ad542a"]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -859,7 +859,7 @@ for s=-1,0,1, equal to (1,-i,0)/\!\(\*SqrtBox[\(2\)]\), (0,0,1) and \
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"11451e4c-932f-4cad-b793-2d7269bb9aa4"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -1069,7 +1069,13 @@ helicity-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(r\), \((\
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
-  True,ExpressionUUID->"80eb1906-037d-4820-a34f-a0b6806a2832"],
+  True,ExpressionUUID->"80eb1906-037d-4820-a34f-a0b6806a2832"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Scratch", \
+"Subsubsection",ExpressionUUID->"db6d1468-28ee-4e20-8bea-6007b578e815"],
 
 Cell[CellGroupData[{
 
@@ -1507,7 +1513,7 @@ Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
   "\[IndentingNewLine]"}]], \
 "Input",ExpressionUUID->"a949e294-2956-4b5a-9cd3-6d34ea2ec027"]
-}, Open  ]]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1515,7 +1521,37 @@ Cell[CellGroupData[{
 Cell["Fields", \
 "Subsection",ExpressionUUID->"3effdee2-50e9-4205-8d03-ef0700f800a7"],
 
+Cell[CellGroupData[{
+
+Cell["\<\
+ComplexFocusHelicityE, ComplexFoxusElectricE, ComplexFocusMagneticE\
+\>", "Subsubsection",ExpressionUUID->"9c5b6259-b711-45c0-8483-700e5c48a49e"],
+
 Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ComplexFocusHelicityE", "::", "usage"}], "=", 
+   "\"\<ComplexFocusHelicityE[l,m,\[Sigma],{x,y,z},q] gives the complex-focus \
+field of helicity type, with complex-focus parameter q, angular momentum \
+numbers l,m and helicity \[Sigma]=\[PlusMinus]1.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ComplexFoxusElectricE", "::", "usage"}], "=", 
+   "\"\<ComplexFoxusElectricE[l,m,v,{x,y,z},q] gives the complex-focus field \
+of electric type, with complex-focus parameter q, angular momentum numbers \
+l,m and seed polarization vector v.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ComplexFocusMagneticE", "::", "usage"}], "=", 
+    "\"\<ComplexFocusMagneticE[l,m,v,{x,y,z},q] gives the complex-focus field \
+of magnetic type, with complex-focus parameter q, angular momentum numbers \
+l,m and seed polarization vector v.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"ComplexFocusHelicityE", "[", 
    RowBox[{"l_", ",", "m_", ",", 
@@ -1556,7 +1592,7 @@ Cell[BoxData[{
    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"ComplexFoxusElectricE", "[", 
-   RowBox[{"l_", ",", "m_", ",", 
+   RowBox[{"l_", ",", "m_", ",", "vector_", ",", 
     RowBox[{"{", 
      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], ",", "q_"}], "]"}], ":=", 
   RowBox[{"Block", "[", 
@@ -1567,15 +1603,13 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{
       RowBox[{"ComplexFoxusElectricE", "[", 
-       RowBox[{"l", ",", "m", ",", 
+       RowBox[{"l", ",", "m", ",", "vector", ",", 
         RowBox[{"{", 
          RowBox[{"xInt_", ",", "yInt_", ",", "zInt_"}], "}"}], ",", "qInt_"}],
         "]"}], "=", 
       RowBox[{"Simplify", "[", 
        RowBox[{"PolarizationVElectric", "[", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"vector", ",", 
          RowBox[{"Multipole\[CapitalLambda]", "[", 
           RowBox[{"l", ",", "m", ",", 
            RowBox[{"{", 
@@ -1586,13 +1620,13 @@ Cell[BoxData[{
           RowBox[{"xInt", ",", "yInt", ",", "zInt"}], "}"}]}], "]"}], "]"}]}],
       ";", "\[IndentingNewLine]", 
      RowBox[{"ComplexFoxusElectricE", "[", 
-      RowBox[{"l", ",", "m", ",", 
+      RowBox[{"l", ",", "m", ",", "vector", ",", 
        RowBox[{"{", 
         RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "q"}], "]"}]}]}], 
    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"ComplexFocusMagneticE", "[", 
-   RowBox[{"l_", ",", "m_", ",", 
+   RowBox[{"l_", ",", "m_", ",", "vector_", ",", 
     RowBox[{"{", 
      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], ",", "q_"}], "]"}], ":=", 
   RowBox[{"Block", "[", 
@@ -1603,15 +1637,13 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{
       RowBox[{"ComplexFocusMagneticE", "[", 
-       RowBox[{"l", ",", "m", ",", 
+       RowBox[{"l", ",", "m", ",", "vector", ",", 
         RowBox[{"{", 
          RowBox[{"xInt_", ",", "yInt_", ",", "zInt_"}], "}"}], ",", "qInt_"}],
         "]"}], "=", 
       RowBox[{"Simplify", "[", 
        RowBox[{"PolarizationVMagnetic", "[", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"vector", ",", 
          RowBox[{"Multipole\[CapitalLambda]", "[", 
           RowBox[{"l", ",", "m", ",", 
            RowBox[{"{", 
@@ -1622,12 +1654,20 @@ Cell[BoxData[{
           RowBox[{"xInt", ",", "yInt", ",", "zInt"}], "}"}]}], "]"}], "]"}]}],
       ";", "\[IndentingNewLine]", 
      RowBox[{"ComplexFocusMagneticE", "[", 
-      RowBox[{"l", ",", "m", ",", 
+      RowBox[{"l", ",", "m", ",", "vector", ",", 
        RowBox[{"{", 
         RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "q"}], "]"}]}]}], 
-   "\[IndentingNewLine]", "]"}]}]}], "Input",
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
-  True,ExpressionUUID->"8ff8dcce-571d-421e-b883-9b3f923a1d9c"],
+  True,ExpressionUUID->"8ff8dcce-571d-421e-b883-9b3f923a1d9c"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Scratch", \
+"Subsubsection",ExpressionUUID->"1406f1e4-fe9a-49fb-babb-ad7c593bf830"],
 
 Cell[CellGroupData[{
 
@@ -2088,7 +2128,13 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
   "\[IndentingNewLine]"}]], \
-"Input",ExpressionUUID->"2539f4ca-4140-4efc-b1cc-f8162041aa0d"],
+"Input",ExpressionUUID->"2539f4ca-4140-4efc-b1cc-f8162041aa0d"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Vague benchmarking", \
+"Subsubsection",ExpressionUUID->"a421ec7b-2601-4e96-acb5-2240e63b4085"],
 
 Cell[BoxData["Quit"], \
 "Input",ExpressionUUID->"803961ea-41e1-4a27-8d2f-d415eed2fcad"],
@@ -2166,8 +2212,6 @@ Cell[BoxData[
   "}"}]], "Output",ExpressionUUID->"210fd26d-40b9-4fb0-86ec-f7446799d502"]
 }, Open  ]],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"Show", "[", 
   RowBox[{
@@ -2202,98 +2246,6 @@ Cell[BoxData[
    "\[IndentingNewLine]", ",", 
    RowBox[{"Axes", "\[Rule]", "True"}]}], "\[IndentingNewLine]", 
   "]"}]], "Input",ExpressionUUID->"1408a1a0-4926-4701-a466-7531341836a7"],
-
-Cell[BoxData[
- Graphics3DBox[{
-   Arrow3DBox[TubeBox[{{{0., 0., 0.01}, {2., 9.125840822006127*^-16, 
-    0.01}}}]], 
-   Arrow3DBox[TubeBox[{{{0.05, 0.05, 0.01}, {1.714591658663975, 
-    0.04875990478730904, 1.118662740453643}}}]], 
-   Arrow3DBox[TubeBox[{{{0.1, 0.1, 0.01}, {1.3034377488463478`, 
-    0.09642513260860817, 1.6074119083613874`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.15000000000000002`, 0.15000000000000002`, 0.01}, {
-    1.0518266161980947`, 0.14400394256999416`, 1.7951254302182773`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.2, 0.2, 0.01}, {0.9136773491335153, 
-    0.19162559183982816`, 1.8783132795711017`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.25, 0.25, 0.01}, {0.8400743012406198, 
-    0.23928142357414636`, 1.9209415038495548`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.30000000000000004`, 0.30000000000000004`, 0.01}, {
-    0.804322413269503, 0.28695607996641664`, 1.9453265253243914`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.35000000000000003`, 0.35000000000000003`, 0.01}, {
-    0.7921329920559925, 0.33463866954514315`, 1.960456984109691}}}]], 
-   Arrow3DBox[TubeBox[{{{0.4, 0.4, 0.01}, {0.7954494323215592, 
-    0.38232175748948444`, 1.9704354685167005`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.45, 0.45, 0.01}, {0.8094593552332177, 
-    0.4299999732216146, 1.9773304173077242`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.5, 0.5, 0.01}, {0.8311363598682219, 
-    0.4776691384945842, 1.9822702765588822`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.55, 0.55, 0.01}, {0.8584919111500011, 
-    0.5253257628809335, 1.9859109096256369`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.6000000000000001, 0.6000000000000001, 0.01}, {
-    0.8901702008666343, 0.5729667476869782, 1.9886536983005385`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.65, 0.65, 0.01}, {0.9252175007794046, 
-    0.6205892049077202, 1.9907549905015456`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.7000000000000001, 0.7000000000000001, 0.01}, {
-    0.96294491732317, 0.6681903404445475, 1.9923844521214542`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.75, 0.75, 0.01}, {1.0028435052539855`, 
-    0.7157673738868079, 1.993657805459468}}}]], 
-   Arrow3DBox[TubeBox[{{{0.8, 0.8, 0.01}, {1.0445299634832614`, 
-    0.7633174793314645, 1.994656012924224}}}]], 
-   Arrow3DBox[TubeBox[{{{0.8500000000000001, 0.8500000000000001, 0.01}, {
-    1.0877108547063896`, 0.8108377382070788, 1.9954369460665375`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.9, 0.9, 0.01}, {1.13215841211472, 
-    0.8583250986026556, 1.9960427171332178`}}}]], 
-   Arrow3DBox[TubeBox[{{{0.9500000000000001, 0.9500000000000001, 0.01}, {
-    1.177693804811792, 0.9057763375625312, 1.9965044170428987`}}}]], 
-   Arrow3DBox[TubeBox[{{{1., 1., 0.01}, {1.2241753293540336`, 
-    0.9531880239052394, 1.9968452533106633`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.05, 1.05, 0.01}, {1.271489931209004, 
-    1.0005564797280622`, 1.9970826728337574`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.1, 1.1, 0.01}, {1.31954702551357, 
-    1.047877739067023, 1.997229824027251}}}]], 
-   Arrow3DBox[TubeBox[{{{1.1500000000000001`, 1.1500000000000001`, 0.01}, {
-    1.368273937243758, 1.0951475023003319`, 1.9972965787260382`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.2000000000000002`, 1.2000000000000002`, 0.01}, {
-    1.4176125036987361`, 1.1423610848674144`, 1.9972902540133153`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.25, 1.25, 0.01}, {1.4675165269208235`, 
-    1.1895133587524764`, 1.9972161248205735`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.3, 1.3, 0.01}, {1.5179498596961503`, 
-    1.2365986849595743`, 1.9970777870807104`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.35, 1.35, 0.01}, {1.5688849738401318`, 
-    1.2836108348808932`, 1.9968774111609886`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.4000000000000001`, 1.4000000000000001`, 0.01}, {
-    1.6203019045270695`, 1.3305428980158038`, 1.9966159120085851`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.4500000000000002`, 1.4500000000000002`, 0.01}, {
-    1.672187496405647, 1.3773871729082747`, 1.9962930533490615`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.5, 1.5, 0.01}, {1.7245349006473965`, 
-    1.4241350373942134`, 1.9959074967983998`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.55, 1.55, 0.01}, {1.7773432899083108`, 
-    1.4707767932307294`, 1.995456801857663}}}]], 
-   Arrow3DBox[TubeBox[{{{1.6, 1.6, 0.01}, {1.8306177725377528`, 
-    1.5173014788354422`, 1.9949373787570528`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.6500000000000001`, 1.6500000000000001`, 0.01}, {
-    1.88436949979402, 1.563696642082166, 1.9943443924829196`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.7000000000000002`, 1.7000000000000002`, 0.01}, {
-    1.9386159715802636`, 1.6099480627191665`, 1.9936716126160539`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.75, 1.75, 0.01}, {1.9933815584524235`, 
-    1.6560394107692098`, 1.9929111993926183`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.8, 1.8, 0.01}, {2.0486982715907507`, 
-    1.7019518229078854`, 1.9920534111563912`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.85, 1.85, 0.01}, {2.1046068295293177`, 
-    1.7476633728193107`, 1.9910862114240027`}}}]], 
-   Arrow3DBox[TubeBox[{{{1.9000000000000001`, 1.9000000000000001`, 0.01}, {
-    2.16115809263432, 1.793148403190345, 1.989994744162426}}}]], 
-   Arrow3DBox[TubeBox[{{{1.9500000000000002`, 1.9500000000000002`, 0.01}, {
-    2.218414966337035, 1.8383766752702781`, 1.9887606321186433`}}}]], 
-   Arrow3DBox[TubeBox[{{{2., 2., 0.01}, {2.276454915978726, 1.88331227519153, 
-    1.987361032869369}}}]]},
-  Axes->True,
-  ImageSize->{832.5147967000905, 715.},
-  ViewPoint->{1.3427825334675998`, -1.0361771989114246`, 2.9280150068383204`},
-  ViewVertical->{-0.05304999367975245, 0.6104996026289542, 
-   0.9648808956241718}]], \
-"Output",ExpressionUUID->"183c1367-b730-46e2-b9b5-fd023d36da83"]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -2435,11 +2387,12 @@ Cell[BoxData[
      RowBox[{"SphericalRegion", "\[Rule]", "True"}]}], "\[IndentingNewLine]", 
     "]"}]}], "\[IndentingNewLine]", 
   "]"}]], "Input",ExpressionUUID->"25cebf15-7745-4489-9995-9b7df7986b91"]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Fields", \
+Cell["Field definitions from the initial figure-maker", \
 "Subsection",ExpressionUUID->"f02766ed-f948-4f8f-a93a-e55fc800d745"],
 
 Cell[BoxData[
@@ -2788,7 +2741,7 @@ Cell[BoxData[
   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   "\[IndentingNewLine]"}]], \
 "Input",ExpressionUUID->"c5c0c50a-cdeb-44f0-8d23-7030caff8d67"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -2906,7 +2859,7 @@ Cell[BoxData[
    SuperscriptBox["q", 
     "3"]}]]], "Output",ExpressionUUID->"f4b86aa8-9dd6-4750-9275-e2b79970b203"]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -3439,7 +3392,7 @@ To kick-start the process, run SetOptions[EvaluationCell[],CellTags\[Rule]\
 \[CloseCurlyDoubleQuote]sample-cell-tag\[CloseCurlyDoubleQuote]] on the \
 chosen cell with an appropriate cell tag.\
 \>", "Text",ExpressionUUID->"70a41a6b-10e9-46cf-9824-a3fdc383cce1"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -3562,7 +3515,7 @@ Cell[BoxData[
    SuperscriptBox["q", 
     "3"]}]]], "Output",ExpressionUUID->"5a12d6f5-d91b-4a58-ab45-272b1f1143d4"]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -4354,37 +4307,12 @@ Cell[BoxData[
  CellTags->
   "CFnormQuasiCircular-SpecialCases",ExpressionUUID->"a58f2859-3cd6-4dcd-887c-\
 05802dbd8793"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["More stuff", \
+Cell["Definitions from the previous figure-maker", \
 "Subsubsection",ExpressionUUID->"a3b2da56-d89b-45fe-9c72-57c2cf910671"],
-
-Cell[BoxData[
- RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]"}]], \
-"Input",ExpressionUUID->"d53f3a06-11de-4231-a7ff-9ef38b1c9584"],
-
-Cell[BoxData[
- RowBox[{"Plot", "[", "\[IndentingNewLine]", 
-  RowBox[{
-   FractionBox[
-    RowBox[{
-     RowBox[{
-      RowBox[{"-", "2"}], " ", "q", " ", 
-      RowBox[{"Cosh", "[", 
-       RowBox[{"2", " ", "q"}], "]"}]}], "+", 
-     RowBox[{"Sinh", "[", 
-      RowBox[{"2", " ", "q"}], "]"}]}], 
-    RowBox[{"4", " ", 
-     SuperscriptBox["q", "3"]}]], "\[IndentingNewLine]", ",", 
-   RowBox[{"{", 
-    RowBox[{"q", ",", "0", ",", "2"}], "}"}]}], "\[IndentingNewLine]", 
-  "]"}]], "Input",ExpressionUUID->"fa5d37fb-8cb4-4642-b33a-3cdc0c18da40"],
-
-Cell[BoxData["\[IndentingNewLine]"], \
-"Input",ExpressionUUID->"14d93b7f-cfc8-4d21-b00d-632d4fcf0845"],
 
 Cell[BoxData[{
  RowBox[{
@@ -4546,7 +4474,33 @@ Cell[BoxData[
        RowBox[{"{", 
         RowBox[{"\[Phi]", ",", "0", ",", 
          RowBox[{"2", "\[Pi]"}]}], "}"}]}], "]"}]}]}]}], 
-  ";"}]], "Input",ExpressionUUID->"50370743-96db-42b6-8b0e-daf6a6993188"],
+  ";"}]], "Input",ExpressionUUID->"50370743-96db-42b6-8b0e-daf6a6993188"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Scratch", \
+"Subsubsection",ExpressionUUID->"a1518c4b-3103-40dc-a55b-fa0404f6d587"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "2"}], " ", "q", " ", 
+      RowBox[{"Cosh", "[", 
+       RowBox[{"2", " ", "q"}], "]"}]}], "+", 
+     RowBox[{"Sinh", "[", 
+      RowBox[{"2", " ", "q"}], "]"}]}], 
+    RowBox[{"4", " ", 
+     SuperscriptBox["q", "3"]}]], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"q", ",", "0", ",", "2"}], "}"}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",ExpressionUUID->"fa5d37fb-8cb4-4642-b33a-3cdc0c18da40"],
+
+Cell[BoxData["\[IndentingNewLine]"], \
+"Input",ExpressionUUID->"14d93b7f-cfc8-4d21-b00d-632d4fcf0845"],
 
 Cell[CellGroupData[{
 
@@ -4739,7 +4693,7 @@ Cell[BoxData[
      SuperscriptBox["q", "5"]}]]}], 
   "}"}]], "Output",ExpressionUUID->"c65b2922-7c77-41f1-8caa-d63747dd9587"]
 }, Open  ]]
-}, Open  ]]
+}, Closed]]
 }, Open  ]]
 }, Open  ]],
 
