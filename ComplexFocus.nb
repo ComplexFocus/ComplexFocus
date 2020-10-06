@@ -539,13 +539,13 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 6 Oct 2020 17:27:14\>\""}], 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 6 Oct 2020 17:27:46\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"0a734839-af66-4e07-96d9-a276b02b5df7"]
+  "version-timestamp",ExpressionUUID->"5eb4e0c6-f8be-4df8-800b-200e61fb52a1"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1030,153 +1030,6 @@ Cell[CellGroupData[{
 
 Cell["Polarization handling", \
 "Subsection",ExpressionUUID->"6f604981-3a3d-458b-a5b5-59f5e1b8d14d"],
-
-Cell[CellGroupData[{
-
-Cell["Previous versions", \
-"Subsubsection",ExpressionUUID->"ca4d666b-29f9-4733-b4e8-6066d4190d2c"],
-
-Cell[TextData[{
- "This defines a function that acts on the multipoles and vectorizes them \
-according to the electric and magnetic type dipolar distributions. Note that \
-the circular polarization operators we were initially using required a \
-combination of the two. They\[CloseCurlyQuote]re written such that if ",
- Cell[BoxData[
-  FormBox[
-   RowBox[{"p", "=", "r"}], TraditionalForm]],ExpressionUUID->
-  "fecf1dcf-d667-4599-8363-287188f61021"],
- " then we get the vector multipoles."
-}], "Text",ExpressionUUID->"abfa4f51-5e21-4a02-995c-60f72e5b8339"],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{"polE", "[", 
-    RowBox[{"p_", ",", "scalarF_", ",", "args_"}], "]"}], ":=", 
-   RowBox[{"Curl", "[", 
-    RowBox[{
-     RowBox[{"Curl", "[", 
-      RowBox[{
-       RowBox[{"p", " ", "scalarF"}], ",", "args"}], "]"}], ",", "args"}], 
-    "]"}]}], "\[IndentingNewLine]", 
-  RowBox[{"(*", 
-   RowBox[{
-    RowBox[{"p", " ", "scalarF"}], "+", 
-    RowBox[{"Grad", "[", 
-     RowBox[{
-      RowBox[{"Dot", "[", 
-       RowBox[{"p", ",", 
-        RowBox[{"Grad", "[", 
-         RowBox[{"scalarF", ",", "args"}], "]"}]}], "]"}], ",", "args"}], 
-     "]"}]}], "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"polM", "[", 
-   RowBox[{"p_", ",", "scalarF_", ",", "args_"}], "]"}], ":=", 
-  RowBox[{
-   RowBox[{"-", "\[ImaginaryI]"}], " ", 
-   RowBox[{"Curl", "[", 
-    RowBox[{
-     RowBox[{"p", " ", "scalarF"}], ",", "args"}], 
-    "]"}]}]}]}], \
-"Input",ExpressionUUID->"7cf20987-1af6-4c39-9fa8-004037a14427"],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"toCylindrical", "[", "Vexp_", "]"}], ":=", 
-  RowBox[{"Simplify", "[", "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{
-       RowBox[{
-        RowBox[{
-        "Vexp", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
-        RowBox[{"Cos", "[", "\[Phi]", "]"}]}], "+", 
-       RowBox[{
-        RowBox[{
-        "Vexp", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
-        RowBox[{"Sin", "[", "\[Phi]", "]"}]}]}], ",", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"-", 
-         RowBox[{
-         "Vexp", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
-        RowBox[{"Sin", "[", "\[Phi]", "]"}]}], "+", 
-       RowBox[{
-        RowBox[{
-        "Vexp", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
-        RowBox[{"Cos", "[", "\[Phi]", "]"}]}]}], ",", 
-      RowBox[{
-      "Vexp", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}]}], "}"}],
-     "\[IndentingNewLine]", "/.", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"x", "\[Rule]", 
-       RowBox[{"\[Rho]", " ", 
-        RowBox[{"Cos", "[", "\[Phi]", "]"}]}]}], ",", 
-      RowBox[{"y", "\[Rule]", 
-       RowBox[{"\[Rho]", " ", 
-        RowBox[{"Sin", "[", "\[Phi]", "]"}]}]}]}], "}"}]}], 
-   "\[IndentingNewLine]", 
-   "]"}]}]], "Input",ExpressionUUID->"dead65fa-b2b9-4a07-b98d-6209d64f8c70"],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"\[Epsilon]p", "=", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"1", ",", "\[ImaginaryI]", ",", "0"}], "}"}], "/", 
-    SqrtBox["2"]}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"\[Epsilon]m", "=", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"1", ",", 
-      RowBox[{"-", "\[ImaginaryI]"}], ",", "0"}], "}"}], "/", 
-    SqrtBox["2"]}]}], 
-  ";"}]}], "Input",ExpressionUUID->"a50e718c-9f98-4dc3-b2d2-2d4b6421a6de"],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"ur", "[", 
-   RowBox[{"\[Theta]_", ",", "\[Phi]_"}], "]"}], ":=", 
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"Sin", "[", "\[Theta]", "]"}], 
-     RowBox[{"Cos", "[", "\[Phi]", "]"}]}], ",", 
-    RowBox[{
-     RowBox[{"Sin", "[", "\[Theta]", "]"}], 
-     RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ",", 
-    RowBox[{"Cos", "[", "\[Theta]", "]"}]}], 
-   "}"}]}]], "Input",ExpressionUUID->"340b96b4-6edb-4109-a82b-5d2d323df3bc"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"Cross", "[", 
-    RowBox[{
-     RowBox[{"ur", "[", 
-      RowBox[{"\[Theta]", ",", "\[Phi]"}], "]"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}], ".", 
-   RowBox[{"Cross", "[", 
-    RowBox[{
-     RowBox[{"ur", "[", 
-      RowBox[{"\[Theta]", ",", "\[Phi]"}], "]"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}]}], "//", 
-  "Simplify"}]], \
-"Input",ExpressionUUID->"1b672fa5-d179-4663-8555-e5caf2471c2d"],
-
-Cell[BoxData[
- SuperscriptBox[
-  RowBox[{"Sin", "[", "\[Theta]", "]"}], 
-  "2"]], "Output",ExpressionUUID->"2ef4d52d-4a9c-4c16-8ac3-9ee748ad542a"]
-}, Open  ]]
-}, Closed]],
 
 Cell[CellGroupData[{
 
