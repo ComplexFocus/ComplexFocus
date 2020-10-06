@@ -40,7 +40,7 @@ $CoMMfocVersion:="CoMMfoc v0.1, "<>$CoMMfocTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$CoMMfocTimestamp="Mon 28 Sep 2020 12:32:39";
+$CoMMfocTimestamp="Tue 6 Oct 2020 16:15:47";
 End[];
 
 
