@@ -173,13 +173,13 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$CoMMfocTimestamp", "=", "\"\<Tue 6 Oct 2020 16:18:18\>\""}], 
+  RowBox[{"$CoMMfocTimestamp", "=", "\"\<Tue 6 Oct 2020 16:37:32\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"cb6f5d1b-3439-4ff0-bd32-43cd7ae595ec"]
+  "version-timestamp",ExpressionUUID->"a31b206f-cbdf-4fea-bc06-c70f044597b0"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -676,8 +676,7 @@ the circular polarization operators we were initially using required a \
 combination of the two. They\[CloseCurlyQuote]re written such that if ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"p", "=", "r"}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+   RowBox[{"p", "=", "r"}], TraditionalForm]],ExpressionUUID->
   "fecf1dcf-d667-4599-8363-287188f61021"],
  " then we get the vector multipoles."
 }], "Text",ExpressionUUID->"abfa4f51-5e21-4a02-995c-60f72e5b8339"],
@@ -1192,8 +1191,7 @@ Cell[TextData[{
 that the expensive symbolic integration is only ever performed once for each ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"l", ",", "m"}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+   RowBox[{"l", ",", "m"}], TraditionalForm]],ExpressionUUID->
   "b95da716-3bb6-401d-b37a-a080bd0f7e2a"],
  " pair. However, this still means that the code will take a few seconds to \
 run the first time that each pair is evaluated.\n\nThis can be mitigated by \
@@ -3279,8 +3277,7 @@ Cell[TextData[{
   FormBox[
    RowBox[{
     RowBox[{"\[Del]", "\[CenterDot]", "E"}], "=", "0"}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "e9f4567c-1396-47cb-959c-9c8dc1c1c492"],
+  ExpressionUUID->"e9f4567c-1396-47cb-959c-9c8dc1c1c492"],
  ", ",
  Cell[BoxData[
   FormBox[
@@ -3291,9 +3288,7 @@ Cell[TextData[{
        SuperscriptBox["\[Del]", "2"], 
        RowBox[{"+", 
         SuperscriptBox["k", "2"]}]}], ")"}], "E"}], "=", "0"}], 
-   TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "8ddd8da4-8d8c-46f3-be80-7338f321c25e"],
+   TraditionalForm]],ExpressionUUID->"8ddd8da4-8d8c-46f3-be80-7338f321c25e"],
  ") via symbolic computation"
 }], "Subsubsection",
  InitializationCell->
@@ -3754,8 +3749,9 @@ Cell[BoxData[{
                     
                     ImageSize->
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}],
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}],
                     PlotRangePadding->None],
                     "RGBColor[0.25, 0.75, 0.75]"],
                     Appearance->None,
@@ -3857,8 +3853,7 @@ Cell[CellGroupData[{
 Cell[TextData[{
  "With varying wavenumber ",
  Cell[BoxData[
-  FormBox["k", TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+  FormBox["k", TraditionalForm]],ExpressionUUID->
   "c35973c7-c4cb-407f-a1aa-7d81b66a0708"]
 }], "Subsection",ExpressionUUID->"8aa3de49-a8e7-4d93-8944-4060e180a0b3"],
 
@@ -3869,21 +3864,18 @@ the plot is identical once the chosen plot points (i.e. Range[-R,R,\
 \[CapitalDelta]]) are scaled appropriately.\n\nHowever, it is important to \
 keep tabs on the meaning of ",
  Cell[BoxData[
-  FormBox["q", TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+  FormBox["q", TraditionalForm]],ExpressionUUID->
   "37ec889d-f6cd-45e7-832c-d5cf4d759f5a"],
  ":\n - If used as ComplexFocusHelicityE[l,m,s,k {x,y,z},q] then the Rayleigh \
 range is ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"q", "/", "k"}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+   RowBox[{"q", "/", "k"}], TraditionalForm]],ExpressionUUID->
   "88236ee9-fb2b-4aaa-8837-f1f64cdf1423"],
  ".\n - If used as ComplexFocusHelicityE[l,m,s,k {x,y,z},k q] then the \
 Rayleigh range is ",
  Cell[BoxData[
-  FormBox["q", TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+  FormBox["q", TraditionalForm]],ExpressionUUID->
   "bcb6991b-4d74-45da-bf3a-85f416bf89b5"],
  "."
 }], "Text",ExpressionUUID->"783a507c-58b2-4571-a495-2cb71f6bd60e"],
@@ -4043,8 +4035,9 @@ Cell[BoxData[{
                     
                     ImageSize->
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}],
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}],
                     PlotRangePadding->None],
                     "RGBColor[0.25, 0.75, 0.75]"],
                     Appearance->None,
