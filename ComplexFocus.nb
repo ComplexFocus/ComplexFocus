@@ -110,8 +110,7 @@ functions, ",
       SubscriptBox["Y", 
        RowBox[{"l", ",", "m"}]], "(", 
       RowBox[{"\[Theta]", ",", "\[Phi]"}], ")"}]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "35b6ee4d-0ddb-4424-be8a-2d9deab503b8"],
+  ExpressionUUID->"35b6ee4d-0ddb-4424-be8a-2d9deab503b8"],
  ", are solutions of the Helmholtz equation, ",
  Cell[BoxData[
   FormBox[
@@ -121,9 +120,7 @@ functions, ",
       RowBox[{
        SuperscriptBox["\[Del]", "2"], 
        RowBox[{"+", "1"}]}], ")"}], "\[CapitalLambda]"}], "=", "0"}], 
-   TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "3c68540d-f094-4934-8066-3f8ee3596646"],
+   TraditionalForm]],ExpressionUUID->"3c68540d-f094-4934-8066-3f8ee3596646"],
  ", and (ii) they retain this property if one of the variables is shifted by \
 an imaginary-valued offset. This transformation thus keeps them as solutions \
 of the wave equation, while at the same time turning them into focused \
@@ -132,8 +129,7 @@ beam functions. The package thus implements:\n\n - The multipolar functions ",
  Cell[BoxData[
   FormBox[
    SubscriptBox["\[CapitalLambda]", 
-    RowBox[{"l", ",", "m"}]], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+    RowBox[{"l", ",", "m"}]], TraditionalForm]],ExpressionUUID->
   "dc8d4bc6-85b7-436f-a2af-9ae1a5b7d4a9"],
  ", as Multipole\[CapitalLambda];\n - The vector differential operators ",
  Cell[BoxData[
@@ -148,8 +144,7 @@ beam functions. The package thus implements:\n\n - The multipolar functions ",
       RowBox[{"\[Del]", "\[Times]", 
        RowBox[{"(", 
         RowBox[{"v", " ", "f"}], ")"}]}], ")"}]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "e8065faa-b640-466f-b0e0-8269c56909ae"],
+  ExpressionUUID->"e8065faa-b640-466f-b0e0-8269c56909ae"],
  " and ",
  Cell[BoxData[
   FormBox[
@@ -163,17 +158,14 @@ beam functions. The package thus implements:\n\n - The multipolar functions ",
      RowBox[{"\[Del]", "\[Times]", 
       RowBox[{"(", 
        RowBox[{"v", " ", "f"}], ")"}]}]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "e73f2c45-b94a-4231-bd27-0fb9abaaa635"],
+  ExpressionUUID->"e73f2c45-b94a-4231-bd27-0fb9abaaa635"],
  ", of electric and magnetic type for a vector ",
  Cell[BoxData[
-  FormBox["v", TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+  FormBox["v", TraditionalForm]],ExpressionUUID->
   "30bed1ad-a000-4876-aeee-51714ea559c6"],
  " and a scalar function ",
  Cell[BoxData[
-  FormBox["f", TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+  FormBox["f", TraditionalForm]],ExpressionUUID->
   "80b23dbd-14f8-45c1-b909-a2c60cb95c71"],
  ", as well as the helicity-type operator ",
  Cell[BoxData[
@@ -193,15 +185,12 @@ beam functions. The package thus implements:\n\n - The multipolar functions ",
        RowBox[{"(", "M", ")"}]], "(", 
       RowBox[{
        SubscriptBox["e", "\[PlusMinus]"], ",", "f"}], ")"}]}]}], 
-   TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "5ab763cc-51d1-4b7d-bc57-04760bf18fe6"],
+   TraditionalForm]],ExpressionUUID->"5ab763cc-51d1-4b7d-bc57-04760bf18fe6"],
  ", which lift the scalar solutions ",
  Cell[BoxData[
   FormBox[
    SubscriptBox["\[CapitalLambda]", 
-    RowBox[{"l", ",", "m"}]], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+    RowBox[{"l", ",", "m"}]], TraditionalForm]],ExpressionUUID->
   "f75f2d37-9348-4235-920c-457c42114540"],
  " into transverse vector solutions; and\n - The complex-focus field \
 functions that arise from this process."
@@ -224,8 +213,7 @@ derivatives of the spherical harmonic ",
     SubscriptBox["Y", 
      RowBox[{"l", ",", "m"}]], "(", 
     RowBox[{"\[Theta]", ",", "\[Phi]"}], ")"}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "1c232ba5-5b17-461f-b1b1-0a3a371042ec"],
+  ExpressionUUID->"1c232ba5-5b17-461f-b1b1-0a3a371042ec"],
  " are complex combinations and present significantly singular behaviour at \
 the origin \[Dash] a property which is at odds with the fact that ",
  Cell[BoxData[
@@ -234,8 +222,7 @@ the origin \[Dash] a property which is at odds with the fact that ",
     SubscriptBox["\[CapitalLambda]", 
      RowBox[{"l", ",", "m"}]], "(", 
     RowBox[{"x", ",", "y", ",", "z"}], ")"}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "a05ea609-d685-4cb7-a8bc-d4992afec09e"],
+  ExpressionUUID->"a05ea609-d685-4cb7-a8bc-d4992afec09e"],
  " is an entire function of all three Cartesian coordinates.\n\nTo solve this \
 problem, we re-factor the fundamental multipole functions as ",
  Cell[BoxData[
@@ -260,8 +247,7 @@ problem, we re-factor the fundamental multipole functions as ",
        SubscriptBox["S", 
         RowBox[{"l", ",", "m"}]], "(", 
        RowBox[{"x", ",", "y", ",", "z"}], ")"}]}]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "f6203cd3-d986-43d1-b1ba-e861884c56f2"],
+  ExpressionUUID->"f6203cd3-d986-43d1-b1ba-e861884c56f2"],
  ", where ",
  Cell[BoxData[
   FormBox[
@@ -276,13 +262,11 @@ problem, we re-factor the fundamental multipole functions as ",
       SubscriptBox["Y", 
        RowBox[{"l", ",", "m"}]], "(", 
       RowBox[{"\[Theta]", ",", "\[Phi]"}], ")"}]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "b5dc6321-230c-447f-9f71-6fbe26cf0982"],
+  ExpressionUUID->"b5dc6321-230c-447f-9f71-6fbe26cf0982"],
  " are solid harmonics (and therefore homogeneous polynomials in ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"x", ",", "y", ",", "z"}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+   RowBox[{"x", ",", "y", ",", "z"}], TraditionalForm]],ExpressionUUID->
   "e9a81f96-733a-45c1-bb36-05b82e884192"],
  ") and ",
  Cell[BoxData[
@@ -314,16 +298,14 @@ problem, we re-factor the fundamental multipole functions as ",
           RowBox[{"(", 
            RowBox[{
             RowBox[{"2", "l"}], "+", "3"}], ")"}], "!!"}]}]], "+"}], 
-      "..."}]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+      "..."}]}]}], TraditionalForm]],ExpressionUUID->
   "07a11cd8-a0c0-41ab-8204-f31015aca652"],
  ", implemented as AnalyticalBesselJ, is the spherical Bessel function with \
 its asymptotic behaviour at the origin removed (thus making it an even Taylor \
 series in powers of ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"x", ",", "y", ",", "z"}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+   RowBox[{"x", ",", "y", ",", "z"}], TraditionalForm]],ExpressionUUID->
   "2a8cf9f9-ce74-4c6c-baf9-784317d6ae2a"],
  ", without any square roots coming from ",
  Cell[BoxData[
@@ -333,8 +315,7 @@ series in powers of ",
      RowBox[{
       SuperscriptBox["x", "2"], "+", 
       SuperscriptBox["y", "2"], "+", 
-      SuperscriptBox["z", "2"]}]]}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+      SuperscriptBox["z", "2"]}]]}], TraditionalForm]],ExpressionUUID->
   "174a2095-c13e-42cf-bfda-25a7ab5c0106"],
  "). The Cartesian derivatives of ",
  Cell[BoxData[
@@ -342,8 +323,7 @@ series in powers of ",
    RowBox[{
     SubscriptBox["aj", "l"], "(", 
     RowBox[{"x", ",", "y", ",", "z"}], ")"}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "bf211839-3c39-4a93-ac41-8463e82c3cfa"],
+  ExpressionUUID->"bf211839-3c39-4a93-ac41-8463e82c3cfa"],
  " are then coded explicitly using the recursion relation ",
  Cell[BoxData[
   FormBox[
@@ -364,17 +344,21 @@ series in powers of ",
      RowBox[{
       SubscriptBox["j", 
        RowBox[{"l", "+", "1"}]], "(", "r", ")"}]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "3d356339-b269-4a4a-80f6-2ca8b235d519"],
- " and the chain rule ",
+  ExpressionUUID->"3d356339-b269-4a4a-80f6-2ca8b235d519"],
+ " (",
+ ButtonBox["DLMF 10.51.3",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://dlmf.nist.gov/10.51#E3"], None},
+  ButtonNote->"https://dlmf.nist.gov/10.51#E3"],
+ ") and the chain rule ",
  Cell[BoxData[
   FormBox[
    RowBox[{
     FractionBox[
      RowBox[{"\[PartialD]", "r"}], 
      RowBox[{"\[PartialD]", "x"}]], "=", 
-    FractionBox["x", "r"]}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+    FractionBox["x", "r"]}], TraditionalForm]],ExpressionUUID->
   "7915d682-7fa3-43b5-93f2-7e6f3daac32a"],
  " to get ",
  Cell[BoxData[
@@ -392,17 +376,14 @@ series in powers of ",
       SubscriptBox["aj", 
        RowBox[{"l", "+", "1"}]], "(", 
       RowBox[{"x", ",", "y", ",", "z"}], ")"}]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
-  "7b9789a3-331c-4056-9f02-3e522bced90c"],
+  ExpressionUUID->"7b9789a3-331c-4056-9f02-3e522bced90c"],
  " (and equivalently for ",
  Cell[BoxData[
-  FormBox["y", TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+  FormBox["y", TraditionalForm]],ExpressionUUID->
   "38408454-da55-4780-8fdf-187795307644"],
  " and ",
  Cell[BoxData[
-  FormBox["z", TraditionalForm]],
-  FormatType->"TraditionalForm",ExpressionUUID->
+  FormBox["z", TraditionalForm]],ExpressionUUID->
   "0555665e-6f49-4292-af07-88f6a28e26e3"],
  ")."
 }], "Text",ExpressionUUID->"12d33346-23ac-46ec-997a-6ffe2743e2a5"]
@@ -539,13 +520,13 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 6 Oct 2020 17:27:46\>\""}], 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 6 Oct 2020 19:09:58\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"5eb4e0c6-f8be-4df8-800b-200e61fb52a1"]
+  "version-timestamp",ExpressionUUID->"3f7f3801-c70e-4b7a-a975-3dfa28a94be0"]
 }, Open  ]],
 
 Cell[CellGroupData[{
