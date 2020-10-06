@@ -21,7 +21,7 @@
 
 (* ::Input::Initialization:: *)
 (*
-This is the ComplexFocus package. For the notebook that generated this package file and additional documentaion, see https://github.com/ComplexFocus/ComplexFocus
+This is the ComplexFocus package, \[Copyright] Rodrigo Guti\[EAcute]rrez-Cuevas& Emilio Pisanty (2020). For the notebook that generated this package file and additional documentaion, see https://github.com/ComplexFocus/ComplexFocus.
 *)
 
 
@@ -40,7 +40,7 @@ $ComplexFocusVersion:="ComplexFocus v0.1, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Tue 6 Oct 2020 16:43:21";
+$ComplexFocusTimestamp="Tue 6 Oct 2020 17:27:14";
 End[];
 
 
