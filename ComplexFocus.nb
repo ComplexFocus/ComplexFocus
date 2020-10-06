@@ -1,7 +1,8 @@
 Notebook[{
 
 Cell[CellGroupData[{
-Cell[TextData[StyleBox["CoMMfoc: Complex-Focus fields in Mathematica",
+Cell[TextData[StyleBox["ComplexFocus: Non-paraxial vector beams in \
+Mathematica",
  FontSize->
   36]], "Title",ExpressionUUID->"4f97aa06-5237-417d-a3de-abc5fa8e4b58"],
 
@@ -18,7 +19,16 @@ Cell["Introduction", "Section",
 
 Cell[CellGroupData[{
 
-Cell["Text.", "Text",
+Cell[TextData[{
+ "This notebook generates the package file for the ComplexFocus package. For \
+updates and additional information, go to ",
+ ButtonBox["https://github.com/ComplexFocus/ComplexFocus",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://github.com/ComplexFocus/ComplexFocus"], None},
+  ButtonNote->"https://github.com/ComplexFocus/ComplexFocus"],
+ "."
+}], "Text",
  CellGroupingRules->{
   GroupTogetherGrouping, 
    10000.},ExpressionUUID->"6ac175a7-f178-4dfe-9bdc-458722381b12"],
@@ -26,7 +36,7 @@ Cell["Text.", "Text",
 Cell[BoxData[
  RowBox[{"(*", "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{"This", " ", "is", " ", "the", " ", "CoMMfoc", " ", 
+   RowBox[{"This", " ", "is", " ", "the", " ", "ComplexFocus", " ", 
     RowBox[{"package", ".", " ", "For"}], " ", "the", " ", "notebook", " ", 
     "that", " ", "generated", " ", "this", " ", "package", " ", "file", " ", 
     "and", " ", "additional", " ", "documentaion"}], ",", " ", 
@@ -35,12 +45,15 @@ Cell[BoxData[
      RowBox[{"https", ":"}]}], "//", 
     RowBox[{
      RowBox[{
-      RowBox[{"github", ".", "com"}], "/", "CoMMfoc"}], "/", "CoMMfoc"}]}]}], 
-  "\[IndentingNewLine]", "*)"}]], "Input",
+      RowBox[{"github", ".", "com"}], "/", "ComplexFocus"}], "/", 
+     "ComplexFocus"}]}]}], "\[IndentingNewLine]", "*)"}]], "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.},
  InitializationCell->
   True,ExpressionUUID->"82d38177-9df9-4b82-9d60-a29240b5c273"]
-}, Closed]]
+}, Closed]],
+
+Cell["Additional text.", \
+"Text",ExpressionUUID->"573bc852-ad26-4d6f-a777-1b0aaf2d6d36"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -55,7 +68,7 @@ Cell["Initialization", \
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"BeginPackage", "[", "\"\<CoMMfoc`\>\"", "]"}], ";"}]], "Input",
+  RowBox[{"BeginPackage", "[", "\"\<ComplexFocus`\>\"", "]"}], ";"}]], "Input",
  InitializationCell->
   True,ExpressionUUID->"d8194a12-20ba-4527-9da4-5c21f77858c8"]
 }, Open  ]],
@@ -72,21 +85,21 @@ Cell["Version number and timestamp managing", "Subsubsection",
   "version-section",ExpressionUUID->"4a58faea-5e89-4a18-8638-f58dbf15ff2e"],
 
 Cell["\<\
-The variable $CoMMfocVersion gives the version of the CoMMfoc package \
-currently loaded as well as its timestamp\
+The variable $ComplexFocusVersion gives the version of the ComplexFocus \
+package currently loaded as well as its timestamp\
 \>", "Text",ExpressionUUID->"3cc4e9c7-4560-4484-b6a1-3feb4291ed7c"],
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"$CoMMfocVersion", "::", "usage"}], "=", 
-   "\"\<$CoMMfocVersion prints the current version of the RB-SFA package in \
-use and its timestamp.\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"$ComplexFocusVersion", "::", "usage"}], "=", 
+   "\"\<$ComplexFocusVersion prints the current version of the ComplexFocus \
+package in use and its timestamp.\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"$CoMMfocTimestamp", "::", "usage"}], "=", 
-   "\"\<$CoMMfocTimestamp prints the timestamp of the current version of the \
-RB-SFA package.\>\""}], ";"}]}], "Input",
+   RowBox[{"$ComplexFocusTimestamp", "::", "usage"}], "=", 
+   "\"\<$ComplexFocusTimestamp prints the timestamp of the current version of \
+the ComplexFocus package.\>\""}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"aa97ee0f-f35a-441d-9482-ce45b1a816f6"],
 
@@ -121,7 +134,7 @@ Cell[BoxData[
               RowBox[{"BoxData", "[", 
                RowBox[{"RowBox", "[", 
                 RowBox[{"{", 
-                 RowBox[{"\"\<$CoMMfocTimestamp=\\\"\>\"", "<>", 
+                 RowBox[{"\"\<$ComplexFocusTimestamp=\\\"\>\"", "<>", 
                   RowBox[{"DateString", "[", "]"}], "<>", 
                   "\"\<\\\";\\nEnd[];\>\""}], "}"}], "]"}], "]"}], 
               "\[IndentingNewLine]", ",", "\"\<Input\>\"", ",", 
@@ -165,21 +178,21 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\n", 
  RowBox[{
-  RowBox[{"$CoMMfocVersion", ":=", 
-   RowBox[{"\"\<CoMMfoc v0.1, \>\"", "<>", "$CoMMfocTimestamp"}]}], 
+  RowBox[{"$ComplexFocusVersion", ":=", 
+   RowBox[{"\"\<ComplexFocus v0.1, \>\"", "<>", "$ComplexFocusTimestamp"}]}], 
   ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"90617182-59d4-4545-b4c7-e01a2308359e"],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$CoMMfocTimestamp", "=", "\"\<Tue 6 Oct 2020 16:37:32\>\""}], 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 6 Oct 2020 16:43:21\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"a31b206f-cbdf-4fea-bc06-c70f044597b0"]
+  "version-timestamp",ExpressionUUID->"d4192109-43f4-49b1-8b1d-cf3a0f04c792"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -190,9 +203,9 @@ Cell["Directory", \
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"$CoMMfocDirectory", "::", "usage"}], "=", 
-   "\"\<$CoMMfocDirectory is the directory where the current RB-SFA package \
-instance is located.\>\""}], ";"}]], "Input",
+   RowBox[{"$ComplexFocusDirectory", "::", "usage"}], "=", 
+   "\"\<$ComplexFocusDirectory is the directory where the current \
+ComplexFocus package instance is located.\>\""}], ";"}]], "Input",
  InitializationCell->
   True,ExpressionUUID->"c87f6883-8e5e-4a34-a1b9-2f3cdfa24230"],
 
@@ -227,7 +240,7 @@ Cell[BoxData[{
         " ", "a", " ", "soft", " ", "link", " ", "to", " ", "the", " ", 
         "actual", " ", 
         RowBox[{"directory", "."}]}], "*)"}], "\[IndentingNewLine]", 
-      RowBox[{"$CoMMfocDirectory", "=", 
+      RowBox[{"$ComplexFocusDirectory", "=", 
        RowBox[{"StringReplace", "[", 
         RowBox[{
          RowBox[{"DirectoryName", "[", 
@@ -238,7 +251,7 @@ Cell[BoxData[{
           RowBox[{"\"\< \>\"", "\[Rule]", "\"\<\\\\ \>\""}], "}"}]}], "]"}]}],
        ",", "\[IndentingNewLine]", 
       RowBox[{
-       RowBox[{"$CoMMfocDirectory", "=", 
+       RowBox[{"$ComplexFocusDirectory", "=", 
         RowBox[{"StringReplace", "[", 
          RowBox[{
           RowBox[{"DirectoryName", "[", "$InputFileName", "]"}], ",", 
@@ -260,13 +273,14 @@ Cell["Git commit hash and message", \
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"$CoMMfocCommit", "::", "usage"}], "=", 
-   "\"\<$CoMMfocCommit returns the git commit log at the location of the \
-RB-SFA package if there is one.\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"$ComplexFocusCommit", "::", "usage"}], "=", 
+   "\"\<$ComplexFocusCommit returns the git commit log at the location of the \
+ComplexFocus package if there is one.\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"$CoMMfocCommit", "::", "OS"}], "=", 
-   "\"\<$CoMMfocCommit has only been tested on Linux.\>\""}], ";"}]}], "Input",
+   RowBox[{"$ComplexFocusCommit", "::", "OS"}], "=", 
+   "\"\<$ComplexFocusCommit has only been tested on Linux.\>\""}], 
+  ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"fce25619-8923-4995-9cae-ebb712b0cd01"],
 
@@ -275,14 +289,14 @@ Cell[BoxData[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"$CoMMfocCommit", ":=", 
+  RowBox[{"$ComplexFocusCommit", ":=", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{"If", "[", 
       RowBox[{
        RowBox[{"$OperatingSystem", "\[NotEqual]", "\"\<Unix\>\""}], ",", 
        RowBox[{"Message", "[", 
-        RowBox[{"$CoMMfocCommit", "::", "OS"}], "]"}]}], "]"}], ";", 
+        RowBox[{"$ComplexFocusCommit", "::", "OS"}], "]"}]}], "]"}], ";", 
      "\[IndentingNewLine]", 
      RowBox[{"StringJoin", "[", 
       RowBox[{"Riffle", "[", 
@@ -290,7 +304,7 @@ Cell[BoxData[{
         RowBox[{"ReadList", "[", 
          RowBox[{
           RowBox[{
-          "\"\<!cd \>\"", "<>", "$CoMMfocDirectory", "<>", 
+          "\"\<!cd \>\"", "<>", "$ComplexFocusDirectory", "<>", 
            "\"\< && git log -1\>\""}], ",", "String"}], "]"}], ",", 
         RowBox[{"{", "\"\<\\n\>\"", "}"}]}], "]"}], "]"}]}], ")"}]}], 
   ";"}], "\[IndentingNewLine]", 
@@ -3123,7 +3137,7 @@ Cell[BoxData[{
        RowBox[{"(", 
         RowBox[{"pts", "-", "1"}], ")"}]}]}], "}"}]}], 
    "]"}]}]}], "Input",ExpressionUUID->"b65e5020-4120-4969-826d-aab23ab58c4e"]
-}, Open  ]]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4176,12 +4190,12 @@ Cell["Add to distributed contexts.", \
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"DistributeDefinitions", "[", "\"\<CoMMfoc`\>\"", "]"}], 
+  RowBox[{"DistributeDefinitions", "[", "\"\<ComplexFocus`\>\"", "]"}], 
   ";"}]], "Input",
  InitializationCell->
   True,ExpressionUUID->"0b59eb5f-39e5-4fe3-a624-8b4b88bac2fa"]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]]
 },
 AutoGeneratedPackage->Automatic,
@@ -4191,7 +4205,7 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
      Cell[
       BoxData[
        RowBox[{
-         StringJoin["$CoMMfocTimestamp=\"", 
+         StringJoin["$ComplexFocusTimestamp=\"", 
           DateString[], "\";\nEnd[];"]}]], "Input", InitializationCell -> 
       True, CellTags -> "version-timestamp"], None, AutoScroll -> False]; 
    NotebookSave[]), PassEventsDown -> True},

@@ -21,52 +21,52 @@
 
 (* ::Input::Initialization:: *)
 (*
-This is the CoMMfoc package. For the notebook that generated this package file and additional documentaion, see https://github.com/CoMMfoc/CoMMfoc
+This is the ComplexFocus package. For the notebook that generated this package file and additional documentaion, see https://github.com/ComplexFocus/ComplexFocus
 *)
 
 
 (* ::Input::Initialization:: *)
-BeginPackage["CoMMfoc`"];
+BeginPackage["ComplexFocus`"];
 
 
 (* ::Input::Initialization:: *)
-$CoMMfocVersion::usage="$CoMMfocVersion prints the current version of the RB-SFA package in use and its timestamp.";
-$CoMMfocTimestamp::usage="$CoMMfocTimestamp prints the timestamp of the current version of the RB-SFA package.";
+$ComplexFocusVersion::usage="$ComplexFocusVersion prints the current version of the ComplexFocus package in use and its timestamp.";
+$ComplexFocusTimestamp::usage="$ComplexFocusTimestamp prints the timestamp of the current version of the ComplexFocus package.";
 
 
 (* ::Input::Initialization:: *)
 Begin["`Private`"];
-$CoMMfocVersion:="CoMMfoc v0.1, "<>$CoMMfocTimestamp;
+$ComplexFocusVersion:="ComplexFocus v0.1, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$CoMMfocTimestamp="Tue 6 Oct 2020 16:37:32";
+$ComplexFocusTimestamp="Tue 6 Oct 2020 16:43:21";
 End[];
 
 
 (* ::Input::Initialization:: *)
-$CoMMfocDirectory::usage="$CoMMfocDirectory is the directory where the current RB-SFA package instance is located.";
+$ComplexFocusDirectory::usage="$ComplexFocusDirectory is the directory where the current ComplexFocus package instance is located.";
 
 
 (* ::Input::Initialization:: *)
 Begin["`Private`"];
 With[{softLinkTestString=StringSplit[StringJoin[ReadList["! ls -la "<>StringReplace[$InputFileName,{" "->"\\ "}],String]]," -> "]},
 If[Length[softLinkTestString]>1,(*Testing in case $InputFileName is a soft link to the actual directory.*)
-$CoMMfocDirectory=StringReplace[DirectoryName[softLinkTestString[[2]]],{" "->"\\ "}],
-$CoMMfocDirectory=StringReplace[DirectoryName[$InputFileName],{" "->"\\ "}];
+$ComplexFocusDirectory=StringReplace[DirectoryName[softLinkTestString[[2]]],{" "->"\\ "}],
+$ComplexFocusDirectory=StringReplace[DirectoryName[$InputFileName],{" "->"\\ "}];
 ]];
 End[];
 
 
 (* ::Input::Initialization:: *)
-$CoMMfocCommit::usage="$CoMMfocCommit returns the git commit log at the location of the RB-SFA package if there is one.";
-$CoMMfocCommit::OS="$CoMMfocCommit has only been tested on Linux.";
+$ComplexFocusCommit::usage="$ComplexFocusCommit returns the git commit log at the location of the ComplexFocus package if there is one.";
+$ComplexFocusCommit::OS="$ComplexFocusCommit has only been tested on Linux.";
 
 
 (* ::Input::Initialization:: *)
 Begin["`Private`"];
-$CoMMfocCommit:=(If[$OperatingSystem!="Unix",Message[$CoMMfocCommit::OS]];
-StringJoin[Riffle[ReadList["!cd "<>$CoMMfocDirectory<>" && git log -1",String],{"\n"}]]);
+$ComplexFocusCommit:=(If[$OperatingSystem!="Unix",Message[$ComplexFocusCommit::OS]];
+StringJoin[Riffle[ReadList["!cd "<>$ComplexFocusDirectory<>" && git log -1",String],{"\n"}]]);
 End[];
 
 
@@ -267,4 +267,4 @@ EndPackage[];
 
 
 (* ::Input::Initialization:: *)
-DistributeDefinitions["CoMMfoc`"];
+DistributeDefinitions["ComplexFocus`"];
