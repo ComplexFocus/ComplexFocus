@@ -520,13 +520,13 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Thu 8 Oct 2020 09:30:12\>\""}], 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Thu 8 Oct 2020 16:55:01\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"e26ec250-53a6-4690-bfb0-bde118a225aa"]
+  "version-timestamp",ExpressionUUID->"0ca7d64f-ea9b-4af2-a12f-75b6d81822d6"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1301,14 +1301,25 @@ complex-focus fields.\>\""}], ";"}],
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"\[Alpha]TEM", "[", 
+   RowBox[{"l_", ",", "m_", ",", "q_"}], "]"}], ":=", 
+  SuperscriptBox[
+   RowBox[{"CFnormTEM", "[", 
+    RowBox[{"l", ",", "m", ",", "q"}], "]"}], 
+   RowBox[{
+    RowBox[{"-", "1"}], "/", "2"}]]}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"\[Alpha]TEM", "[", 
-    RowBox[{"l_", ",", "m_", ",", "q_"}], "]"}], ":=", 
-   SuperscriptBox[
-    RowBox[{"CFnormTEM", "[", 
-     RowBox[{"l", ",", "m", ",", "q"}], "]"}], 
-    RowBox[{
-     RowBox[{"-", "1"}], "/", "2"}]]}], 
+    RowBox[{"l_", ",", "m_", ",", "0"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"\[Alpha]TEM", "[", 
+     RowBox[{"l", ",", "m", ",", "0"}], "]"}], "=", 
+    SuperscriptBox[
+     RowBox[{"CFnormTEM", "[", 
+      RowBox[{"l", ",", "m", ",", "0"}], "]"}], 
+     RowBox[{
+      RowBox[{"-", "1"}], "/", "2"}]]}]}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"CFnormTEM", "[", 
@@ -1359,28 +1370,8 @@ complex-focus fields.\>\""}], ";"}],
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
-  True,ExpressionUUID->"7b97419a-30b2-4c66-a884-1d467c588673"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"CFnormTEM", "[", 
-  RowBox[{"0", ",", "0", ",", "q"}], 
-  "]"}]], "Input",ExpressionUUID->"012904f9-83ab-4456-aea0-8fcac44ca46d"],
-
-Cell[BoxData[
- FractionBox[
-  RowBox[{
-   RowBox[{"2", " ", "q", " ", 
-    RowBox[{"Cosh", "[", 
-     RowBox[{"2", " ", "q"}], "]"}]}], "-", 
-   RowBox[{"Sinh", "[", 
-    RowBox[{"2", " ", "q"}], "]"}]}], 
-  RowBox[{"4", " ", 
-   SuperscriptBox["q", 
-    "3"]}]]], "Output",ExpressionUUID->"f4b86aa8-9dd6-4750-9275-e2b79970b203"]
-}, Open  ]]
-}, Closed]],
+  True,ExpressionUUID->"7b97419a-30b2-4c66-a884-1d467c588673"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -1946,14 +1937,25 @@ quasi-circular complex-focus fields.\>\""}], ";"}],
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"\[Alpha]QC", "[", 
+   RowBox[{"l_", ",", "m_", ",", "q_"}], "]"}], ":=", 
+  SuperscriptBox[
+   RowBox[{"CFnormQuasiCircular", "[", 
+    RowBox[{"l", ",", "m", ",", "q"}], "]"}], 
+   RowBox[{
+    RowBox[{"-", "1"}], "/", "2"}]]}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"\[Alpha]QC", "[", 
-    RowBox[{"l_", ",", "m_", ",", "q_"}], "]"}], ":=", 
-   SuperscriptBox[
-    RowBox[{"CFnormQuasiCircular", "[", 
-     RowBox[{"l", ",", "m", ",", "q"}], "]"}], 
-    RowBox[{
-     RowBox[{"-", "1"}], "/", "2"}]]}], 
+    RowBox[{"l_", ",", "m_", ",", "0"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"\[Alpha]QC", "[", 
+     RowBox[{"l", ",", "m", ",", "0"}], "]"}], "=", 
+    SuperscriptBox[
+     RowBox[{"CFnormQuasiCircular", "[", 
+      RowBox[{"l", ",", "m", ",", "0"}], "]"}], 
+     RowBox[{
+      RowBox[{"-", "1"}], "/", "2"}]]}]}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"CFnormQuasiCircular", "[", 
@@ -2005,37 +2007,8 @@ quasi-circular complex-focus fields.\>\""}], ";"}],
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
-  True,ExpressionUUID->"b67db601-638a-4878-a6ff-13759b1c50ac"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"CFnormQuasiCircular", "[", 
-  RowBox[{"0", ",", "0", ",", "q"}], 
-  "]"}]], "Input",ExpressionUUID->"4d6a6168-ccdc-4735-9e6e-c39f037d0648"],
-
-Cell[BoxData[
- FractionBox[
-  RowBox[{
-   SuperscriptBox["\[ExponentialE]", 
-    RowBox[{
-     RowBox[{"-", "2"}], " ", "q"}]], " ", 
-   RowBox[{"(", 
-    RowBox[{
-     RowBox[{"-", "1"}], "+", 
-     RowBox[{
-      SuperscriptBox["\[ExponentialE]", 
-       RowBox[{"4", " ", "q"}]], " ", 
-      RowBox[{"(", 
-       RowBox[{"1", "-", 
-        RowBox[{"4", " ", "q"}], "+", 
-        RowBox[{"8", " ", 
-         SuperscriptBox["q", "2"]}]}], ")"}]}]}], ")"}]}], 
-  RowBox[{"8", " ", 
-   SuperscriptBox["q", 
-    "3"]}]]], "Output",ExpressionUUID->"5a12d6f5-d91b-4a58-ab45-272b1f1143d4"]
-}, Open  ]]
-}, Closed]],
+  True,ExpressionUUID->"b67db601-638a-4878-a6ff-13759b1c50ac"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 

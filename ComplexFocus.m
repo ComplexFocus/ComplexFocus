@@ -40,7 +40,7 @@ $ComplexFocusVersion:="ComplexFocus v0.1, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Thu 8 Oct 2020 09:30:12";
+$ComplexFocusTimestamp="Thu 8 Oct 2020 16:55:01";
 End[];
 
 
@@ -172,6 +172,7 @@ CFnormTEM::usage="CFnormTEM[l,m,q] returns the normalization integral \[Integral
 
 Begin["`Private`"];
 \[Alpha]TEM[l_,m_,q_]:=CFnormTEM[l,m,q]^(-1/2)
+\[Alpha]TEM[l_,m_,0]:=\[Alpha]TEM[l,m,0]=CFnormTEM[l,m,0]^(-1/2)
 
 CFnormTEM[l_,m_,q_]:=Block[{qInt},
 CFnormTEM[l,m,qInt_]=Simplify[Integrate[SphericalHarmonicY[l,m,\[Theta],\[Phi]]SphericalHarmonicY[l,-m,\[Theta],\[Phi]]Exp[2qInt Cos[\[Theta]]](Sin[\[Theta]])^2 Sin[\[Theta]],{\[Theta],0,\[Pi]},{\[Phi],0,2\[Pi]}]];
@@ -210,6 +211,7 @@ CFnormQuasiCircular::usage="CFnormQuasiCircular[l,m,q] returns the normalization
 
 Begin["`Private`"];
 \[Alpha]QC[l_,m_,q_]:=CFnormQuasiCircular[l,m,q]^(-1/2)
+\[Alpha]QC[l_,m_,0]:=\[Alpha]QC[l,m,0]=CFnormQuasiCircular[l,m,0]^(-1/2)
 
 CFnormQuasiCircular[l_,m_,q_]:=Block[{qInt},
 CFnormQuasiCircular[l,m,qInt_]=Simplify[Integrate[SphericalHarmonicY[l,m,\[Theta],\[Phi]]SphericalHarmonicY[l,-m,\[Theta],\[Phi]]Exp[2qIntCos[\[Theta]]](1+Cos[\[Theta]])^2 Sin[\[Theta]],{\[Theta],0,\[Pi]},{\[Phi],0,2\[Pi]}]];
