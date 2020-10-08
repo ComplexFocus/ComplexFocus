@@ -520,13 +520,13 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 6 Oct 2020 19:09:58\>\""}], 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Thu 8 Oct 2020 09:30:12\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"3f7f3801-c70e-4b7a-a975-3dfa28a94be0"]
+  "version-timestamp",ExpressionUUID->"e26ec250-53a6-4690-bfb0-bde118a225aa"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2838,7 +2838,7 @@ Cell["Fields", \
 Cell[CellGroupData[{
 
 Cell["\<\
-ComplexFocusHelicityE, ComplexFoxusElectricE, ComplexFocusMagneticE\
+ComplexFocusHelicityE, ComplexFocusElectricE, ComplexFocusMagneticE\
 \>", "Subsubsection",ExpressionUUID->"9c5b6259-b711-45c0-8483-700e5c48a49e"],
 
 Cell[BoxData[{
@@ -2851,8 +2851,8 @@ numbers l,m and helicity \[Sigma]=\[PlusMinus]1.\>\""}],
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"ComplexFoxusElectricE", "::", "usage"}], "=", 
-   "\"\<ComplexFoxusElectricE[l,m,v,{x,y,z},q] gives the complex-focus field \
+   RowBox[{"ComplexFocusElectricE", "::", "usage"}], "=", 
+   "\"\<ComplexFocusElectricE[l,m,v,{x,y,z},q] gives the complex-focus field \
 of electric type, with complex-focus parameter q, angular momentum numbers \
 l,m and seed polarization vector v.\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -2905,7 +2905,7 @@ l,m and seed polarization vector v.\>\""}], ";"}],
         RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "q"}], "]"}]}]}], 
    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"ComplexFoxusElectricE", "[", 
+  RowBox[{"ComplexFocusElectricE", "[", 
    RowBox[{"l_", ",", "m_", ",", "vector_", ",", 
     RowBox[{"{", 
      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], ",", "q_"}], "]"}], ":=", 
@@ -2916,7 +2916,7 @@ l,m and seed polarization vector v.\>\""}], ";"}],
     "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{
-      RowBox[{"ComplexFoxusElectricE", "[", 
+      RowBox[{"ComplexFocusElectricE", "[", 
        RowBox[{"l", ",", "m", ",", "vector", ",", 
         RowBox[{"{", 
          RowBox[{"xInt_", ",", "yInt_", ",", "zInt_"}], "}"}], ",", "qInt_"}],
@@ -2933,7 +2933,7 @@ l,m and seed polarization vector v.\>\""}], ";"}],
          RowBox[{"{", 
           RowBox[{"xInt", ",", "yInt", ",", "zInt"}], "}"}]}], "]"}], "]"}]}],
       ";", "\[IndentingNewLine]", 
-     RowBox[{"ComplexFoxusElectricE", "[", 
+     RowBox[{"ComplexFocusElectricE", "[", 
       RowBox[{"l", ",", "m", ",", "vector", ",", 
        RowBox[{"{", 
         RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "q"}], "]"}]}]}], 

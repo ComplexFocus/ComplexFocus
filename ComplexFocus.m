@@ -40,7 +40,7 @@ $ComplexFocusVersion:="ComplexFocus v0.1, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Tue 6 Oct 2020 19:09:58";
+$ComplexFocusTimestamp="Thu 8 Oct 2020 09:30:12";
 End[];
 
 
@@ -243,7 +243,7 @@ End[];
 
 (* ::Input::Initialization:: *)
 ComplexFocusHelicityE::usage="ComplexFocusHelicityE[l,m,\[Sigma],{x,y,z},q] gives the complex-focus field of helicity type, with complex-focus parameter q, angular momentum numbers l,m and helicity \[Sigma]=\[PlusMinus]1.";
-ComplexFoxusElectricE::usage="ComplexFoxusElectricE[l,m,v,{x,y,z},q] gives the complex-focus field of electric type, with complex-focus parameter q, angular momentum numbers l,m and seed polarization vector v.";
+ComplexFocusElectricE::usage="ComplexFocusElectricE[l,m,v,{x,y,z},q] gives the complex-focus field of electric type, with complex-focus parameter q, angular momentum numbers l,m and seed polarization vector v.";
 ComplexFocusMagneticE::usage="ComplexFocusMagneticE[l,m,v,{x,y,z},q] gives the complex-focus field of magnetic type, with complex-focus parameter q, angular momentum numbers l,m and seed polarization vector v.";
 
 Begin["`Private`"];
@@ -251,9 +251,9 @@ ComplexFocusHelicityE[l_,m_,s:(1|-1),{x_,y_,z_},q_]:=Block[{xInt,yInt,zInt,qInt}
 ComplexFocusHelicityE[l,m,s,{xInt_,yInt_,zInt_},qInt_]=Simplify[PolarizationVHelicity[s,Multipole\[CapitalLambda][l,m,{xInt,yInt,zInt-I qInt}],{xInt,yInt,zInt}]];
 ComplexFocusHelicityE[l,m,s,{x,y,z},q]
 ]
-ComplexFoxusElectricE[l_,m_,vector_,{x_,y_,z_},q_]:=Block[{xInt,yInt,zInt,qInt},
-ComplexFoxusElectricE[l,m,vector,{xInt_,yInt_,zInt_},qInt_]=Simplify[PolarizationVElectric[vector,Multipole\[CapitalLambda][l,m,{xInt,yInt,zInt-I qInt}],{xInt,yInt,zInt}]];
-ComplexFoxusElectricE[l,m,vector,{x,y,z},q]
+ComplexFocusElectricE[l_,m_,vector_,{x_,y_,z_},q_]:=Block[{xInt,yInt,zInt,qInt},
+ComplexFocusElectricE[l,m,vector,{xInt_,yInt_,zInt_},qInt_]=Simplify[PolarizationVElectric[vector,Multipole\[CapitalLambda][l,m,{xInt,yInt,zInt-I qInt}],{xInt,yInt,zInt}]];
+ComplexFocusElectricE[l,m,vector,{x,y,z},q]
 ]
 ComplexFocusMagneticE[l_,m_,vector_,{x_,y_,z_},q_]:=Block[{xInt,yInt,zInt,qInt},
 ComplexFocusMagneticE[l,m,vector,{xInt_,yInt_,zInt_},qInt_]=Simplify[PolarizationVMagnetic[vector,Multipole\[CapitalLambda][l,m,{xInt,yInt,zInt-I qInt}],{xInt,yInt,zInt}]];
