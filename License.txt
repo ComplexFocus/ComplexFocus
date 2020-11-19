@@ -1,4 +1,4 @@
-The software package CoMMfoc ((C) Rodrigo Guitiérrez-Cuevas & Emilio Pisanty, 2020) is dual licensed under the GNU Public License and the Creative Commons Attribution-ShareAlike 4.0 License, both of which are reproduced below.
+The software package ComplexFocus ((C) Rodrigo Guitiérrez-Cuevas & Emilio Pisanty, 2020) is dual licensed under the GNU Public License and the Creative Commons Attribution-ShareAlike 4.0 License, both of which are reproduced below.
 
 
 -----------------------------------------------------------------------------
