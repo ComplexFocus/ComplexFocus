@@ -24,6 +24,6 @@ This code is dual-licensed under the GPL and CC-BY-SA licenses; you are free to 
 
 In addition to that legal obligation, if you use this code in calculations for an academic publication, you have an academic obligation to cite it correctly. For that purpose, please cite either of the papers listed above, or use a direct citation to the code such as
 
- - R. Gutiérrez-Cuevas and E. Pisanty. LISSAFIRE: Lissajous-figure Reconstruction for nonlinear polarization tomography of bichromatic fields. https://github.com/episanty/LISSAFIRE, [doi:10.5281/zenodo.nnnnnnn](https://doi.org/10.5281/zenodo.nnnnnnn) (2020).
+ - R. Gutiérrez-Cuevas and E. Pisanty. ComplexFocus: Non-paraxial vector beams in Mathematica. https://github.com/ComplexFocus/ComplexFocus, [doi:10.5281/zenodo.nnnnnnn](https://doi.org/10.5281/zenodo.nnnnnnn) (2020).
 
 If you wish to use a DOI for a specific version, please use one of the numbered-version releases (indexed in the [Zenodo](https://doi.org/10.5281/zenodo.nnnnnnn) listing page).
