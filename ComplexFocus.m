@@ -36,11 +36,11 @@ $ComplexFocusTimestamp::usage="$ComplexFocusTimestamp prints the timestamp of th
 
 (* ::Input::Initialization:: *)
 Begin["`Private`"];
-$ComplexFocusVersion:="ComplexFocus v0.1, "<>$ComplexFocusTimestamp;
+$ComplexFocusVersion:="ComplexFocus v0.2, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Thu 8 Oct 2020 16:55:01";
+$ComplexFocusTimestamp="Thu 19 Nov 2020 17:37:24";
 End[];
 
 
@@ -112,21 +112,31 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-UnitE::usage="UnitE[s] gives the unit vectors \!\(\*SubscriptBox[\(e\), \(s\)]\) for s=-1,0,1, equal to (1,-i,0)/\!\(\*SqrtBox[\(2\)]\), (0,0,1) and (1,i,0)/\!\(\*SqrtBox[\(2\)]\), respectively.";
+UnitE::usage="UnitE[s] gives the unit vectors \!\(\*SubscriptBox[\(e\), \(s\)]\) for s=-1,0,1, equal to (1,-i,0)/\!\(\*SqrtBox[\(2\)]\), (0,0,1) and (1,i,0)/\!\(\*SqrtBox[\(2\)]\), respectively.";UnitU::usage="UnitU[\[Theta],\[Phi]] gives the radial unit vector (sin(\[Theta])cos(\[Phi]),sin(\[Theta])sin(\[Phi]),cos(\[Theta])) at spherical polar coordinates (\[Theta],\[Phi]).";
+Unit\[Theta]::usage="Unit\[Theta][\[Theta],\[Phi]] gives the polar unit vector (cos(\[Theta])cos(\[Phi]),cos(\[Theta])sin(\[Phi]),-sin(\[Theta])) at spherical polar coordinates (\[Theta],\[Phi]).";
+Unit\[Phi]::usage="Unit\[Phi][\[Theta],\[Phi]] gives the azimuthal unit vector (-sin(\[Phi]),cos(\[Phi]),0) at spherical polar coordinates (\[Theta],\[Phi]).";
+
 
 Begin["`Private`"];
 UnitE[s:(1|-1)]:=1/Sqrt[2] {1,s I,0}
 UnitE[0]:={0,0,1}
+
+
+UnitU[\[Theta]_,\[Phi]_]:={Cos[\[Phi]]Sin[\[Theta]],Sin[\[Phi]]Sin[\[Theta]],Cos[\[Theta]]}
+
+Unit\[Theta][\[Theta]_,\[Phi]_]:={Cos[\[Phi]]Cos[\[Theta]],Sin[\[Phi]]Cos[\[Theta]],-Sin[\[Theta]]}
+Unit\[Phi][\[Theta]_,\[Phi]_]:={-Sin[\[Phi]],Cos[\[Phi]],0}
+
 End[];
 
 
 (* ::Input::Initialization:: *)
-PolarizationVElectric::usage="PolarizationVElectric[v,f[x,y,z],{x,y,z}] gives the electric-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(r\), \((E)\)]\)(v,f)=\[Del]\[Times](\[Del]\[Times](v f)) for a vector v and a scalar function f.
-PolarizationVElectric[v,f] gives the functional form of \!\(\*SubsuperscriptBox[\(V\), \(r\), \((E)\)]\)(v,f). The vector v can be a fixed object or an explicit Function object.";
-PolarizationVMagnetic::usage="PolarizationVMagnetic[v,f[x,y,z],{x,y,z}] gives the magnetic-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(r\), \((M)\)]\)(v,f)=-i\[Del]\[Times](v f) for a vector v and a scalar function f.
-PolarizationVMagnetic[v,f] gives the functional form of \!\(\*SubsuperscriptBox[\(V\), \(r\), \((M)\)]\)(v,f). The vector v can be a fixed object or an explicit Function object.";
-PolarizationVHelicity::usage="PolarizationVHelicity[\[Sigma],f[x,y,z],{x,y,z}] gives the helicity-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(r\), \((\[PlusMinus])\)]\)(f)=\!\(\*SubsuperscriptBox[\(V\), \(r\), \((E)\)]\)(\!\(\*SubscriptBox[\(e\), \(\[PlusMinus]\)]\),f)\[PlusMinus]\!\(\*SubsuperscriptBox[\(iV\), \(r\), \((M)\)]\)(\!\(\*SubscriptBox[\(e\), \(\[PlusMinus]\)]\),f) for a helicity \[Sigma]=\[PlusMinus]1 and a scalar function f.
-PolarizationVHelicity[\[Sigma],f] gives the functional form of \!\(\*SubsuperscriptBox[\(V\), \(r\), \((\[PlusMinus])\)]\)(f).";
+PolarizationVElectric::usage="PolarizationVElectric[v,f[x,y,z],{x,y,z}] gives the electric-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(v\), \((E)\)]\)f=\[Del]\[Times](\[Del]\[Times](v f)) for a vector v and a scalar function f.
+PolarizationVElectric[v,f] gives the functional form of \!\(\*SubsuperscriptBox[\(V\), \(v\), \((E)\)]\)f. The vector v can be a fixed object or an explicit Function object.";
+PolarizationVMagnetic::usage="PolarizationVMagnetic[v,f[x,y,z],{x,y,z}] gives the magnetic-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(v\), \((M)\)]\)f=-i\[Del]\[Times](v f) for a vector v and a scalar function f.
+PolarizationVMagnetic[v,f] gives the functional form of \!\(\*SubsuperscriptBox[\(V\), \(v\), \((M)\)]\)f. The vector v can be a fixed object or an explicit Function object.";
+PolarizationVHelicity::usage="PolarizationVHelicity[\[Sigma],f[x,y,z],{x,y,z}] gives the helicity-type polarization operator \!\(\*SuperscriptBox[\(V\), \((\[PlusMinus])\)]\)f=\!\(\*SubsuperscriptBox[\(V\), SubscriptBox[\(e\), \(\[PlusMinus]\)], \((E)\)]\)f\[PlusMinus]\!\(\*SubsuperscriptBox[\(iV\), SubscriptBox[\(e\), \(\[PlusMinus]\)], \((M)\)]\)f for a helicity \[Sigma]=\[PlusMinus]1 and a scalar function f.
+PolarizationVHelicity[\[Sigma],f] gives the functional form of \!\(\*SuperscriptBox[\(V\), \((\[PlusMinus])\)]\)f.";
 
 Begin["`Private`"];
 
@@ -161,6 +171,24 @@ Function[{x,y,z},Evaluate[
 PolarizationVElectric[UnitE[s],scalarFunction[x,y,z],{x,y,z}]+I s PolarizationVMagnetic[UnitE[s],scalarFunction[x,y,z],{x,y,z}]
 ]]
 ]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+Polarization\[ScriptCapitalV]Electric::usage="Polarization\[ScriptCapitalV]Electric[v,u] gives the electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross](u\[Cross]v) in Fourier space, in terms of the unit direction vector u={ux,uy,uz}.
+Polarization\[ScriptCapitalV]Electric[v,\[Theta],\[Phi]] gives the electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross](u\[Cross]v) in Fourier space, in terms of the polar coordinates (\[Theta],\[Phi]) of the unit direction vector u.";
+
+Polarization\[ScriptCapitalV]Electric::usage="Polarization\[ScriptCapitalV]Magnetic[v,u] gives the electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross]v in Fourier space, in terms of the unit direction vector u={ux,uy,uz}.
+Polarization\[ScriptCapitalV]Magnetic[v,\[Theta],\[Phi]] gives the electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross]v in Fourier space, in terms of the polar coordinates (\[Theta],\[Phi]) of the unit direction vector u.";
+
+Begin["`Private`"];
+
+Polarization\[ScriptCapitalV]Electric[v_List,u_List]:=Cross[u,Cross[u,v]]
+Polarization\[ScriptCapitalV]Electric[v_List,\[Theta]_,\[Phi]_]:=Cross[UnitU[\[Theta],\[Phi]],Cross[UnitU[\[Theta],\[Phi]],v]]
+
+Polarization\[ScriptCapitalV]Magnetic[v_List,u_List]:=Cross[u,v]
+Polarization\[ScriptCapitalV]Magnetic[v_List,\[Theta]_,\[Phi]_]:=Cross[UnitU[\[Theta],\[Phi]],v]
 
 End[];
 

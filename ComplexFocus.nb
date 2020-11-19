@@ -65,7 +65,7 @@ Cell["Specifications", \
 
 Cell[TextData[{
  "The ComplexFocus package implements Complex Focus (CF) vector-beam fields \
-as described in the paper\n\n          Scalar and electromagnetic nonparaxial \
+as described in the papers\n\n       - Scalar and electromagnetic nonparaxial \
 bases composed as superpositions of simple vortex fields with complex foci. \
 R. Guti\[EAcute]rrez-Cuevas and M.A. Alonso. ",
  StyleBox[ButtonBox["Optics Express",
@@ -90,7 +90,10 @@ R. Guti\[EAcute]rrez-Cuevas and M.A. Alonso. ",
   ButtonData->{
     URL["https://doi.org/10.1364/OE.25.014856"], None},
   ButtonNote->"https://doi.org/10.1364/OE.25.014856"],
- ".\n"
+ ".\n       - Optical polarization skyrmionic fields in free space. R. Guti\
+\[EAcute]rrez-Cuevas and E. Pisanty. In preparation (2020).\n",
+ StyleBox[" ",
+  FontSize->5]
 }], "Text",ExpressionUUID->"573bc852-ad26-4d6f-a777-1b0aaf2d6d36"],
 
 Cell[TextData[{
@@ -387,7 +390,7 @@ series in powers of ",
   "0555665e-6f49-4292-af07-88f6a28e26e3"],
  ")."
 }], "Text",ExpressionUUID->"12d33346-23ac-46ec-997a-6ffe2743e2a5"]
-}, Closed]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -513,20 +516,20 @@ Cell[BoxData[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\n", 
  RowBox[{
   RowBox[{"$ComplexFocusVersion", ":=", 
-   RowBox[{"\"\<ComplexFocus v0.1, \>\"", "<>", "$ComplexFocusTimestamp"}]}], 
+   RowBox[{"\"\<ComplexFocus v0.2, \>\"", "<>", "$ComplexFocusTimestamp"}]}], 
   ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"90617182-59d4-4545-b4c7-e01a2308359e"],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Thu 8 Oct 2020 16:55:01\>\""}], 
-  ";"}], "\n", 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Thu 19 Nov 2020 17:37:24\>\""}],
+   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"0ca7d64f-ea9b-4af2-a12f-75b6d81822d6"]
+  "version-timestamp",ExpressionUUID->"53a395c9-a1b4-48b3-ad40-35f4def6f306"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1014,17 +1017,35 @@ Cell["Polarization handling", \
 
 Cell[CellGroupData[{
 
-Cell["UnitE", \
-"Subsubsection",ExpressionUUID->"3128a8f5-f9e3-4761-81bb-555ad671fe8e"],
+Cell["Unit vectors", \
+"Subsubsection",ExpressionUUID->"f8ded737-c90a-443b-8e8e-69faa92ff9a0"],
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{
-    RowBox[{"UnitE", "::", "usage"}], "=", 
-    "\"\<UnitE[s] gives the unit vectors \!\(\*SubscriptBox[\(e\), \(s\)]\) \
+   RowBox[{"UnitE", "::", "usage"}], "=", 
+   "\"\<UnitE[s] gives the unit vectors \!\(\*SubscriptBox[\(e\), \(s\)]\) \
 for s=-1,0,1, equal to (1,-i,0)/\!\(\*SqrtBox[\(2\)]\), (0,0,1) and \
-(1,i,0)/\!\(\*SqrtBox[\(2\)]\), respectively.\>\""}], ";"}], 
+(1,i,0)/\!\(\*SqrtBox[\(2\)]\), respectively.\>\""}], ";", 
+  RowBox[{
+   RowBox[{"UnitU", "::", "usage"}], "=", 
+   "\"\<UnitU[\[Theta],\[Phi]] gives the radial unit vector \
+(sin(\[Theta])cos(\[Phi]),sin(\[Theta])sin(\[Phi]),cos(\[Theta])) at \
+spherical polar coordinates (\[Theta],\[Phi]).\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Unit\[Theta]", "::", "usage"}], "=", 
+   "\"\<Unit\[Theta][\[Theta],\[Phi]] gives the polar unit vector (cos(\
+\[Theta])cos(\[Phi]),cos(\[Theta])sin(\[Phi]),-sin(\[Theta])) at spherical \
+polar coordinates (\[Theta],\[Phi]).\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Unit\[Phi]", "::", "usage"}], "=", 
+    "\"\<Unit\[Phi][\[Theta],\[Phi]] gives the azimuthal unit vector (-sin(\
+\[Phi]),cos(\[Phi]),0) at spherical polar coordinates \
+(\[Theta],\[Phi]).\>\""}], ";"}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
@@ -1043,18 +1064,58 @@ for s=-1,0,1, equal to (1,-i,0)/\!\(\*SqrtBox[\(2\)]\), (0,0,1) and \
      RowBox[{"s", " ", "\[ImaginaryI]"}], ",", "0"}], 
     "}"}]}]}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"UnitE", "[", "0", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"UnitE", "[", "0", "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UnitU", "[", 
+    RowBox[{"\[Theta]_", ",", "\[Phi]_"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Cos", "[", "\[Phi]", "]"}], 
+      RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+     RowBox[{
+      RowBox[{"Sin", "[", "\[Phi]", "]"}], 
+      RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+     RowBox[{"Cos", "[", "\[Theta]", "]"}]}], "}"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Unit\[Theta]", "[", 
+   RowBox[{"\[Theta]_", ",", "\[Phi]_"}], "]"}], ":=", 
   RowBox[{"{", 
-   RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Cos", "[", "\[Phi]", "]"}], 
+     RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+    RowBox[{
+     RowBox[{"Sin", "[", "\[Phi]", "]"}], 
+     RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+    RowBox[{"-", 
+     RowBox[{"Sin", "[", "\[Theta]", "]"}]}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Unit\[Phi]", "[", 
+    RowBox[{"\[Theta]_", ",", "\[Phi]_"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ",", 
+     RowBox[{"Cos", "[", "\[Phi]", "]"}], ",", "0"}], "}"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
-  True,ExpressionUUID->"11451e4c-932f-4cad-b793-2d7269bb9aa4"]
+  True,ExpressionUUID->"4c3f4462-b199-44ef-ba89-fc0bf84bfd63"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["PolarizationV variants", \
+Cell["PolarizationV variants (real space)", \
 "Subsubsection",ExpressionUUID->"d9b6c49e-fbb5-4b81-afb7-fe21aa6b5db5"],
 
 Cell[BoxData[{
@@ -1062,20 +1123,20 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{"PolarizationVElectric", "::", "usage"}], "=", 
    "\"\<PolarizationVElectric[v,f[x,y,z],{x,y,z}] gives the electric-type \
-polarization operator \!\(\*SubsuperscriptBox[\(V\), \(r\), \((E)\)]\)(v,f)=\
-\[Del]\[Times](\[Del]\[Times](v f)) for a vector v and a scalar function f.\n\
-PolarizationVElectric[v,f] gives the functional form of \
-\!\(\*SubsuperscriptBox[\(V\), \(r\), \((E)\)]\)(v,f). The vector v can be a \
+polarization operator \!\(\*SubsuperscriptBox[\(V\), \(v\), \
+\((E)\)]\)f=\[Del]\[Times](\[Del]\[Times](v f)) for a vector v and a scalar \
+function f.\nPolarizationVElectric[v,f] gives the functional form of \
+\!\(\*SubsuperscriptBox[\(V\), \(v\), \((E)\)]\)f. The vector v can be a \
 fixed object or an explicit Function object.\>\""}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"PolarizationVMagnetic", "::", "usage"}], "=", 
    "\"\<PolarizationVMagnetic[v,f[x,y,z],{x,y,z}] gives the magnetic-type \
-polarization operator \!\(\*SubsuperscriptBox[\(V\), \(r\), \
-\((M)\)]\)(v,f)=-i\[Del]\[Times](v f) for a vector v and a scalar function f.\
-\nPolarizationVMagnetic[v,f] gives the functional form of \
-\!\(\*SubsuperscriptBox[\(V\), \(r\), \((M)\)]\)(v,f). The vector v can be a \
+polarization operator \!\(\*SubsuperscriptBox[\(V\), \(v\), \((M)\)]\)f=-i\
+\[Del]\[Times](v f) for a vector v and a scalar function f.\n\
+PolarizationVMagnetic[v,f] gives the functional form of \
+\!\(\*SubsuperscriptBox[\(V\), \(v\), \((M)\)]\)f. The vector v can be a \
 fixed object or an explicit Function object.\>\""}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -1083,14 +1144,13 @@ fixed object or an explicit Function object.\>\""}],
    RowBox[{
     RowBox[{"PolarizationVHelicity", "::", "usage"}], "=", 
     "\"\<PolarizationVHelicity[\[Sigma],f[x,y,z],{x,y,z}] gives the \
-helicity-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(r\), \((\
-\[PlusMinus])\)]\)(f)=\!\(\*SubsuperscriptBox[\(V\), \(r\), \
-\((E)\)]\)(\!\(\*SubscriptBox[\(e\), \
-\(\[PlusMinus]\)]\),f)\[PlusMinus]\!\(\*SubsuperscriptBox[\(iV\), \(r\), \
-\((M)\)]\)(\!\(\*SubscriptBox[\(e\), \(\[PlusMinus]\)]\),f) for a helicity \
-\[Sigma]=\[PlusMinus]1 and a scalar function f.\nPolarizationVHelicity[\
-\[Sigma],f] gives the functional form of \!\(\*SubsuperscriptBox[\(V\), \
-\(r\), \((\[PlusMinus])\)]\)(f).\>\""}], ";"}], 
+helicity-type polarization operator \!\(\*SuperscriptBox[\(V\), \((\
+\[PlusMinus])\)]\)f=\!\(\*SubsuperscriptBox[\(V\), SubscriptBox[\(e\), \(\
+\[PlusMinus]\)], \((E)\)]\)f\[PlusMinus]\!\(\*SubsuperscriptBox[\(iV\), \
+SubscriptBox[\(e\), \(\[PlusMinus]\)], \((M)\)]\)f for a helicity \[Sigma]=\
+\[PlusMinus]1 and a scalar function f.\nPolarizationVHelicity[\[Sigma],f] \
+gives the functional form of \!\(\*SuperscriptBox[\(V\), \
+\((\[PlusMinus])\)]\)f.\>\""}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -1261,6 +1321,90 @@ helicity-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(r\), \((\
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"80eb1906-037d-4820-a34f-a0b6806a2832"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Polarization\[ScriptCapitalV] variants (PWA space)", \
+"Subsubsection",ExpressionUUID->"3f0b3bb1-9aff-4386-9251-f0a28c776d11"],
+
+Cell[TextData[{
+ "The symbol ",
+ Cell[BoxData[
+  FormBox["\[ScriptCapitalV]", TraditionalForm]],ExpressionUUID->
+  "f6b7ada3-885e-4b73-b4b9-1e6134f13d9a"],
+ " can be typeset using the combination \[AliasIndicator]scV\[AliasIndicator]."
+}], "Text",ExpressionUUID->"d02e48a3-df2b-485c-8e84-851cb54d9980"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Polarization\[ScriptCapitalV]Electric", "::", "usage"}], "=", 
+    "\"\<Polarization\[ScriptCapitalV]Electric[v,u] gives the electric-type \
+polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \
+\((E)\)]\)= u\[Cross](u\[Cross]v) in Fourier space, in terms of the unit \
+direction vector u={ux,uy,uz}.\nPolarization\[ScriptCapitalV]Electric[v,\
+\[Theta],\[Phi]] gives the electric-type polarization vector \
+\!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross](u\
+\[Cross]v) in Fourier space, in terms of the polar coordinates (\[Theta],\
+\[Phi]) of the unit direction vector u.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Polarization\[ScriptCapitalV]Electric", "::", "usage"}], "=", 
+    "\"\<Polarization\[ScriptCapitalV]Magnetic[v,u] gives the electric-type \
+polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \
+\((E)\)]\)= u\[Cross]v in Fourier space, in terms of the unit direction \
+vector u={ux,uy,uz}.\n\
+Polarization\[ScriptCapitalV]Magnetic[v,\[Theta],\[Phi]] gives the \
+electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\
+\), \(v\), \((E)\)]\)= u\[Cross]v in Fourier space, in terms of the polar \
+coordinates (\[Theta],\[Phi]) of the unit direction vector u.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Polarization\[ScriptCapitalV]Electric", "[", 
+   RowBox[{"v_List", ",", "u_List"}], "]"}], ":=", 
+  RowBox[{"Cross", "[", 
+   RowBox[{"u", ",", 
+    RowBox[{"Cross", "[", 
+     RowBox[{"u", ",", "v"}], "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Polarization\[ScriptCapitalV]Electric", "[", 
+    RowBox[{"v_List", ",", "\[Theta]_", ",", "\[Phi]_"}], "]"}], ":=", 
+   RowBox[{"Cross", "[", 
+    RowBox[{
+     RowBox[{"UnitU", "[", 
+      RowBox[{"\[Theta]", ",", "\[Phi]"}], "]"}], ",", 
+     RowBox[{"Cross", "[", 
+      RowBox[{
+       RowBox[{"UnitU", "[", 
+        RowBox[{"\[Theta]", ",", "\[Phi]"}], "]"}], ",", "v"}], "]"}]}], 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Polarization\[ScriptCapitalV]Magnetic", "[", 
+   RowBox[{"v_List", ",", "u_List"}], "]"}], ":=", 
+  RowBox[{"Cross", "[", 
+   RowBox[{"u", ",", "v"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Polarization\[ScriptCapitalV]Magnetic", "[", 
+    RowBox[{"v_List", ",", "\[Theta]_", ",", "\[Phi]_"}], "]"}], ":=", 
+   RowBox[{"Cross", "[", 
+    RowBox[{
+     RowBox[{"UnitU", "[", 
+      RowBox[{"\[Theta]", ",", "\[Phi]"}], "]"}], ",", "v"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"cb2890dd-d4d3-4448-9579-76a6088a8f5a"]
 }, Closed]]
 }, Open  ]],
 
@@ -1371,7 +1515,7 @@ complex-focus fields.\>\""}], ";"}],
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"7b97419a-30b2-4c66-a884-1d467c588673"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -2008,7 +2152,7 @@ quasi-circular complex-focus fields.\>\""}], ";"}],
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"b67db601-638a-4878-a6ff-13759b1c50ac"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -2950,354 +3094,7 @@ l,m and seed polarization vector v.\>\""}], ";"}],
  InitializationCell->
   True,ExpressionUUID->"8ff8dcce-571d-421e-b883-9b3f923a1d9c"]
 }, Closed]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Field definitions from the initial figure-maker", \
-"Subsection",ExpressionUUID->"f02766ed-f948-4f8f-a93a-e55fc800d745"],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"blochCSkyrmT", "[", 
-    RowBox[{"qg_", ",", "qv_", ",", "\[Gamma]_", ",", 
-     RowBox[{"{", 
-      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], "=", 
-   RowBox[{"Simplify", "[", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"Cos", "[", "\[Gamma]", "]"}], 
-      RowBox[{"\[Alpha]Tg", "[", "qg", "]"}], 
-      RowBox[{"polM", "[", 
-       RowBox[{"\[Epsilon]p", ",", 
-        RowBox[{"multipoles\[CapitalLambda]", "[", 
-         RowBox[{"0", ",", "0", ",", 
-          RowBox[{"{", 
-           RowBox[{"x", ",", "y", ",", 
-            RowBox[{"z", "-", 
-             RowBox[{"\[ImaginaryI]", " ", "qg"}]}]}], "}"}]}], "]"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}], 
-     "\[IndentingNewLine]", "-", 
-     RowBox[{
-      RowBox[{"Sin", "[", "\[Gamma]", "]"}], 
-      RowBox[{"\[Alpha]Tv", "[", "qv", "]"}], 
-      RowBox[{"polM", "[", 
-       RowBox[{"\[Epsilon]m", ",", 
-        RowBox[{"multipoles\[CapitalLambda]", "[", 
-         RowBox[{"2", ",", "2", ",", 
-          RowBox[{"{", 
-           RowBox[{"x", ",", "y", ",", 
-            RowBox[{"z", "-", 
-             RowBox[{"\[ImaginaryI]", " ", "qv"}]}]}], "}"}]}], "]"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], 
-  ";"}]], "Input",ExpressionUUID->"e54d3811-0ab3-4906-a477-6fbe6a48616f"],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"blochCSkyrmQC", "[", 
-    RowBox[{"qg_", ",", "qv_", ",", "\[Gamma]_", ",", 
-     RowBox[{"{", 
-      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], "=", 
-   RowBox[{"Simplify", "[", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"Cos", "[", "\[Gamma]", "]"}], 
-      RowBox[{"\[Alpha]QCg", "[", "qg", "]"}], 
-      RowBox[{"(", "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{"polE", "[", 
-         RowBox[{"\[Epsilon]p", ",", 
-          RowBox[{"multipoles\[CapitalLambda]", "[", 
-           RowBox[{"0", ",", "0", ",", 
-            RowBox[{"{", 
-             RowBox[{"x", ",", "y", ",", 
-              RowBox[{"z", "-", 
-               RowBox[{"\[ImaginaryI]", " ", "qg"}]}]}], "}"}]}], "]"}], ",", 
-          RowBox[{"{", 
-           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}], 
-        "\[IndentingNewLine]", "+", 
-        RowBox[{"\[ImaginaryI]", " ", 
-         RowBox[{"polM", "[", 
-          RowBox[{"\[Epsilon]p", ",", 
-           RowBox[{"multipoles\[CapitalLambda]", "[", 
-            RowBox[{"0", ",", "0", ",", 
-             RowBox[{"{", 
-              RowBox[{"x", ",", "y", ",", 
-               RowBox[{"z", "-", 
-                RowBox[{"\[ImaginaryI]", " ", "qg"}]}]}], "}"}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]}], 
-       "\[IndentingNewLine]", ")"}]}], "\[IndentingNewLine]", "-", 
-     RowBox[{
-      RowBox[{"Sin", "[", "\[Gamma]", "]"}], 
-      RowBox[{"\[Alpha]QCv", "[", "qv", "]"}], 
-      RowBox[{"(", "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{"polE", "[", 
-         RowBox[{"\[Epsilon]m", ",", 
-          RowBox[{"multipoles\[CapitalLambda]", "[", 
-           RowBox[{"2", ",", "2", ",", 
-            RowBox[{"{", 
-             RowBox[{"x", ",", "y", ",", 
-              RowBox[{"z", "-", 
-               RowBox[{"\[ImaginaryI]", " ", "qv"}]}]}], "}"}]}], "]"}], ",", 
-          RowBox[{"{", 
-           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}], 
-        "\[IndentingNewLine]", "-", 
-        RowBox[{"\[ImaginaryI]", " ", 
-         RowBox[{"polM", "[", 
-          RowBox[{"\[Epsilon]m", ",", 
-           RowBox[{"multipoles\[CapitalLambda]", "[", 
-            RowBox[{"2", ",", "2", ",", 
-             RowBox[{"{", 
-              RowBox[{"x", ",", "y", ",", 
-               RowBox[{"z", "-", 
-                RowBox[{"\[ImaginaryI]", " ", "qv"}]}]}], "}"}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]}], 
-       "\[IndentingNewLine]", ")"}]}]}], "\[IndentingNewLine]", "]"}]}], 
-  ";"}]], "Input",ExpressionUUID->"a843d115-a861-4e6e-8fe8-b7f6451fe34c"],
-
-Cell[BoxData[""], \
-"Input",ExpressionUUID->"af3a2e02-92cc-49bb-a356-dd3d0545e7cc"],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{"blochLSkyrm", "[", 
-    RowBox[{"qr_", ",", "qa_", ",", "\[Gamma]_", ",", 
-     RowBox[{"{", 
-      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], "=", 
-   RowBox[{"Simplify", "[", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"Cos", "[", "\[Gamma]", "]"}], 
-      RowBox[{"\[Alpha]TEM00", "[", "qr", "]"}], " ", 
-      RowBox[{"polE", "[", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
-        RowBox[{"multipoles\[CapitalLambda]", "[", 
-         RowBox[{"0", ",", "0", ",", 
-          RowBox[{"{", 
-           RowBox[{"x", ",", "y", ",", 
-            RowBox[{"z", "-", 
-             RowBox[{"\[ImaginaryI]", " ", "qr"}]}]}], "}"}]}], "]"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}], 
-     "\[IndentingNewLine]", "+", 
-     RowBox[{"\[ImaginaryI]", " ", 
-      RowBox[{"Sin", "[", "\[Gamma]", "]"}], 
-      RowBox[{"\[Alpha]TEM00", "[", "qa", "]"}], 
-      RowBox[{"polM", "[", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
-        RowBox[{"multipoles\[CapitalLambda]", "[", 
-         RowBox[{"0", ",", "0", ",", 
-          RowBox[{"{", 
-           RowBox[{"x", ",", "y", ",", 
-            RowBox[{"z", "-", 
-             RowBox[{"\[ImaginaryI]", " ", "qa"}]}]}], "}"}]}], "]"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"blochLxL", "[", 
-   RowBox[{"qr_", ",", "qa_", ",", "\[Gamma]_", ",", "xm_", ",", "pts_"}], 
-   "]"}], ":=", 
-  RowBox[{"Table", "[", 
-   RowBox[{
-    RowBox[{"blochLSkyrm", "[", 
-     RowBox[{"qr", ",", "qa", ",", "\[Gamma]", ",", 
-      RowBox[{"{", 
-       RowBox[{"x", ",", "0", ",", "0.00001"}], "}"}]}], "]"}], ",", 
-    RowBox[{"{", 
-     RowBox[{"x", ",", "0", ",", "xm", ",", 
-      RowBox[{"xm", "/", 
-       RowBox[{"(", 
-        RowBox[{"pts", "-", "1"}], ")"}]}]}], "}"}]}], 
-   "]"}]}]}], "Input",ExpressionUUID->"e09f59fc-3f44-4fcf-8e7b-452b5bb5f182"],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"neelCSkyrmT", "[", 
-    RowBox[{"\[Gamma]_", ",", "\[Delta]_", ",", 
-     RowBox[{"{", 
-      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], "=", 
-   RowBox[{"Simplify", "[", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"Cos", "[", "\[Delta]", "]"}], 
-      RowBox[{"(", "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"Cos", "[", "\[Gamma]", "]"}], 
-         RowBox[{"polM", "[", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"1", ",", "\[ImaginaryI]", ",", "0"}], "}"}], ",", 
-           RowBox[{"multipoles\[CapitalLambda]", "[", 
-            RowBox[{"1", ",", "0", ",", 
-             RowBox[{"{", 
-              RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}], 
-        "\[IndentingNewLine]", "-", 
-        RowBox[{
-         RowBox[{"Sin", "[", "\[Gamma]", "]"}], 
-         RowBox[{"polM", "[", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"1", ",", 
-             RowBox[{"-", "\[ImaginaryI]"}], ",", "0"}], "}"}], ",", 
-           RowBox[{"multipoles\[CapitalLambda]", "[", 
-            RowBox[{"3", ",", "2", ",", 
-             RowBox[{"{", 
-              RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]}], 
-       "\[IndentingNewLine]", ")"}]}], "\[IndentingNewLine]", "+", 
-     RowBox[{
-      RowBox[{"Sin", "[", "\[Delta]", "]"}], 
-      RowBox[{"polE", "[", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
-        RowBox[{"multipoles\[CapitalLambda]", "[", 
-         RowBox[{"1", ",", "1", ",", 
-          RowBox[{"{", 
-           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], 
-  ";"}]], "Input",ExpressionUUID->"0975939f-a67b-4bcb-b07d-db458e5b53e3"],
-
-Cell[BoxData[""], \
-"Input",ExpressionUUID->"80c3b74b-cf0d-4979-b366-075426e9e1a7"],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"neelCSkyrmT", "[", 
-    RowBox[{"\[Gamma]_", ",", "\[Delta]_", ",", 
-     RowBox[{"{", 
-      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], "=", 
-   RowBox[{"Simplify", "[", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"Cos", "[", "\[Delta]", "]"}], 
-      RowBox[{"(", "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"Cos", "[", "\[Gamma]", "]"}], 
-         RowBox[{"polM", "[", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"1", ",", "\[ImaginaryI]", ",", "0"}], "}"}], ",", 
-           RowBox[{"multipoles\[CapitalLambda]", "[", 
-            RowBox[{"1", ",", "0", ",", 
-             RowBox[{"{", 
-              RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}], 
-        "\[IndentingNewLine]", "-", 
-        RowBox[{
-         RowBox[{"Sin", "[", "\[Gamma]", "]"}], 
-         RowBox[{"polM", "[", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"1", ",", 
-             RowBox[{"-", "\[ImaginaryI]"}], ",", "0"}], "}"}], ",", 
-           RowBox[{"multipoles\[CapitalLambda]", "[", 
-            RowBox[{"3", ",", "2", ",", 
-             RowBox[{"{", 
-              RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]}], ")"}]}], 
-     "\[IndentingNewLine]", "+", 
-     RowBox[{
-      RowBox[{"Sin", "[", "\[Delta]", "]"}], 
-      RowBox[{"polE", "[", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
-        RowBox[{"multipoles\[CapitalLambda]", "[", 
-         RowBox[{"1", ",", "1", ",", 
-          RowBox[{"{", 
-           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], 
-  ";"}]], "Input",ExpressionUUID->"8863d1c3-47de-43d0-94b7-da361b4cc6ff"],
-
-Cell[BoxData[""], \
-"Input",ExpressionUUID->"373e6eaa-77c5-498d-8119-7f15275af6d2"],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{"neelLSkyrm", "[", 
-    RowBox[{"qr1_", ",", "qr2_", ",", "\[Gamma]_", ",", 
-     RowBox[{"{", 
-      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}], "=", 
-   RowBox[{"Simplify", "[", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"Cos", "[", "\[Gamma]", "]"}], 
-      RowBox[{"\[Alpha]TEM00", "[", "qr1", "]"}], 
-      RowBox[{"polE", "[", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
-        RowBox[{"multipoles\[CapitalLambda]", "[", 
-         RowBox[{"0", ",", "0", ",", 
-          RowBox[{"{", 
-           RowBox[{"x", ",", "y", ",", 
-            RowBox[{"z", "-", 
-             RowBox[{"\[ImaginaryI]", " ", "qr1"}]}]}], "}"}]}], "]"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}], 
-     "\[IndentingNewLine]", "+", 
-     RowBox[{"\[ImaginaryI]", " ", 
-      RowBox[{"Sin", "[", "\[Gamma]", "]"}], 
-      RowBox[{"\[Alpha]TEM10", "[", "qr2", "]"}], 
-      RowBox[{"polE", "[", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
-        RowBox[{"multipoles\[CapitalLambda]", "[", 
-         RowBox[{"1", ",", "0", ",", 
-          RowBox[{"{", 
-           RowBox[{"x", ",", "y", ",", 
-            RowBox[{"z", "-", 
-             RowBox[{"\[ImaginaryI]", " ", "qr2"}]}]}], "}"}]}], "]"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"neelLxL", "[", 
-   RowBox[{"qr1_", ",", "qr2_", ",", "\[Gamma]_", ",", "xm_", ",", "pts_"}], 
-   "]"}], ":=", 
-  RowBox[{"Table", "[", 
-   RowBox[{
-    RowBox[{"neelLSkyrm", "[", 
-     RowBox[{"qr1", ",", "qr2", ",", "\[Gamma]", ",", 
-      RowBox[{"{", 
-       RowBox[{"x", ",", "0", ",", "0.00001"}], "}"}]}], "]"}], ",", 
-    RowBox[{"{", 
-     RowBox[{"x", ",", "0", ",", "xm", ",", 
-      RowBox[{"xm", "/", 
-       RowBox[{"(", 
-        RowBox[{"pts", "-", "1"}], ")"}]}]}], "}"}]}], 
-   "]"}]}]}], "Input",ExpressionUUID->"b65e5020-4120-4969-826d-aab23ab58c4e"]
-}, Closed]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4014,11 +3811,11 @@ Cell[BoxData[{
  RowBox[{"DateString", "[", 
   "]"}]}], "Input",ExpressionUUID->"eeaf2a5a-75b3-4bfc-9494-2804f20a71ce"],
 
-Cell[BoxData["\<\"Tue 6 Oct 2020 15:19:43\"\>"], \
-"Output",ExpressionUUID->"26478d58-d2a2-4931-b4cc-cb616209b8b5"],
+Cell[BoxData["\<\"Mon 9 Nov 2020 15:21:14\"\>"], \
+"Output",ExpressionUUID->"187554d7-81ed-45e4-a52b-9e94480e8ccd"],
 
-Cell[BoxData["\<\"Tue 6 Oct 2020 15:20:44\"\>"], \
-"Output",ExpressionUUID->"1e6da237-0034-472b-ae66-84b8cf259709"]
+Cell[BoxData["\<\"Mon 9 Nov 2020 15:22:17\"\>"], \
+"Output",ExpressionUUID->"068ce578-626c-42a6-8cb3-3f30153192a0"]
 }, Open  ]]
 }, Closed]],
 
@@ -4317,11 +4114,11 @@ Cell[BoxData[{
  RowBox[{"DateString", "[", 
   "]"}]}], "Input",ExpressionUUID->"e3391044-14a4-4da1-9cb0-099d6bb74586"],
 
-Cell[BoxData["\<\"Tue 6 Oct 2020 16:13:20\"\>"], \
-"Output",ExpressionUUID->"97cd33fd-e77a-4c55-a092-ef2e058b8053"],
+Cell[BoxData["\<\"Mon 9 Nov 2020 15:20:54\"\>"], \
+"Output",ExpressionUUID->"7d2446ff-37c2-4af5-b521-689bbd8ab7d6"],
 
-Cell[BoxData["\<\"Tue 6 Oct 2020 16:13:39\"\>"], \
-"Output",ExpressionUUID->"450c0f3e-48d4-4344-a780-ceca55863e61"]
+Cell[BoxData["\<\"Mon 9 Nov 2020 15:21:14\"\>"], \
+"Output",ExpressionUUID->"adad5ce6-187e-4049-b0d4-bfdbd6cc5136"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
@@ -4341,11 +4138,11 @@ Cell[BoxData[
   RowBox[{"EndPackage", "[", "]"}], ";"}]], "Input",
  InitializationCell->
   True,ExpressionUUID->"7bfde5e2-e60e-49b0-9216-395b306e3c3c"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["Add to distributed contexts.", \
+Cell["Add to distributed contexts", \
 "Subsubsection",ExpressionUUID->"627f2346-484c-48d4-9453-1b9800679ff6"],
 
 Cell[BoxData[
@@ -4354,7 +4151,7 @@ Cell[BoxData[
   ";"}]], "Input",
  InitializationCell->
   True,ExpressionUUID->"0b59eb5f-39e5-4fe3-a624-8b4b88bac2fa"]
-}, Open  ]]
+}, Closed]]
 }, Open  ]]
 }, Open  ]]
 },
