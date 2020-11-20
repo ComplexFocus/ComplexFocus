@@ -40,7 +40,7 @@ $ComplexFocusVersion:="ComplexFocus v0.2, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Fri 20 Nov 2020 02:31:09";
+$ComplexFocusTimestamp="Fri 20 Nov 2020 19:53:21";
 End[];
 
 
@@ -393,15 +393,16 @@ PlotFieldArrows[f,kind,sm,zoom] plots a field-arrow plot with a magnification zo
 PlotFieldArrows[f,kind,sm,zoom,{tx,ty,tz}] plots a field-arrow plot with an offset of {tx,ty,tz}.";
 
 Begin["`Private`"];
+Options[PlotFieldArrows]={RadialPoints->10};
 
-PlotFieldArrows[fieldFunction_,kind_,rmax_,zoom_:1,translation_:{0,0,0}]:=Block[{},
+PlotFieldArrows[fieldFunction_,kind_,rmax_,zoom_:1,translation_:{0,0,0},opts:OptionsPattern[]]:=Block[{},
 Graphics3D[{
 Arrowheads[0.02],
 Thickness[0.005],
 Table[Table[
 FieldArrow[kind,fieldFunction,{r Cos[\[Phi]],r Sin[\[Phi]],0},zoom,translation]
 ,{\[Phi],0,2\[Pi],2\[Pi]/(6r +1)}],
-{r,0,rmax,rmax/10.}]
+{r,0,rmax,rmax/OptionValue[RadialPoints]}]
 }]
 ]
 
@@ -415,14 +416,18 @@ FieldEllipse[f,{x,y,z},a,normFunction,zoom] magnifies the position by the specif
 FieldEllipse[f,{x,y,z},a,normFunction,zoom,{tx,ty,tz}] translates the position of the ellipse by an offset {tx,ty,tz}.";
 
 Begin["`Private`"];
+Options[FieldEllipse]={PlotStyle->{},PlotPoints->72+1,RadialPoints->None};
+(*PlotStyle included here just so PlotFieldEllipses can pass the options without worrying about unacceptable values.*)
 
-FieldEllipse[fieldFunction_,{x_,y_,z_},amplitude_,normFunction_:(1&),zoom_:1,translation_:{0,0,0}]:=Block[{field,points,norm},
+FieldEllipse[fieldFunction_,{x_,y_,z_},amplitude_,normFunction_:(1&),zoom_:1,translation_:{0,0,0},opts:OptionsPattern[]]:=Block[{field,points,norm},
 field=fieldFunction[x,y,0];
-points=Table[ Re[E^(-I \[Omega]t) field],{\[Omega]t,0.,360\[Degree],5\[Degree]}];
+points=Table[ Re[E^(-I \[Omega]t) field],{\[Omega]t,0.,360\[Degree],(360\[Degree])/(OptionValue[PlotPoints]-1)}];
 norm=Max[normFunction/@points];
+{
 Polygon[
 Map[Function[translation+zoom{x,y,0}+amplitude/norm #],points]
 ]
+}
 ]
 
 End[];
@@ -434,16 +439,21 @@ PlotFieldEllipses[f,amplitude,rmax,normFunction] uses the given normFunction to 
 PlotFieldEllipses[f,amplitude,rmax,normFunction,zoom] uses a magnification zoom on the ellipse positions.
 PlotFieldEllipses[f,amplitude,rmax,normFunction,{tx,ty,tz}] translates the ellipses by an offset {tx,ty,tz}.";
 
-Begin["`Private`"];
+RadialPoints::usage="RadialPoints is an option for PlotFieldEllipses that indicates how many radial points to use.";
 
-PlotFieldEllipses[fieldFunction_,amplitude_,rmax_,normFunction_:Norm,zoom_:1,translation_:{0,0,0}]:=Block[{},
+Begin["`Private`"];
+Protect[RadialPoints];
+Options[PlotFieldEllipses]={PlotStyle->{},PlotPoints->72+1,RadialPoints->10};
+
+PlotFieldEllipses[fieldFunction_,amplitude_,rmax_,normFunction_:Norm,zoom_:1,translation_:{0,0,0},opts:OptionsPattern[]]:=Block[{},
 Graphics3D[{
 EdgeForm[{Thick,Black}],
 FaceForm[{RGBColor[0.25, 0.75, 0.75],Specularity[0]}],
+OptionValue[PlotStyle],
 Table[Table[
-FieldEllipse[fieldFunction,{r Cos[\[Phi]],r Sin[\[Phi]],0},amplitude,normFunction,zoom,translation]
+FieldEllipse[fieldFunction,{r Cos[\[Phi]],r Sin[\[Phi]],0},amplitude,normFunction,zoom,translation,opts]
 ,{\[Phi],0,2\[Pi],2\[Pi]/(6r +1)}],
-{r,0,rmax,rmax/10.}]
+{r,0,rmax,rmax/OptionValue[RadialPoints]}]
 }]
 ]
 
