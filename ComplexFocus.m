@@ -40,7 +40,7 @@ $ComplexFocusVersion:="ComplexFocus v0.2, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Thu 19 Nov 2020 17:37:24";
+$ComplexFocusTimestamp="Fri 20 Nov 2020 02:31:09";
 End[];
 
 
@@ -131,7 +131,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-PolarizationVElectric::usage="PolarizationVElectric[v,f[x,y,z],{x,y,z}] gives the electric-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(v\), \((E)\)]\)f=\[Del]\[Times](\[Del]\[Times](v f)) for a vector v and a scalar function f.
+PolarizationVElectric::usage="PolarizationVElectric[v,f[x,y,z],{x,y,z}] gives the electric-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(v\), \((E)\)]\)f=-\[Del]\[Times](\[Del]\[Times](v f)) for a vector v and a scalar function f.
 PolarizationVElectric[v,f] gives the functional form of \!\(\*SubsuperscriptBox[\(V\), \(v\), \((E)\)]\)f. The vector v can be a fixed object or an explicit Function object.";
 PolarizationVMagnetic::usage="PolarizationVMagnetic[v,f[x,y,z],{x,y,z}] gives the magnetic-type polarization operator \!\(\*SubsuperscriptBox[\(V\), \(v\), \((M)\)]\)f=-i\[Del]\[Times](v f) for a vector v and a scalar function f.
 PolarizationVMagnetic[v,f] gives the functional form of \!\(\*SubsuperscriptBox[\(V\), \(v\), \((M)\)]\)f. The vector v can be a fixed object or an explicit Function object.";
@@ -140,9 +140,9 @@ PolarizationVHelicity[\[Sigma],f] gives the functional form of \!\(\*Superscript
 
 Begin["`Private`"];
 
-PolarizationVElectric[vector_,scalarFunction_,variables_]:=Curl[Curl[Times[vector,scalarFunction],variables],variables]
+PolarizationVElectric[vector_,scalarFunction_,variables_]:=-Curl[Curl[Times[vector,scalarFunction],variables],variables]
 PolarizationVMagnetic[vector_,scalarFunction_,variables_]:=-I Curl[Times[vector,scalarFunction],variables]
-PolarizationVHelicity[s:(1|-1),scalarFunction_,variables_]:=PolarizationVElectric[UnitE[s],scalarFunction,variables]+I s PolarizationVMagnetic[UnitE[s],scalarFunction,variables]
+PolarizationVHelicity[s:(1|-1),scalarFunction_,variables_]:=PolarizationVElectric[UnitE[s],scalarFunction,variables]-I s PolarizationVMagnetic[UnitE[s],scalarFunction,variables]
 
 PolarizationVElectric[vector_,scalarFunction_]:=Block[{x,y,z},
 Function[{x,y,z},Evaluate[
@@ -179,8 +179,11 @@ End[];
 Polarization\[ScriptCapitalV]Electric::usage="Polarization\[ScriptCapitalV]Electric[v,u] gives the electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross](u\[Cross]v) in Fourier space, in terms of the unit direction vector u={ux,uy,uz}.
 Polarization\[ScriptCapitalV]Electric[v,\[Theta],\[Phi]] gives the electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross](u\[Cross]v) in Fourier space, in terms of the polar coordinates (\[Theta],\[Phi]) of the unit direction vector u.";
 
-Polarization\[ScriptCapitalV]Electric::usage="Polarization\[ScriptCapitalV]Magnetic[v,u] gives the electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross]v in Fourier space, in terms of the unit direction vector u={ux,uy,uz}.
+Polarization\[ScriptCapitalV]Magnetic::usage="Polarization\[ScriptCapitalV]Magnetic[v,u] gives the electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross]v in Fourier space, in terms of the unit direction vector u={ux,uy,uz}.
 Polarization\[ScriptCapitalV]Magnetic[v,\[Theta],\[Phi]] gives the electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross]v in Fourier space, in terms of the polar coordinates (\[Theta],\[Phi]) of the unit direction vector u.";
+
+Polarization\[ScriptCapitalV]Helicity::usage="Polarization\[ScriptCapitalV]Helicity[v,u] gives the electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross]v in Fourier space, in terms of the unit direction vector u={ux,uy,uz}.
+Polarization\[ScriptCapitalV]Helicity[v,\[Theta],\[Phi]] gives the electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \((E)\)]\)= u\[Cross]v in Fourier space, in terms of the polar coordinates (\[Theta],\[Phi]) of the unit direction vector u.";
 
 Begin["`Private`"];
 
@@ -189,6 +192,9 @@ Polarization\[ScriptCapitalV]Electric[v_List,\[Theta]_,\[Phi]_]:=Cross[UnitU[\[T
 
 Polarization\[ScriptCapitalV]Magnetic[v_List,u_List]:=Cross[u,v]
 Polarization\[ScriptCapitalV]Magnetic[v_List,\[Theta]_,\[Phi]_]:=Cross[UnitU[\[Theta],\[Phi]],v]
+
+Polarization\[ScriptCapitalV]Helicity[s:(1|-1),u_List]:=Polarization\[ScriptCapitalV]Electric[UnitE[s],u]-I s Polarization\[ScriptCapitalV]Magnetic[UnitE[s],u]
+Polarization\[ScriptCapitalV]Helicity[s:(1|-1),\[Theta]_,\[Phi]_]:=Polarization\[ScriptCapitalV]Electric[UnitE[s],UnitU[\[Theta],\[Phi]]]-I s Polarization\[ScriptCapitalV]Magnetic[UnitE[s],UnitU[\[Theta],\[Phi]]]
 
 End[];
 
@@ -289,6 +295,140 @@ ComplexFocusMagneticE[l_,m_,vector_,{x_,y_,z_},q_]:=Block[{xInt,yInt,zInt,qInt},
 ComplexFocusMagneticE[l,m,vector,{xInt_,yInt_,zInt_},qInt_]=Simplify[PolarizationVMagnetic[vector,Multipole\[CapitalLambda][l,m,{xInt,yInt,zInt-I qInt}],{xInt,yInt,zInt}]];
 ComplexFocusMagneticE[l,m,vector,{x,y,z},q]
 ]
+End[];
+
+
+(* ::Input::Initialization:: *)
+SpinE::usage="SpinE[E] gives the electric spin angular momentum vector \!\(\*FractionBox[\(1\), \(\(|\)\(E\)\*SuperscriptBox[\(|\), \(2\)]\)]\)Im(E\[Conjugate]\[Cross]E) for a complex electric-field amplitude E.";
+
+Begin["`Private`"];
+
+SpinE[vec_]:=Im[Cross[Conjugate[vec],vec]]/Norm[vec]^2
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+JonesPhase::usage="JonesPhase[v] gives the Jones phase of the vector v, \!\(\*FractionBox[\(1\), \(2\)]\)arg(v\[CenterDot]v).";
+
+Begin["`Private`"];
+
+JonesPhase[vec_]:=Arg[Dot[vec,vec]]/2;
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+JonesMajorAxisA::usage="JonesMajorAxisA[v] gives the major-axis vector of the polarization ellipse marked by the complex vector v.
+JonesMajorAxisA[v,normFunction] normalizes the ellipse by normFunction[v].";
+
+Begin["`Private`"];
+
+JonesMajorAxisA[vec_,normFunction_:(1&)]:=Block[{vecF},
+vecF=vec Exp[-I JonesPhase[vec]];
+Re[vecF]/normFunction[vecF]
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+JonesMinorAxisB::usage="JonesMinorAxisB[v] gives the minor-axis vector of the polarization ellipse marked by the complex vector v.
+JonesMinorAxisB[v,normFunction] normalizes the ellipse by normFunction[v].";
+
+Begin["`Private`"];
+
+JonesMinorAxisB[vec_,normFunction_:(1&)]:=Block[{vecF},
+vecF=vec Exp[-I JonesPhase[vec]];
+Im[vecF]/normFunction[vecF]
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+FieldArrow::usage="FieldArrow[kind,f,{x,y,z}] produces a field arrow associated with the field function f at the position (x,y,z), where the kind can be \"major\" (for a major-axis arrow) or \"spin\" (for the electric spin vector).
+FieldArrow[kind,f,{x,y,z},zoom] magnifies the position by the specified zoom factor.
+FieldArrow[kind,f,{x,y,z},zoom,{tx,ty,tz}] translates the position of the arrow by an offset {tx,ty,tz}.";
+
+Begin["`Private`"];
+
+FieldArrow[kind_,fieldFunction_,{x_,y_,z_},zoom_:1,translation_:{0,0,0}]:=Block[{vect},
+vect=If[kind=="major",JonesMajorAxisA[fieldFunction[x,y],Norm],SpinE[fieldFunction[x,y]]];
+{
+ColorData[If[kind=="major","SolarColors","Rainbow"]][(-Re[vect[[3]]]+1)/(2Norm[vect])],
+Arrow[Tube[
+Chop[{
+zoom{x,y,z}+translation,
+zoom{x,y,z}+translation+vect
+}]
+]]
+}
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+PlotFieldArrows::usage="PlotFieldArrows[f,kind,rmax] plots a field-arrow plot (for arrows of the chosen kind, either \"major\" axis or \"spin\" vector) for the vector field function f, for radial coordinate from 0 to rmax. 
+PlotFieldArrows[f,kind,sm,zoom] plots a field-arrow plot with a magnification zoom on the arrow positions.
+PlotFieldArrows[f,kind,sm,zoom,{tx,ty,tz}] plots a field-arrow plot with an offset of {tx,ty,tz}.";
+
+Begin["`Private`"];
+
+PlotFieldArrows[fieldFunction_,kind_,rmax_,zoom_:1,translation_:{0,0,0}]:=Block[{},
+Graphics3D[{
+Arrowheads[0.02],
+Thickness[0.005],
+Table[Table[
+FieldArrow[kind,fieldFunction,{r Cos[\[Phi]],r Sin[\[Phi]],0},zoom,translation]
+,{\[Phi],0,2\[Pi],2\[Pi]/(6r +1)}],
+{r,0,rmax,rmax/10.}]
+}]
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+FieldEllipse::usage="FieldEllipse[f,{x,y,z},a] plots the polarization ellipse of the vector field function f at position (x,y,z), with amplitude multiplier a.
+FieldEllipse[f,{x,y,z},a,normFunction] normalizes the field values by the maximum of normFunction over a period. The default is (1&) and is inactive; for unit normalization, set to Norm.
+FieldEllipse[f,{x,y,z},a,normFunction,zoom] magnifies the position by the specified zoom factor.
+FieldEllipse[f,{x,y,z},a,normFunction,zoom,{tx,ty,tz}] translates the position of the ellipse by an offset {tx,ty,tz}.";
+
+Begin["`Private`"];
+
+FieldEllipse[fieldFunction_,{x_,y_,z_},amplitude_,normFunction_:(1&),zoom_:1,translation_:{0,0,0}]:=Block[{field,points,norm},
+field=fieldFunction[x,y,0];
+points=Table[ Re[E^(-I \[Omega]t) field],{\[Omega]t,0.,360\[Degree],5\[Degree]}];
+norm=Max[normFunction/@points];
+Polygon[
+Map[Function[translation+zoom{x,y,0}+amplitude/norm #],points]
+]
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+PlotFieldEllipses::usage="PlotFieldEllipses[f,amplitude,rmax] plots a field-ellipse plot for the vector field function f, for radial coordinate from 0 to rmax. 
+PlotFieldEllipses[f,amplitude,rmax,normFunction] uses the given normFunction to normalize the ellipses.
+PlotFieldEllipses[f,amplitude,rmax,normFunction,zoom] uses a magnification zoom on the ellipse positions.
+PlotFieldEllipses[f,amplitude,rmax,normFunction,{tx,ty,tz}] translates the ellipses by an offset {tx,ty,tz}.";
+
+Begin["`Private`"];
+
+PlotFieldEllipses[fieldFunction_,amplitude_,rmax_,normFunction_:Norm,zoom_:1,translation_:{0,0,0}]:=Block[{},
+Graphics3D[{
+EdgeForm[{Thick,Black}],
+FaceForm[{RGBColor[0.25, 0.75, 0.75],Specularity[0]}],
+Table[Table[
+FieldEllipse[fieldFunction,{r Cos[\[Phi]],r Sin[\[Phi]],0},amplitude,normFunction,zoom,translation]
+,{\[Phi],0,2\[Pi],2\[Pi]/(6r +1)}],
+{r,0,rmax,rmax/10.}]
+}]
+]
+
 End[];
 
 

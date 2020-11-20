@@ -390,7 +390,7 @@ series in powers of ",
   "0555665e-6f49-4292-af07-88f6a28e26e3"],
  ")."
 }], "Text",ExpressionUUID->"12d33346-23ac-46ec-997a-6ffe2743e2a5"]
-}, Open  ]]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -523,13 +523,13 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Thu 19 Nov 2020 17:37:24\>\""}],
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Fri 20 Nov 2020 02:31:09\>\""}],
    ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"53a395c9-a1b4-48b3-ad40-35f4def6f306"]
+  "version-timestamp",ExpressionUUID->"598d3bae-f3e5-49f5-9d01-32333161e630"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1123,9 +1123,9 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{"PolarizationVElectric", "::", "usage"}], "=", 
    "\"\<PolarizationVElectric[v,f[x,y,z],{x,y,z}] gives the electric-type \
-polarization operator \!\(\*SubsuperscriptBox[\(V\), \(v\), \
-\((E)\)]\)f=\[Del]\[Times](\[Del]\[Times](v f)) for a vector v and a scalar \
-function f.\nPolarizationVElectric[v,f] gives the functional form of \
+polarization operator \!\(\*SubsuperscriptBox[\(V\), \(v\), \((E)\)]\)f=-\
+\[Del]\[Times](\[Del]\[Times](v f)) for a vector v and a scalar function f.\n\
+PolarizationVElectric[v,f] gives the functional form of \
 \!\(\*SubsuperscriptBox[\(V\), \(v\), \((E)\)]\)f. The vector v can be a \
 fixed object or an explicit Function object.\>\""}], 
   ";"}], "\[IndentingNewLine]", 
@@ -1159,13 +1159,14 @@ gives the functional form of \!\(\*SuperscriptBox[\(V\), \
  RowBox[{
   RowBox[{"PolarizationVElectric", "[", 
    RowBox[{"vector_", ",", "scalarFunction_", ",", "variables_"}], "]"}], ":=", 
-  RowBox[{"Curl", "[", 
-   RowBox[{
-    RowBox[{"Curl", "[", 
-     RowBox[{
-      RowBox[{"Times", "[", 
-       RowBox[{"vector", ",", "scalarFunction"}], "]"}], ",", "variables"}], 
-     "]"}], ",", "variables"}], "]"}]}], "\[IndentingNewLine]", 
+  RowBox[{"-", 
+   RowBox[{"Curl", "[", 
+    RowBox[{
+     RowBox[{"Curl", "[", 
+      RowBox[{
+       RowBox[{"Times", "[", 
+        RowBox[{"vector", ",", "scalarFunction"}], "]"}], ",", "variables"}], 
+      "]"}], ",", "variables"}], "]"}]}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"PolarizationVMagnetic", "[", 
    RowBox[{"vector_", ",", "scalarFunction_", ",", "variables_"}], "]"}], ":=", 
@@ -1189,7 +1190,7 @@ gives the functional form of \!\(\*SuperscriptBox[\(V\), \
     RowBox[{"PolarizationVElectric", "[", 
      RowBox[{
       RowBox[{"UnitE", "[", "s", "]"}], ",", "scalarFunction", ",", 
-      "variables"}], "]"}], "+", 
+      "variables"}], "]"}], "-", 
     RowBox[{"\[ImaginaryI]", " ", "s", " ", 
      RowBox[{"PolarizationVMagnetic", "[", 
       RowBox[{
@@ -1353,12 +1354,25 @@ direction vector u={ux,uy,uz}.\nPolarization\[ScriptCapitalV]Electric[v,\
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"Polarization\[ScriptCapitalV]Electric", "::", "usage"}], "=", 
+    RowBox[{"Polarization\[ScriptCapitalV]Magnetic", "::", "usage"}], "=", 
     "\"\<Polarization\[ScriptCapitalV]Magnetic[v,u] gives the electric-type \
 polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \
 \((E)\)]\)= u\[Cross]v in Fourier space, in terms of the unit direction \
 vector u={ux,uy,uz}.\n\
 Polarization\[ScriptCapitalV]Magnetic[v,\[Theta],\[Phi]] gives the \
+electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\
+\), \(v\), \((E)\)]\)= u\[Cross]v in Fourier space, in terms of the polar \
+coordinates (\[Theta],\[Phi]) of the unit direction vector u.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Polarization\[ScriptCapitalV]Helicity", "::", "usage"}], "=", 
+    "\"\<Polarization\[ScriptCapitalV]Helicity[v,u] gives the electric-type \
+polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\), \(v\), \
+\((E)\)]\)= u\[Cross]v in Fourier space, in terms of the unit direction \
+vector u={ux,uy,uz}.\n\
+Polarization\[ScriptCapitalV]Helicity[v,\[Theta],\[Phi]] gives the \
 electric-type polarization vector \!\(\*SubsuperscriptBox[\(\[ScriptCapitalV]\
 \), \(v\), \((E)\)]\)= u\[Cross]v in Fourier space, in terms of the polar \
 coordinates (\[Theta],\[Phi]) of the unit direction vector u.\>\""}], ";"}], 
@@ -1400,6 +1414,44 @@ coordinates (\[Theta],\[Phi]) of the unit direction vector u.\>\""}], ";"}],
     RowBox[{
      RowBox[{"UnitU", "[", 
       RowBox[{"\[Theta]", ",", "\[Phi]"}], "]"}], ",", "v"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Polarization\[ScriptCapitalV]Helicity", "[", 
+   RowBox[{
+    RowBox[{"s", ":", 
+     RowBox[{"(", 
+      RowBox[{"1", "|", 
+       RowBox[{"-", "1"}]}], ")"}]}], ",", "u_List"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Polarization\[ScriptCapitalV]Electric", "[", 
+    RowBox[{
+     RowBox[{"UnitE", "[", "s", "]"}], ",", "u"}], "]"}], "-", 
+   RowBox[{"\[ImaginaryI]", " ", "s", " ", 
+    RowBox[{"Polarization\[ScriptCapitalV]Magnetic", "[", 
+     RowBox[{
+      RowBox[{"UnitE", "[", "s", "]"}], ",", "u"}], 
+     "]"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Polarization\[ScriptCapitalV]Helicity", "[", 
+    RowBox[{
+     RowBox[{"s", ":", 
+      RowBox[{"(", 
+       RowBox[{"1", "|", 
+        RowBox[{"-", "1"}]}], ")"}]}], ",", "\[Theta]_", ",", "\[Phi]_"}], 
+    "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Polarization\[ScriptCapitalV]Electric", "[", 
+     RowBox[{
+      RowBox[{"UnitE", "[", "s", "]"}], ",", 
+      RowBox[{"UnitU", "[", 
+       RowBox[{"\[Theta]", ",", "\[Phi]"}], "]"}]}], "]"}], "-", 
+    RowBox[{"\[ImaginaryI]", " ", "s", " ", 
+     RowBox[{"Polarization\[ScriptCapitalV]Magnetic", "[", 
+      RowBox[{
+       RowBox[{"UnitE", "[", "s", "]"}], ",", 
+       RowBox[{"UnitU", "[", 
+        RowBox[{"\[Theta]", ",", "\[Phi]"}], "]"}]}], "]"}]}]}]}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
@@ -3093,6 +3145,544 @@ l,m and seed polarization vector v.\>\""}], ";"}],
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"8ff8dcce-571d-421e-b883-9b3f923a1d9c"]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Visualization functions", \
+"Subsection",ExpressionUUID->"8a8dc1bc-2218-4913-b28b-2e1859938a3b"],
+
+Cell[CellGroupData[{
+
+Cell["SpinE", \
+"Subsubsection",ExpressionUUID->"66caace8-3ec1-4dd8-b1a8-1a63629ac4b2"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SpinE", "::", "usage"}], "=", 
+    "\"\<SpinE[E] gives the electric spin angular momentum vector \
+\!\(\*FractionBox[\(1\), \(\(|\)\(E\)\*SuperscriptBox[\(|\), \(2\)]\)]\)Im(E\
+\[Conjugate]\[Cross]E) for a complex electric-field amplitude E.\>\""}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SpinE", "[", "vec_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Im", "[", 
+     RowBox[{"Cross", "[", 
+      RowBox[{
+       RowBox[{"Conjugate", "[", "vec", "]"}], ",", "vec"}], "]"}], "]"}], 
+    "/", 
+    SuperscriptBox[
+     RowBox[{"Norm", "[", "vec", "]"}], "2"]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"f8b485a1-8b21-4f80-b8fb-239014de9345"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["JonesPhase", \
+"Subsubsection",ExpressionUUID->"1697251d-ce24-417f-b22a-46d4896873fb"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"JonesPhase", "::", "usage"}], "=", 
+    "\"\<JonesPhase[v] gives the Jones phase of the vector v, \
+\!\(\*FractionBox[\(1\), \(2\)]\)arg(v\[CenterDot]v).\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"JonesPhase", "[", "vec_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"Arg", "[", 
+      RowBox[{"Dot", "[", 
+       RowBox[{"vec", ",", "vec"}], "]"}], "]"}], "/", "2"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"0c1cb73c-6689-4313-b0bc-f40e1260bc3f"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["JonesMajorAxisA", \
+"Subsubsection",ExpressionUUID->"41580f7a-c3c1-4066-abec-ff83f511372b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"JonesMajorAxisA", "::", "usage"}], "=", 
+    "\"\<JonesMajorAxisA[v] gives the major-axis vector of the polarization \
+ellipse marked by the complex vector v.\nJonesMajorAxisA[v,normFunction] \
+normalizes the ellipse by normFunction[v].\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"JonesMajorAxisA", "[", 
+    RowBox[{"vec_", ",", 
+     RowBox[{"normFunction_:", 
+      RowBox[{"(", 
+       RowBox[{"1", "&"}], ")"}]}]}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "vecF", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"vecF", "=", 
+       RowBox[{"vec", " ", 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"-", "I"}], " ", 
+          RowBox[{"JonesPhase", "[", "vec", "]"}]}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Re", "[", "vecF", "]"}], "/", 
+       RowBox[{"normFunction", "[", "vecF", "]"}]}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"110c80e3-a235-4497-98ce-7cfa58f6e56a"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["JonesMinorAxisB", \
+"Subsubsection",ExpressionUUID->"4c974227-3f6c-4768-aa9f-5e88cab41cca"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"JonesMinorAxisB", "::", "usage"}], "=", 
+    "\"\<JonesMinorAxisB[v] gives the minor-axis vector of the polarization \
+ellipse marked by the complex vector v.\nJonesMinorAxisB[v,normFunction] \
+normalizes the ellipse by normFunction[v].\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"JonesMinorAxisB", "[", 
+    RowBox[{"vec_", ",", 
+     RowBox[{"normFunction_:", 
+      RowBox[{"(", 
+       RowBox[{"1", "&"}], ")"}]}]}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "vecF", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"vecF", "=", 
+       RowBox[{"vec", " ", 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"-", "I"}], " ", 
+          RowBox[{"JonesPhase", "[", "vec", "]"}]}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Im", "[", "vecF", "]"}], "/", 
+       RowBox[{"normFunction", "[", "vecF", "]"}]}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"bc7c0151-fda6-4a02-a32b-a47c4cd6df32"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["FieldArrow", \
+"Subsubsection",ExpressionUUID->"b1a1efdf-95b0-4db4-bc66-0ee8c7c12d44"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FieldArrow", "::", "usage"}], "=", 
+    "\"\<FieldArrow[kind,f,{x,y,z}] produces a field arrow associated with \
+the field function f at the position (x,y,z), where the kind can be \\\"major\
+\\\" (for a major-axis arrow) or \\\"spin\\\" (for the electric spin vector).\
+\nFieldArrow[kind,f,{x,y,z},zoom] magnifies the position by the specified \
+zoom factor.\nFieldArrow[kind,f,{x,y,z},zoom,{tx,ty,tz}] translates the \
+position of the arrow by an offset {tx,ty,tz}.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FieldArrow", "[", 
+    RowBox[{"kind_", ",", "fieldFunction_", ",", 
+     RowBox[{"{", 
+      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], ",", 
+     RowBox[{"zoom_:", "1"}], ",", 
+     RowBox[{"translation_", ":", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}]}]}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "vect", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"vect", "=", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"kind", "\[Equal]", "\"\<major\>\""}], ",", 
+         RowBox[{"JonesMajorAxisA", "[", 
+          RowBox[{
+           RowBox[{"fieldFunction", "[", 
+            RowBox[{"x", ",", "y"}], "]"}], ",", "Norm"}], "]"}], ",", 
+         RowBox[{"SpinE", "[", 
+          RowBox[{"fieldFunction", "[", 
+           RowBox[{"x", ",", "y"}], "]"}], "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ColorData", "[", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"kind", "\[Equal]", "\"\<major\>\""}], ",", 
+            "\"\<SolarColors\>\"", ",", "\"\<Rainbow\>\""}], "]"}], "]"}], 
+         "[", 
+         FractionBox[
+          RowBox[{
+           RowBox[{"-", 
+            RowBox[{"Re", "[", 
+             RowBox[{
+             "vect", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+             "]"}]}], "+", "1"}], 
+          RowBox[{"2", 
+           RowBox[{"Norm", "[", "vect", "]"}]}]], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Arrow", "[", 
+         RowBox[{"Tube", "[", "\[IndentingNewLine]", 
+          RowBox[{"Chop", "[", 
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"zoom", 
+               RowBox[{"{", 
+                RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "+", 
+              "translation"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"zoom", 
+               RowBox[{"{", 
+                RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "+", 
+              "translation", "+", "vect"}]}], "\[IndentingNewLine]", "}"}], 
+           "]"}], "\[IndentingNewLine]", "]"}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"42526ef0-5e98-4039-9c36-83d13323a7f0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["PlotFieldArrows", \
+"Subsubsection",ExpressionUUID->"f9481aca-0c54-4c7c-a2c9-e5bac03f2aa3"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"PlotFieldArrows", "::", "usage"}], "=", 
+    "\"\<PlotFieldArrows[f,kind,rmax] plots a field-arrow plot (for arrows of \
+the chosen kind, either \\\"major\\\" axis or \\\"spin\\\" vector) for the \
+vector field function f, for radial coordinate from 0 to rmax. \n\
+PlotFieldArrows[f,kind,sm,zoom] plots a field-arrow plot with a magnification \
+zoom on the arrow positions.\nPlotFieldArrows[f,kind,sm,zoom,{tx,ty,tz}] \
+plots a field-arrow plot with an offset of {tx,ty,tz}.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PlotFieldArrows", "[", 
+    RowBox[{"fieldFunction_", ",", "kind_", ",", "rmax_", ",", 
+     RowBox[{"zoom_", ":", "1"}], ",", 
+     RowBox[{"translation_", ":", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}]}]}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Graphics3D", "[", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Arrowheads", "[", "0.02", "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Thickness", "[", "0.005", "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"FieldArrow", "[", 
+             RowBox[{"kind", ",", "fieldFunction", ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"r", " ", 
+                 RowBox[{"Cos", "[", "\[Phi]", "]"}]}], ",", 
+                RowBox[{"r", " ", 
+                 RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ",", "0"}], "}"}], 
+              ",", "zoom", ",", "translation"}], "]"}], "\[IndentingNewLine]",
+             ",", 
+            RowBox[{"{", 
+             RowBox[{"\[Phi]", ",", "0", ",", 
+              RowBox[{"2", "\[Pi]"}], ",", 
+              RowBox[{"2", 
+               RowBox[{"\[Pi]", "/", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"6", "r"}], " ", "+", "1"}], ")"}]}]}]}], "}"}]}], 
+           "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"r", ",", "0", ",", "rmax", ",", 
+            RowBox[{"rmax", "/", "10."}]}], "}"}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"240f1009-43a0-4a8f-85d9-defc48aedd7d"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["FieldEllipse", \
+"Subsubsection",ExpressionUUID->"570f264a-5ca2-460c-9929-0883f362a8fb"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FieldEllipse", "::", "usage"}], "=", 
+    "\"\<FieldEllipse[f,{x,y,z},a] plots the polarization ellipse of the \
+vector field function f at position (x,y,z), with amplitude multiplier a.\n\
+FieldEllipse[f,{x,y,z},a,normFunction] normalizes the field values by the \
+maximum of normFunction over a period. The default is (1&) and is inactive; \
+for unit normalization, set to Norm.\n\
+FieldEllipse[f,{x,y,z},a,normFunction,zoom] magnifies the position by the \
+specified zoom factor.\n\
+FieldEllipse[f,{x,y,z},a,normFunction,zoom,{tx,ty,tz}] translates the \
+position of the ellipse by an offset {tx,ty,tz}.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FieldEllipse", "[", 
+    RowBox[{"fieldFunction_", ",", 
+     RowBox[{"{", 
+      RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], ",", "amplitude_", ",", 
+     RowBox[{"normFunction_:", 
+      RowBox[{"(", 
+       RowBox[{"1", "&"}], ")"}]}], ",", 
+     RowBox[{"zoom_:", "1"}], ",", 
+     RowBox[{"translation_", ":", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}]}]}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"field", ",", "points", ",", "norm"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"field", "=", 
+       RowBox[{"fieldFunction", "[", 
+        RowBox[{"x", ",", "y", ",", "0"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"points", "=", 
+       RowBox[{"Table", "[", " ", 
+        RowBox[{
+         RowBox[{"Re", "[", 
+          RowBox[{
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Omega]t"}]], "field"}], 
+          "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\[Omega]t", ",", "0.", ",", 
+           RowBox[{"360", "\[Degree]"}], ",", 
+           RowBox[{"5", "\[Degree]"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"norm", "=", 
+       RowBox[{"Max", "[", 
+        RowBox[{"normFunction", "/@", "points"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Polygon", "[", "\[IndentingNewLine]", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{"Function", "[", 
+          RowBox[{"translation", "+", 
+           RowBox[{"zoom", 
+            RowBox[{"{", 
+             RowBox[{"x", ",", "y", ",", "0"}], "}"}]}], "+", 
+           RowBox[{
+            FractionBox["amplitude", "norm"], "#"}]}], "]"}], ",", "points"}],
+         "]"}], "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"f504af73-2cdd-4939-bc73-e19bbaa2f2ed"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["PlotFieldEllipses", \
+"Subsubsection",ExpressionUUID->"0fc5f976-5313-4194-83cb-b2cf9c576b7d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"PlotFieldEllipses", "::", "usage"}], "=", 
+    "\"\<PlotFieldEllipses[f,amplitude,rmax] plots a field-ellipse plot for \
+the vector field function f, for radial coordinate from 0 to rmax. \n\
+PlotFieldEllipses[f,amplitude,rmax,normFunction] uses the given normFunction \
+to normalize the ellipses.\n\
+PlotFieldEllipses[f,amplitude,rmax,normFunction,zoom] uses a magnification \
+zoom on the ellipse positions.\n\
+PlotFieldEllipses[f,amplitude,rmax,normFunction,{tx,ty,tz}] translates the \
+ellipses by an offset {tx,ty,tz}.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PlotFieldEllipses", "[", 
+    RowBox[{"fieldFunction_", ",", "amplitude_", ",", "rmax_", ",", 
+     RowBox[{"normFunction_:", "Norm"}], ",", 
+     RowBox[{"zoom_:", "1"}], ",", 
+     RowBox[{"translation_", ":", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}]}]}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Graphics3D", "[", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"EdgeForm", "[", 
+         RowBox[{"{", 
+          RowBox[{"Thick", ",", "Black"}], "}"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"FaceForm", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           InterpretationBox[
+            ButtonBox[
+             TooltipBox[
+              GraphicsBox[{
+                {GrayLevel[0], RectangleBox[{0, 0}]}, 
+                {GrayLevel[0], RectangleBox[{1, -1}]}, 
+                {RGBColor[0.25, 0.75, 0.75], RectangleBox[{0, -1}, {2, 1}]}},
+               AspectRatio->1,
+               DefaultBaseStyle->"ColorSwatchGraphics",
+               Frame->True,
+               FrameStyle->RGBColor[0.16666666666666669`, 0.5, 0.5],
+               FrameTicks->None,
+               
+               ImageSize->
+                Dynamic[{
+                 Automatic, 
+                  1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                   Magnification])}],
+               PlotRangePadding->None],
+              "RGBColor[0.25, 0.75, 0.75]"],
+             Appearance->None,
+             BaseStyle->{},
+             BaselinePosition->Baseline,
+             ButtonFunction:>With[{Typeset`box$ = EvaluationBox[]}, 
+               If[
+                Not[
+                 AbsoluteCurrentValue["Deployed"]], 
+                SelectionMove[Typeset`box$, All, Expression]; 
+                FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                FrontEnd`Private`$ColorSelectorInitialColor = 
+                 RGBColor[0.25, 0.75, 0.75]; 
+                FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                MathLink`CallFrontEnd[
+                  FrontEnd`AttachCell[Typeset`box$, 
+                   FrontEndResource["RGBColorValueSelector"], {
+                   0, {Left, Bottom}}, {Left, Top}, 
+                   "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]],
+             DefaultBaseStyle->{},
+             Evaluator->Automatic,
+             Method->"Preemptive"],
+            RGBColor[0.25, 0.75, 0.75],
+            Editable->False,
+            Selectable->False], ",", 
+           RowBox[{"Specularity", "[", "0", "]"}]}], "}"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"FieldEllipse", "[", 
+             RowBox[{"fieldFunction", ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"r", " ", 
+                 RowBox[{"Cos", "[", "\[Phi]", "]"}]}], ",", 
+                RowBox[{"r", " ", 
+                 RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ",", "0"}], "}"}], 
+              ",", "amplitude", ",", "normFunction", ",", "zoom", ",", 
+              "translation"}], "]"}], "\[IndentingNewLine]", ",", 
+            RowBox[{"{", 
+             RowBox[{"\[Phi]", ",", "0", ",", 
+              RowBox[{"2", "\[Pi]"}], ",", 
+              RowBox[{"2", 
+               RowBox[{"\[Pi]", "/", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"6", "r"}], " ", "+", "1"}], ")"}]}]}]}], "}"}]}], 
+           "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"r", ",", "0", ",", "rmax", ",", 
+            RowBox[{"rmax", "/", "10."}]}], "}"}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"28850af2-7d13-46ce-802c-0ea6e18535a1"]
 }, Closed]]
 }, Open  ]]
 }, Open  ]],
