@@ -347,6 +347,24 @@ End[];
 
 
 (* ::Input::Initialization:: *)
+Poincarana::usage="Poincarana[E] gives the Poincarana-representation vectors {\!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \(1\)]\),\!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \(2\)]\)} for the electric-field complex amplitude E=\!\(\*OverscriptBox[\(E\), \(\[RightArrow]\)]\)={Ex,Ey,Ez}, given by \!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \(i\)]\)=\[PlusMinus]\!\(\*SuperscriptBox[\(f\), \(2\)]\)\!\(\*OverscriptBox[\(a\), \(\[RightArrow]\)]\)+\!\(\*OverscriptBox[\(S\), \(\[RightArrow]\)]\), where";
+
+Begin["`Private`"];
+
+Poincarana[vectorE_]:=Module[{vectorF,comp,\[Alpha],\[Beta],avec,jvec},
+vectorF=-Exp[-I JonesPhase[vectorE]]vectorE;
+\[Alpha]=Chop[vectorF.vectorF/Norm[vectorF]^2];
+\[Beta]=Sqrt[1-\[Alpha]^2];
+avec=Re[vectorF]/Norm[Re[vectorF]];
+jvec=If[Norm[Im[vectorF]]==0,0,Cross[avec,Im[vectorF]/Norm[Im[vectorF]]]];
+
+{\[Alpha] avec+\[Beta] jvec,-\[Alpha] avec+\[Beta] jvec}
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
 FieldArrow::usage="FieldArrow[kind,f,{x,y,z}] produces a field arrow associated with the field function f at the position (x,y,z), where the kind can be \"major\" (for a major-axis arrow) or \"spin\" (for the electric spin vector).
 FieldArrow[kind,f,{x,y,z},zoom] magnifies the position by the specified zoom factor.
 FieldArrow[kind,f,{x,y,z},zoom,{tx,ty,tz}] translates the position of the arrow by an offset {tx,ty,tz}.";

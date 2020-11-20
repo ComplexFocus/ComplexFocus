@@ -3317,6 +3317,96 @@ normalizes the ellipse by normFunction[v].\>\""}], ";"}],
 
 Cell[CellGroupData[{
 
+Cell["Poincarana", \
+"Subsubsection",ExpressionUUID->"55ba8731-ed80-4d8b-a43b-8746a95404ac"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Poincarana", "::", "usage"}], "=", 
+    "\"\<Poincarana[E] gives the Poincarana-representation vectors \
+{\!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \
+\(1\)]\),\!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \
+\(2\)]\)} for the electric-field complex amplitude \
+E=\!\(\*OverscriptBox[\(E\), \(\[RightArrow]\)]\)={Ex,Ey,Ez}, given by \
+\!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \(i\)]\)=\
+\[PlusMinus]\!\(\*SuperscriptBox[\(f\), \(2\)]\)\!\(\*OverscriptBox[\(a\), \(\
+\[RightArrow]\)]\)+\!\(\*OverscriptBox[\(S\), \(\[RightArrow]\)]\), \
+where\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Poincarana", "[", "vectorE_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "vectorF", ",", "comp", ",", "\[Alpha]", ",", "\[Beta]", ",", "avec", 
+       ",", "jvec"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"vectorF", "=", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"-", "I"}], " ", 
+           RowBox[{"JonesPhase", "[", "vectorE", "]"}]}], "]"}]}], 
+        "vectorE"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"\[Alpha]", "=", 
+       RowBox[{"Chop", "[", 
+        RowBox[{
+         RowBox[{"vectorF", ".", "vectorF"}], "/", 
+         SuperscriptBox[
+          RowBox[{"Norm", "[", "vectorF", "]"}], "2"]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"\[Beta]", "=", 
+       RowBox[{"Sqrt", "[", 
+        RowBox[{"1", "-", 
+         SuperscriptBox["\[Alpha]", "2"]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"avec", "=", 
+       RowBox[{
+        RowBox[{"Re", "[", "vectorF", "]"}], "/", 
+        RowBox[{"Norm", "[", 
+         RowBox[{"Re", "[", "vectorF", "]"}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"jvec", "=", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Norm", "[", 
+           RowBox[{"Im", "[", "vectorF", "]"}], "]"}], "\[Equal]", "0"}], ",",
+          "0", ",", 
+         RowBox[{"Cross", "[", 
+          RowBox[{"avec", ",", 
+           RowBox[{
+            RowBox[{"Im", "[", "vectorF", "]"}], "/", 
+            RowBox[{"Norm", "[", 
+             RowBox[{"Im", "[", "vectorF", "]"}], "]"}]}]}], "]"}]}], "]"}]}],
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"\[Alpha]", " ", "avec"}], "+", 
+         RowBox[{"\[Beta]", " ", "jvec"}]}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "\[Alpha]"}], " ", "avec"}], "+", 
+         RowBox[{"\[Beta]", " ", "jvec"}]}]}], "}"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"d254f39d-34f6-4ca0-84d8-83214ee749d7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["FieldArrow", \
 "Subsubsection",ExpressionUUID->"b1a1efdf-95b0-4db4-bc66-0ee8c7c12d44"],
 
