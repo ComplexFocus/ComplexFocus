@@ -40,7 +40,7 @@ $ComplexFocusVersion:="ComplexFocus v1.0, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Tue 1 Dec 2020 19:46:55";
+$ComplexFocusTimestamp="Tue 1 Dec 2020 19:53:45";
 End[];
 
 
@@ -446,10 +446,6 @@ PlotFieldArrows[fieldFunction_,kind_,rmax_,zoom_:1,translation_:{0,0,0},opts:Opt
 Graphics3D[{
 Arrowheads[0.02],
 Thickness[0.005],
-(*Table[Table[
-FieldArrow[kind,fieldFunction,{r Cos[\[Phi]],r Sin[\[Phi]],0},zoom,translation]
-,{\[Phi],0,2\[Pi],2\[Pi]/(6r +1)}],
-{r,0,rmax,rmax/OptionValue[RadialPoints]}]*)
 Table[
 FieldArrow[kind,fieldFunction,Join[point,{0}],zoom,translation]
 ,{point,UniformRadialGrid[OptionValue[RadialPoints],OptionValue[FirstRingPoints],rmax/OptionValue[RadialPoints]]}]
@@ -466,8 +462,7 @@ FieldEllipse[f,{x,y,z},a,normFunction,zoom] magnifies the position by the specif
 FieldEllipse[f,{x,y,z},a,normFunction,zoom,{tx,ty,tz}] translates the position of the ellipse by an offset {tx,ty,tz}.";
 
 Begin["`Private`"];
-Options[FieldEllipse]={(*PlotStyle\[Rule]{},*)PlotPoints->72+1(*,RadialPoints\[Rule]None*)};
-(*PlotStyle included here just so PlotFieldEllipses can pass the options without worrying about unacceptable values.*)
+Options[FieldEllipse]={PlotPoints->72+1};
 
 FieldEllipse[fieldFunction_,{x_,y_,z_},amplitude_,normFunction_:(1&),zoom_:1,translation_:{0,0,0},opts:OptionsPattern[]]:=Block[{field,points,norm},
 field=fieldFunction[x,y,0];
@@ -501,12 +496,8 @@ Graphics3D[{
 EdgeForm[{Thick,Black}],
 FaceForm[{RGBColor[0.25, 0.75, 0.75],Specularity[0]}],
 OptionValue[PlotStyle],
-(*Table[Table[
-FieldEllipse[fieldFunction,{r Cos[\[Phi]],r Sin[\[Phi]],0},amplitude,normFunction,zoom,translation,opts]
-,{\[Phi],0,2\[Pi],2\[Pi]/(6r +1)}],
-{r,0,rmax,rmax/OptionValue[RadialPoints]}]*)
 Table[
-FieldEllipse[fieldFunction,Join[point,{0}],amplitude,normFunction,zoom,translation,(*opts*)Sequence@@FilterRules[{opts},Options[FieldEllipse]]]
+FieldEllipse[fieldFunction,Join[point,{0}],amplitude,normFunction,zoom,translation,Sequence@@FilterRules[{opts},Options[FieldEllipse]]]
 ,{point,UniformRadialGrid[OptionValue[RadialPoints],OptionValue[FirstRingPoints],rmax/OptionValue[RadialPoints]]}]
 }]
 ]

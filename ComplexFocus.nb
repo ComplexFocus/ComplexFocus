@@ -10,8 +10,11 @@ Cell[CellGroupData[{
 
 Cell[TextData[{
  "\[Copyright] Rodrigo Guti\[EAcute]rrez-Cuevas & Emilio Pisanty (2020). \
-Licensed under GPL and CC BY-SA.\nThis notebook generates the package file \
-for the ComplexFocus package. For updates and additional information, go to ",
+Licensed under GPL and CC BY-SA.\n",
+ StyleBox[" ",
+  FontSize->3],
+ "\nThis notebook generates the package file for the ComplexFocus package. \
+For updates and additional information, go to ",
  ButtonBox["https://github.com/ComplexFocus/ComplexFocus",
   BaseStyle->"Hyperlink",
   ButtonData->{
@@ -48,8 +51,8 @@ Cell[BoxData[
      RowBox[{"ComplexFocus", "."}]}]}]}], "\[IndentingNewLine]", 
   "*)"}]], "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.},
- InitializationCell->
-  True,ExpressionUUID->"82d38177-9df9-4b82-9d60-a29240b5c273"]
+ InitializationCell->True,
+ CellLabel->"In[41]:=",ExpressionUUID->"82d38177-9df9-4b82-9d60-a29240b5c273"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -406,8 +409,8 @@ Cell["Initialization", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"BeginPackage", "[", "\"\<ComplexFocus`\>\"", "]"}], ";"}]], "Input",
- InitializationCell->
-  True,ExpressionUUID->"d8194a12-20ba-4527-9da4-5c21f77858c8"]
+ InitializationCell->True,
+ CellLabel->"In[42]:=",ExpressionUUID->"d8194a12-20ba-4527-9da4-5c21f77858c8"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -437,8 +440,8 @@ package in use and its timestamp.\>\""}], ";"}], "\[IndentingNewLine]",
    RowBox[{"$ComplexFocusTimestamp", "::", "usage"}], "=", 
    "\"\<$ComplexFocusTimestamp prints the timestamp of the current version of \
 the ComplexFocus package.\>\""}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"aa97ee0f-f35a-441d-9482-ce45b1a816f6"],
+ InitializationCell->True,
+ CellLabel->"In[43]:=",ExpressionUUID->"aa97ee0f-f35a-441d-9482-ce45b1a816f6"],
 
 Cell["\<\
 The timestamp is updated every time this notebook is saved, via an \
@@ -518,18 +521,18 @@ Cell[BoxData[{
   RowBox[{"$ComplexFocusVersion", ":=", 
    RowBox[{"\"\<ComplexFocus v1.0, \>\"", "<>", "$ComplexFocusTimestamp"}]}], 
   ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"90617182-59d4-4545-b4c7-e01a2308359e"],
+ InitializationCell->True,
+ CellLabel->"In[45]:=",ExpressionUUID->"90617182-59d4-4545-b4c7-e01a2308359e"],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 19:46:55\>\""}], 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 19:53:45\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"a41ec57d-60bd-4205-b6ad-cee02e21fc30"]
+  "version-timestamp",ExpressionUUID->"1de6256b-25c9-4089-8981-07b24d24e870"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -543,8 +546,8 @@ Cell[BoxData[
    RowBox[{"$ComplexFocusDirectory", "::", "usage"}], "=", 
    "\"\<$ComplexFocusDirectory is the directory where the current \
 ComplexFocus package instance is located.\>\""}], ";"}]], "Input",
- InitializationCell->
-  True,ExpressionUUID->"c87f6883-8e5e-4a34-a1b9-2f3cdfa24230"],
+ InitializationCell->True,
+ CellLabel->"In[49]:=",ExpressionUUID->"c87f6883-8e5e-4a34-a1b9-2f3cdfa24230"],
 
 Cell[BoxData[{
  RowBox[{
@@ -598,8 +601,8 @@ Cell[BoxData[{
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"f4003c50-c4bf-43a7-96de-6f1292ddff7e"]
+ InitializationCell->True,
+ CellLabel->"In[50]:=",ExpressionUUID->"f4003c50-c4bf-43a7-96de-6f1292ddff7e"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -618,8 +621,8 @@ ComplexFocus package if there is one.\>\""}], ";"}], "\[IndentingNewLine]",
    RowBox[{"$ComplexFocusCommit", "::", "OS"}], "=", 
    "\"\<$ComplexFocusCommit has only been tested on Linux.\>\""}], 
   ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"fce25619-8923-4995-9cae-ebb712b0cd01"],
+ InitializationCell->True,
+ CellLabel->"In[53]:=",ExpressionUUID->"fce25619-8923-4995-9cae-ebb712b0cd01"],
 
 Cell[BoxData[{
  RowBox[{
@@ -647,8 +650,8 @@ Cell[BoxData[{
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"56b69d2c-3f13-4848-bcc7-6db05f85bf58"]
+ InitializationCell->True,
+ CellLabel->"In[55]:=",ExpressionUUID->"56b69d2c-3f13-4848-bcc7-6db05f85bf58"]
 }, Closed]]
 }, Open  ]]
 }, Open  ]],
@@ -820,8 +823,8 @@ does the same.\>\""}], ";"}], "\[IndentingNewLine]",
    "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"53f36aab-68fb-4989-8c67-cfe0a0e9f7dd"]
+ InitializationCell->True,
+ CellLabel->"In[58]:=",ExpressionUUID->"53f36aab-68fb-4989-8c67-cfe0a0e9f7dd"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -963,8 +966,8 @@ spherical Bessel function, \!\(\*SubscriptBox[\(aj\), \
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"2595089e-5a75-43d8-87be-ae8274f74fca"]
+ InitializationCell->True,
+ CellLabel->"In[63]:=",ExpressionUUID->"2595089e-5a75-43d8-87be-ae8274f74fca"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -1006,8 +1009,8 @@ m\)]\)(x,y,z)=4\!\(\*SuperscriptBox[\(\[Pi]i\), \
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"97bacd18-5916-4ffd-9528-2285cc18b967"]
+ InitializationCell->True,
+ CellLabel->"In[71]:=",ExpressionUUID->"97bacd18-5916-4ffd-9528-2285cc18b967"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -1109,8 +1112,8 @@ polar coordinates (\[Theta],\[Phi]).\>\""}], ";"}], "\[IndentingNewLine]",
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"4c3f4462-b199-44ef-ba89-fc0bf84bfd63"]
+ InitializationCell->True,
+ CellLabel->"In[75]:=",ExpressionUUID->"4c3f4462-b199-44ef-ba89-fc0bf84bfd63"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -1320,8 +1323,8 @@ gives the functional form of \!\(\*SuperscriptBox[\(V\), \
     "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"80eb1906-037d-4820-a34f-a0b6806a2832"]
+ InitializationCell->True,
+ CellLabel->"In[85]:=",ExpressionUUID->"80eb1906-037d-4820-a34f-a0b6806a2832"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -1455,8 +1458,8 @@ coordinates (\[Theta],\[Phi]) of the unit direction vector u.\>\""}], ";"}],
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"cb2890dd-d4d3-4448-9579-76a6088a8f5a"]
+ InitializationCell->True,
+ CellLabel->"In[98]:=",ExpressionUUID->"cb2890dd-d4d3-4448-9579-76a6088a8f5a"]
 }, Closed]]
 }, Open  ]],
 
@@ -1565,8 +1568,8 @@ complex-focus fields.\>\""}], ";"}],
      RowBox[{"q", "\[Rule]", "0"}]}], "]"}]}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"7b97419a-30b2-4c66-a884-1d467c588673"]
+ InitializationCell->True,
+ CellLabel->"In[109]:=",ExpressionUUID->"7b97419a-30b2-4c66-a884-1d467c588673"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -2090,9 +2093,9 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"End", "[", "]"}], ";"}]}]}]], "Input",
  InitializationCell->True,
- CellTags->
-  "CFNormTEM-SpecialCases",ExpressionUUID->"2200bde6-c85d-4894-ba79-\
-10a108545b34"],
+ CellTags->"CFNormTEM-SpecialCases",
+ CellLabel->
+  "In[117]:=",ExpressionUUID->"2200bde6-c85d-4894-ba79-10a108545b34"],
 
 Cell["\<\
 To kick-start the process, run SetOptions[EvaluationCell[],CellTags\[Rule]\
@@ -2202,8 +2205,8 @@ quasi-circular complex-focus fields.\>\""}], ";"}],
      RowBox[{"q", "\[Rule]", "0"}]}], "]"}]}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"b67db601-638a-4878-a6ff-13759b1c50ac"]
+ InitializationCell->True,
+ CellLabel->"In[135]:=",ExpressionUUID->"b67db601-638a-4878-a6ff-13759b1c50ac"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -2993,9 +2996,8 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"End", "[", "]"}], ";"}]}]}]], "Input",
  InitializationCell->True,
- CellTags->
-  "CFnormQuasiCircular-SpecialCases",ExpressionUUID->"a58f2859-3cd6-4dcd-887c-\
-05802dbd8793"]
+ CellTags->"CFnormQuasiCircular-SpecialCases",
+ CellLabel->"In[143]:=",ExpressionUUID->"a58f2859-3cd6-4dcd-887c-05802dbd8793"]
 }, Closed]]
 }, Open  ]],
 
@@ -3147,8 +3149,8 @@ momentum numbers l,m and seed polarization vector v.\>\""}], ";"}],
     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"8ff8dcce-571d-421e-b883-9b3f923a1d9c"]
+ InitializationCell->True,
+ CellLabel->"In[161]:=",ExpressionUUID->"8ff8dcce-571d-421e-b883-9b3f923a1d9c"]
 }, Closed]]
 }, Open  ]],
 
@@ -3185,8 +3187,8 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"0c1cb73c-6689-4313-b0bc-f40e1260bc3f"]
+ InitializationCell->True,
+ CellLabel->"In[169]:=",ExpressionUUID->"0c1cb73c-6689-4313-b0bc-f40e1260bc3f"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -3232,8 +3234,8 @@ normalizes the ellipse by normFunction[v].\>\""}], ";"}],
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"110c80e3-a235-4497-98ce-7cfa58f6e56a"]
+ InitializationCell->True,
+ CellLabel->"In[173]:=",ExpressionUUID->"110c80e3-a235-4497-98ce-7cfa58f6e56a"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -3279,8 +3281,8 @@ normalizes the ellipse by normFunction[v].\>\""}], ";"}],
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"bc7c0151-fda6-4a02-a32b-a47c4cd6df32"]
+ InitializationCell->True,
+ CellLabel->"In[177]:=",ExpressionUUID->"bc7c0151-fda6-4a02-a32b-a47c4cd6df32"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -3315,8 +3317,8 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"f8b485a1-8b21-4f80-b8fb-239014de9345"]
+ InitializationCell->True,
+ CellLabel->"In[181]:=",ExpressionUUID->"f8b485a1-8b21-4f80-b8fb-239014de9345"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -3456,8 +3458,8 @@ normalized major-axis direction.\>\""}], ";"}],
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"d254f39d-34f6-4ca0-84d8-83214ee749d7"]
+ InitializationCell->True,
+ CellLabel->"In[185]:=",ExpressionUUID->"d254f39d-34f6-4ca0-84d8-83214ee749d7"]
 }, Closed]]
 }, Open  ]],
 
@@ -3546,8 +3548,9 @@ uniform radial grid with n rings, m points on the first ring, and spacing of \
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"7de7f457-59cf-4799-bcb9-c03b7b7486af"],
+ InitializationCell->True,
+ CellLabel->
+  "In[189]:=",ExpressionUUID->"7de7f457-59cf-4799-bcb9-c03b7b7486af"],
 
 Cell["\<\
 This requires the function Subdivide, which dates from v10.1, so here is a \
@@ -3613,8 +3616,8 @@ the interval \\!\\(\\*SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\
       RowBox[{"0", ",", "1", ",", "n"}], "]"}]}], ";", "\[IndentingNewLine]", 
     "\[IndentingNewLine]", 
     RowBox[{"End", "[", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]], "Input",
- InitializationCell->
-  True,ExpressionUUID->"19d50526-5dd0-4e9b-be71-0f0dc46643e8"]
+ InitializationCell->True,
+ CellLabel->"In[195]:=",ExpressionUUID->"19d50526-5dd0-4e9b-be71-0f0dc46643e8"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -3703,8 +3706,8 @@ position of the arrow by an offset {tx,ty,tz}.\>\""}], ";"}],
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"42526ef0-5e98-4039-9c36-83d13323a7f0"]
+ InitializationCell->True,
+ CellLabel->"In[196]:=",ExpressionUUID->"42526ef0-5e98-4039-9c36-83d13323a7f0"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -3754,35 +3757,6 @@ plots a field-arrow plot with an offset of {tx,ty,tz}.\>\""}], ";"}],
        RowBox[{
         RowBox[{"Arrowheads", "[", "0.02", "]"}], ",", "\[IndentingNewLine]", 
         RowBox[{"Thickness", "[", "0.005", "]"}], ",", "\[IndentingNewLine]", 
-        RowBox[{"(*", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"Table", "[", "\[IndentingNewLine]", 
-            RowBox[{
-             RowBox[{"FieldArrow", "[", 
-              RowBox[{"kind", ",", "fieldFunction", ",", 
-               RowBox[{"{", 
-                RowBox[{
-                 RowBox[{"r", " ", 
-                  RowBox[{"Cos", "[", "\[Phi]", "]"}]}], ",", 
-                 RowBox[{"r", " ", 
-                  RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ",", "0"}], "}"}], 
-               ",", "zoom", ",", "translation"}], "]"}], 
-             "\[IndentingNewLine]", ",", 
-             RowBox[{"{", 
-              RowBox[{"\[Phi]", ",", "0", ",", 
-               RowBox[{"2", "\[Pi]"}], ",", 
-               RowBox[{"2", 
-                RowBox[{"\[Pi]", "/", 
-                 RowBox[{"(", 
-                  RowBox[{
-                   RowBox[{"6", "r"}], " ", "+", "1"}], ")"}]}]}]}], "}"}]}], 
-            "]"}], ",", "\[IndentingNewLine]", 
-           RowBox[{"{", 
-            RowBox[{"r", ",", "0", ",", "rmax", ",", 
-             RowBox[{"rmax", "/", 
-              RowBox[{"OptionValue", "[", "RadialPoints", "]"}]}]}], "}"}]}], 
-          "]"}], "*)"}], "\[IndentingNewLine]", 
         RowBox[{"Table", "[", "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{"FieldArrow", "[", 
@@ -3804,9 +3778,9 @@ plots a field-arrow plot with an offset of {tx,ty,tz}.\>\""}], ";"}],
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"240f1009-43a0-4a8f-85d9-defc48aedd7d"]
-}, Open  ]],
+ InitializationCell->True,
+ CellLabel->"In[200]:=",ExpressionUUID->"240f1009-43a0-4a8f-85d9-defc48aedd7d"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -3836,22 +3810,8 @@ position of the ellipse by an offset {tx,ty,tz}.\>\""}], ";"}],
    RowBox[{
     RowBox[{"Options", "[", "FieldEllipse", "]"}], "=", 
     RowBox[{"{", 
-     RowBox[{"(*", 
-      RowBox[{
-       RowBox[{"PlotStyle", "\[Rule]", 
-        RowBox[{"{", "}"}]}], ","}], "*)"}], 
      RowBox[{"PlotPoints", "\[Rule]", 
-      RowBox[{"72", "+", "1"}]}], 
-     RowBox[{"(*", 
-      RowBox[{",", 
-       RowBox[{"RadialPoints", "\[Rule]", "None"}]}], "*)"}], "}"}]}], ";"}], 
-  "\[IndentingNewLine]", 
-  RowBox[{"(*", 
-   RowBox[{
-   "PlotStyle", " ", "included", " ", "here", " ", "just", " ", "so", " ", 
-    "PlotFieldEllipses", " ", "can", " ", "pass", " ", "the", " ", "options", 
-    " ", "without", " ", "worrying", " ", "about", " ", "unacceptable", " ", 
-    RowBox[{"values", "."}]}], "*)"}], 
+      RowBox[{"72", "+", "1"}]}], "}"}]}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -3915,9 +3875,9 @@ position of the ellipse by an offset {tx,ty,tz}.\>\""}], ";"}],
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"f504af73-2cdd-4939-bc73-e19bbaa2f2ed"]
-}, Open  ]],
+ InitializationCell->True,
+ CellLabel->"In[205]:=",ExpressionUUID->"f504af73-2cdd-4939-bc73-e19bbaa2f2ed"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -4042,36 +4002,6 @@ ring.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
         "\[IndentingNewLine]", 
         RowBox[{"OptionValue", "[", "PlotStyle", "]"}], ",", 
         "\[IndentingNewLine]", 
-        RowBox[{"(*", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"Table", "[", "\[IndentingNewLine]", 
-            RowBox[{
-             RowBox[{"FieldEllipse", "[", 
-              RowBox[{"fieldFunction", ",", 
-               RowBox[{"{", 
-                RowBox[{
-                 RowBox[{"r", " ", 
-                  RowBox[{"Cos", "[", "\[Phi]", "]"}]}], ",", 
-                 RowBox[{"r", " ", 
-                  RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ",", "0"}], "}"}], 
-               ",", "amplitude", ",", "normFunction", ",", "zoom", ",", 
-               "translation", ",", "opts"}], "]"}], "\[IndentingNewLine]", 
-             ",", 
-             RowBox[{"{", 
-              RowBox[{"\[Phi]", ",", "0", ",", 
-               RowBox[{"2", "\[Pi]"}], ",", 
-               RowBox[{"2", 
-                RowBox[{"\[Pi]", "/", 
-                 RowBox[{"(", 
-                  RowBox[{
-                   RowBox[{"6", "r"}], " ", "+", "1"}], ")"}]}]}]}], "}"}]}], 
-            "]"}], ",", "\[IndentingNewLine]", 
-           RowBox[{"{", 
-            RowBox[{"r", ",", "0", ",", "rmax", ",", 
-             RowBox[{"rmax", "/", 
-              RowBox[{"OptionValue", "[", "RadialPoints", "]"}]}]}], "}"}]}], 
-          "]"}], "*)"}], "\[IndentingNewLine]", 
         RowBox[{"Table", "[", "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{"FieldEllipse", "[", 
@@ -4080,7 +4010,6 @@ ring.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
              RowBox[{"point", ",", 
               RowBox[{"{", "0", "}"}]}], "]"}], ",", "amplitude", ",", 
             "normFunction", ",", "zoom", ",", "translation", ",", 
-            RowBox[{"(*", "opts", "*)"}], 
             RowBox[{"Sequence", "@@", 
              RowBox[{"FilterRules", "[", 
               RowBox[{
@@ -4100,9 +4029,9 @@ ring.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"28850af2-7d13-46ce-802c-0ea6e18535a1"]
-}, Open  ]]
+ InitializationCell->True,
+ CellLabel->"In[210]:=",ExpressionUUID->"28850af2-7d13-46ce-802c-0ea6e18535a1"]
+}, Closed]]
 }, Open  ]]
 }, Open  ]],
 
@@ -4579,8 +4508,6 @@ Cell[CellGroupData[{
 Cell["Polarization ellipses", \
 "Subsection",ExpressionUUID->"e83dc536-c8ea-4980-a00b-55ec83d21df8"],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[{
  RowBox[{"DateString", "[", "]"}], "\[IndentingNewLine]", 
  RowBox[{"DynamicModule", "[", 
@@ -4817,15 +4744,8 @@ Cell[BoxData[{
             SuperscriptBox["10", "0.2"]}], "]"}]}], "}"}]}], "]"}], "]"}]}], 
     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
   "]"}], "\[IndentingNewLine]", 
- RowBox[{"DateString", "[", 
-  "]"}]}], "Input",ExpressionUUID->"eeaf2a5a-75b3-4bfc-9494-2804f20a71ce"],
-
-Cell[BoxData["\<\"Mon 9 Nov 2020 15:21:14\"\>"], \
-"Output",ExpressionUUID->"187554d7-81ed-45e4-a52b-9e94480e8ccd"],
-
-Cell[BoxData["\<\"Mon 9 Nov 2020 15:22:17\"\>"], \
-"Output",ExpressionUUID->"068ce578-626c-42a6-8cb3-3f30153192a0"]
-}, Open  ]]
+ RowBox[{"DateString", "[", "]"}]}], "Input",
+ CellLabel->"In[220]:=",ExpressionUUID->"eeaf2a5a-75b3-4bfc-9494-2804f20a71ce"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -5145,8 +5065,8 @@ Cell["End of package", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"EndPackage", "[", "]"}], ";"}]], "Input",
- InitializationCell->
-  True,ExpressionUUID->"7bfde5e2-e60e-49b0-9216-395b306e3c3c"]
+ InitializationCell->True,
+ CellLabel->"In[218]:=",ExpressionUUID->"7bfde5e2-e60e-49b0-9216-395b306e3c3c"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -5158,8 +5078,8 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"DistributeDefinitions", "[", "\"\<ComplexFocus`\>\"", "]"}], 
   ";"}]], "Input",
- InitializationCell->
-  True,ExpressionUUID->"0b59eb5f-39e5-4fe3-a624-8b4b88bac2fa"]
+ InitializationCell->True,
+ CellLabel->"In[219]:=",ExpressionUUID->"0b59eb5f-39e5-4fe3-a624-8b4b88bac2fa"]
 }, Closed]]
 }, Open  ]]
 }, Open  ]]
