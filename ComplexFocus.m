@@ -40,7 +40,7 @@ $ComplexFocusVersion:="ComplexFocus v1.0, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Tue 1 Dec 2020 19:53:45";
+$ComplexFocusTimestamp="Tue 1 Dec 2020 22:39:54";
 End[];
 
 
@@ -413,20 +413,46 @@ End[];
 
 (* ::Input::Initialization:: *)
 FieldArrow::usage="FieldArrow[kind,f,{x,y,z}] produces a field arrow associated with the field function f at the position (x,y,z), where the kind can be \"major\" (for a major-axis arrow) or \"spin\" (for the electric spin vector).
-FieldArrow[kind,f,{x,y,z},zoom] magnifies the position by the specified zoom factor.
-FieldArrow[kind,f,{x,y,z},zoom,{tx,ty,tz}] translates the position of the arrow by an offset {tx,ty,tz}.";
+FieldArrow[kind,f,{x,y,z},A] multiplies the arrow length by an amplitude A.
+FieldArrow[kind,f,{x,y,z},A,zoom] magnifies the position by the specified zoom factor.
+FieldArrow[kind,f,{x,y,z},A,zoom,{tx,ty,tz}] translates the position of the arrow by an offset {tx,ty,tz}.";
+
+FieldArrowheadFunction::usage="FieldArrowheadFunction is an option for FieldArrow and PlotFieldArrows that specifies a function of the norm of the arrow vector that should output the size of arrowheads to use.";
+FieldArrowThicknessFunction::usage="FieldArrowThicknessFunction is an option for FieldArrow and PlotFieldArrows that specifies a function of the norm of the arrow vector that should output the tube diameter of the arrows.";
 
 Begin["`Private`"];
+Protect[FieldArrowThicknessFunction,FieldArrowheadFunction];
 
-FieldArrow[kind_,fieldFunction_,{x_,y_,z_},zoom_:1,translation_:{0,0,0}]:=Block[{vect},
-vect=If[kind=="major",JonesMajorAxisA[fieldFunction[x,y],Norm],SpinE[fieldFunction[x,y]]];
+Options[FieldArrow]={NormFunction->Norm,PlotStyle->{},FieldArrowThicknessFunction->None,FieldArrowheadFunction->None};
+
+FieldArrow[kind_,fieldFunction_,{x_,y_,z_},opts:OptionsPattern[]]:=FieldArrow[kind,fieldFunction,{x,y,z},1,1,{0,0,0},opts]
+FieldArrow[kind_,fieldFunction_,{x_,y_,z_},amplitude_,opts:OptionsPattern[]]:=FieldArrow[kind,fieldFunction,{x,y,z},amplitude,1,{0,0,0},opts]
+FieldArrow[kind_,fieldFunction_,{x_,y_,z_},amplitude_,zoom_,opts:OptionsPattern[]]:=FieldArrow[kind,fieldFunction,{x,y,z},amplitude,zoom,{0,0,0},opts]
+
+FieldArrow[kind_,fieldFunction_,{x_,y_,z_},amplitude_,zoom_,translation_,opts:OptionsPattern[]]:=Block[{vect},
+vect=Which[
+kind=="major",JonesMajorAxisA[fieldFunction[x,y,z],OptionValue[NormFunction]],
+kind=="minor",JonesMinorAxisB[fieldFunction[x,y,z],OptionValue[NormFunction]],
+kind=="spin",SpinE[fieldFunction[x,y,z]]
+];
 {
+If[
+Not[OptionValue[FieldArrowheadFunction]===None],
+Arrowheads[OptionValue[FieldArrowheadFunction][amplitude Norm[vect]]],
+{}],
+
 ColorData[If[kind=="major","SolarColors","Rainbow"]][(-Re[vect[[3]]]+1)/(2Norm[vect])],
+OptionValue[PlotStyle],
+
 Arrow[Tube[
 Chop[{
 zoom{x,y,z}+translation,
-zoom{x,y,z}+translation+vect
-}]
+zoom{x,y,z}+translation+amplitude*vect
+}],
+If[
+Not[OptionValue[FieldArrowThicknessFunction]===None],
+OptionValue[FieldArrowThicknessFunction][amplitude Norm[vect]],
+##&[]]
 ]]
 }
 ]
@@ -436,18 +462,23 @@ End[];
 
 (* ::Input::Initialization:: *)
 PlotFieldArrows::usage="PlotFieldArrows[f,kind,rmax] plots a field-arrow plot (for arrows of the chosen kind, either \"major\" axis or \"spin\" vector) for the vector field function f, for radial coordinate from 0 to rmax. 
-PlotFieldArrows[f,kind,sm,zoom] plots a field-arrow plot with a magnification zoom on the arrow positions.
-PlotFieldArrows[f,kind,sm,zoom,{tx,ty,tz}] plots a field-arrow plot with an offset of {tx,ty,tz}.";
+PlotFieldArrows[f,kind,sm,A] plots a field-arrow plot with amplitude A multiplying each arrow.
+PlotFieldArrows[f,kind,sm,A,zoom] plots a field-arrow plot with a magnification zoom on the arrow positions.
+PlotFieldArrows[f,kind,sm,A,zoom,{tx,ty,tz}] plots a field-arrow plot with an offset of {tx,ty,tz}.";
 
 Begin["`Private`"];
-Options[PlotFieldArrows]={RadialPoints->10,FirstRingPoints->4};
+Options[PlotFieldArrows]={RadialPoints->10,FirstRingPoints->4,PlotStyle->{},NormFunction->Norm,FieldArrowThicknessFunction->None,FieldArrowheadFunction->None};
 
-PlotFieldArrows[fieldFunction_,kind_,rmax_,zoom_:1,translation_:{0,0,0},opts:OptionsPattern[]]:=Block[{},
+PlotFieldArrows[fieldFunction_,kind_,rmax_,opts:OptionsPattern[]]:=PlotFieldArrows[fieldFunction,kind,rmax,1,1,{0,0,0},opts]
+PlotFieldArrows[fieldFunction_,kind_,rmax_,amplitude_,opts:OptionsPattern[]]:=PlotFieldArrows[fieldFunction,kind,rmax,amplitude,1,{0,0,0},opts]
+PlotFieldArrows[fieldFunction_,kind_,rmax_,amplitude_,zoom_,opts:OptionsPattern[]]:=PlotFieldArrows[fieldFunction,kind,rmax,amplitude,zoom,{0,0,0},opts]
+
+PlotFieldArrows[fieldFunction_,kind_,rmax_,amplitude_,zoom_,translation_,opts:OptionsPattern[]]:=Block[{},
 Graphics3D[{
 Arrowheads[0.02],
 Thickness[0.005],
 Table[
-FieldArrow[kind,fieldFunction,Join[point,{0}],zoom,translation]
+FieldArrow[kind,fieldFunction,Join[point,{0}],amplitude,zoom,translation,Sequence@@FilterRules[{opts},Options[FieldArrow]]]
 ,{point,UniformRadialGrid[OptionValue[RadialPoints],OptionValue[FirstRingPoints],rmax/OptionValue[RadialPoints]]}]
 }]
 ]
@@ -465,7 +496,7 @@ Begin["`Private`"];
 Options[FieldEllipse]={PlotPoints->72+1};
 
 FieldEllipse[fieldFunction_,{x_,y_,z_},amplitude_,normFunction_:(1&),zoom_:1,translation_:{0,0,0},opts:OptionsPattern[]]:=Block[{field,points,norm},
-field=fieldFunction[x,y,0];
+field=fieldFunction[x,y,z];
 points=Table[ Re[E^(-I \[Omega]t) field],{\[Omega]t,0.,360\[Degree],(360\[Degree])/(OptionValue[PlotPoints]-1)}];
 norm=Max[normFunction/@points];
 {
@@ -482,7 +513,7 @@ End[];
 PlotFieldEllipses::usage="PlotFieldEllipses[f,amplitude,rmax] plots a field-ellipse plot for the vector field function f, for radial coordinate from 0 to rmax. 
 PlotFieldEllipses[f,amplitude,rmax,normFunction] uses the given normFunction to normalize the ellipses.
 PlotFieldEllipses[f,amplitude,rmax,normFunction,zoom] uses a magnification zoom on the ellipse positions.
-PlotFieldEllipses[f,amplitude,rmax,normFunction,{tx,ty,tz}] translates the ellipses by an offset {tx,ty,tz}.";
+PlotFieldEllipses[f,amplitude,rmax,normFunction,zoom,{tx,ty,tz}] translates the ellipses by an offset {tx,ty,tz}.";
 
 RadialPoints::usage="RadialPoints is an option for PlotFieldArrows and PlotFieldEllipses that indicates how many radial points to use.";
 FirstRingPoints::usage="FirstRingPoints is an option for PlotFieldArrows and PlotFieldEllipses that indicates how many points to use on the first ring.";
@@ -491,7 +522,11 @@ Begin["`Private`"];
 Protect[RadialPoints];
 Options[PlotFieldEllipses]={PlotStyle->{},PlotPoints->72+1,RadialPoints->10,FirstRingPoints->4};
 
-PlotFieldEllipses[fieldFunction_,amplitude_,rmax_,normFunction_:Norm,zoom_:1,translation_:{0,0,0},opts:OptionsPattern[]]:=Block[{},
+PlotFieldEllipses[fieldFunction_,amplitude_,rmax_,opts:OptionsPattern[]]:=PlotFieldEllipses[fieldFunction,amplitude,rmax,Norm,1,{0,0,0},opts]
+PlotFieldEllipses[fieldFunction_,amplitude_,rmax_,normFunction_,opts:OptionsPattern[]]:=PlotFieldEllipses[fieldFunction,amplitude,rmax,normFunction,1,{0,0,0},opts]
+PlotFieldEllipses[fieldFunction_,amplitude_,rmax_,normFunction_,zoom_,opts:OptionsPattern[]]:=PlotFieldEllipses[fieldFunction,amplitude,rmax,normFunction,zoom,{0,0,0},opts]
+
+PlotFieldEllipses[fieldFunction_,amplitude_,rmax_,normFunction_,zoom_,translation_,opts:OptionsPattern[]]:=Block[{},
 Graphics3D[{
 EdgeForm[{Thick,Black}],
 FaceForm[{RGBColor[0.25, 0.75, 0.75],Specularity[0]}],
