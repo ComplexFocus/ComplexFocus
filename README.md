@@ -1,6 +1,12 @@
 ComplexFocus: Non-paraxial vector beams in Mathematica
 ======================================================
 
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4299910.svg)](https://doi.org/10.5281/zenodo.4299910)
+[![licensed under GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[<img src="https://licensebuttons.net/l/by-sa/3.0/88x31.png" title="licensed under CC BY-SA" height="20">](https://creativecommons.org/licenses/by-sa/4.0)
+[![GitHub release](https://img.shields.io/github/v/release/ComplexFocus/ComplexFocus.svg)](https://github.com/ComplexFocus/ComplexFocus/releases/)
+
 © Rodrigo Gutiérrez-Cuevas and Emilio Pisanty, 2020
 
 ComplexFocus is a Mathematica package that implements the Complex Focus fields, a family of vector beam solutions in nonparaxial optics, as described in the papers
