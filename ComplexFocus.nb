@@ -523,13 +523,13 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 11:07:30\>\""}], 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 11:22:08\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"728f2c41-40d0-44c1-90af-c64f98119abc"]
+  "version-timestamp",ExpressionUUID->"e15f2ca3-ede3-48b4-b9a9-7d27e462029b"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4917,24 +4917,42 @@ WindowMargins->{{
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
-PageHeaders->{{None, None, 
+PageHeaders->{{
    Cell[
     TextData[{
-     "RB", "-", "SFA", ":", " ", "Rotating", " ", "Bicircular", " ", "HHG", 
-      " ", "in", " ", "the", " ", "Strong", " ", "Field", " ", 
-      "Approximation", "|", "   ", 
+     "Rodrigo", " ", "Guti\[EAcute]rrez", "-", "Cuevas", " ", "and", " ", 
+      "Emilio", " ", "Pisanty"}], "Header", 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, 
+   Cell[
+    TextData[{
+     "ComplexFocus", ":", " ", "Non", "-", "paraxial", " ", "vector", " ", 
+      "beams", " ", "in", " ", "Mathematica", "|", "   ", 
       StyleBox[
        CounterBox["Page"], "PageNumber"]}], "Header", 
-    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}, {None, None, 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}, {
    Cell[
     TextData[{
-     "RB", "-", "SFA", ":", " ", "Rotating", " ", "Bicircular", " ", "HHG", 
-      " ", "in", " ", "the", " ", "Strong", " ", "Field", " ", 
-      "Approximation", "|", "   ", 
+     "Rodrigo", " ", "Guti\[EAcute]rrez", "-", "Cuevas", " ", "and", " ", 
+      "Emilio", " ", "Pisanty"}], "Header", 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, 
+   Cell[
+    TextData[{
+     "ComplexFocus", ":", " ", "Non", "-", "paraxial", " ", "vector", " ", 
+      "beams", " ", "in", " ", "Mathematica", "|", "   ", 
       StyleBox[
        CounterBox["Page"], "PageNumber"]}], "Header", 
     CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}},
-PageFooters->{{None, None, None}, {None, None, None}},
+PageFooters->{{
+   Cell[
+    TextData[{
+     "https", ":", "//", "github", ".", "com", "/", "ComplexFocus", "/", 
+      "ComplexFocus"}], "Footer", 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, None}, {
+   Cell[
+    TextData[{
+     "https", ":", "//", "github", ".", "com", "/", "ComplexFocus", "/", 
+      "ComplexFocus"}], "Footer", 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, None}},
 PageHeaderLines->{False, False},
 PageFooterLines->{False, False},
 PrintingOptions->{"FacingPages"->True,
