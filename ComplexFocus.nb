@@ -11,8 +11,7 @@ Cell[CellGroupData[{
 Cell[TextData[{
  "\[Copyright] Rodrigo Guti\[EAcute]rrez-Cuevas & Emilio Pisanty (2020). \
 Licensed under GPL and CC BY-SA.\nThis notebook generates the package file \
-for the ComplexFocus package. For updates and additional information, go to \
-",
+for the ComplexFocus package. For updates and additional information, go to ",
  ButtonBox["https://github.com/ComplexFocus/ComplexFocus",
   BaseStyle->"Hyperlink",
   ButtonData->{
@@ -129,8 +128,7 @@ functions, ",
 an imaginary-valued offset. This transformation thus keeps them as solutions \
 of the wave equation, while at the same time turning them into focused \
 beam-like solutions and eventually, in the large-offset limit, into Gaussian \
-beam functions. The package thus implements:\n\n - The multipolar functions \
-",
+beam functions. The package thus implements:\n\n - The multipolar functions ",
  Cell[BoxData[
   FormBox[
    SubscriptBox["\[CapitalLambda]", 
@@ -525,13 +523,13 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Fri 20 Nov 2020 19:53:21\>\""}],
-   ";"}], "\n", 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 11:06:27\>\""}], 
+  ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"9455dd8e-a6c1-4773-b734-0822ef005202"]
+  "version-timestamp",ExpressionUUID->"7c48e0c2-7b63-478c-b7d8-a4aeb3ab2956"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1293,7 +1291,6 @@ gives the functional form of \!\(\*SuperscriptBox[\(V\), \
       RowBox[{"(", 
        RowBox[{"1", "|", 
         RowBox[{"-", "1"}]}], ")"}]}], ",", "scalarFunction_"}], "]"}], ":=", 
-   
    RowBox[{"Block", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -1329,7 +1326,7 @@ gives the functional form of \!\(\*SuperscriptBox[\(V\), \
 
 Cell[CellGroupData[{
 
-Cell["Polarization\[ScriptCapitalV] variants (PWA space)", \
+Cell["Polarization\[ScriptCapitalV] variants (PWS space)", \
 "Subsubsection",ExpressionUUID->"3f0b3bb1-9aff-4386-9251-f0a28c776d11"],
 
 Cell[TextData[{
@@ -3017,23 +3014,24 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"ComplexFocusHelicityE", "::", "usage"}], "=", 
-   "\"\<ComplexFocusHelicityE[l,m,\[Sigma],{x,y,z},q] gives the complex-focus \
-field of helicity type, with complex-focus parameter q, angular momentum \
-numbers l,m and helicity \[Sigma]=\[PlusMinus]1.\>\""}], 
+   "\"\<ComplexFocusHelicityE[l,m,\[Sigma],{x,y,z},\[Zeta]] gives the \
+complex-focus field of helicity type, with complex-focus parameter \[Zeta], \
+angular momentum numbers l,m and helicity \[Sigma]=\[PlusMinus]1.\>\""}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"ComplexFocusElectricE", "::", "usage"}], "=", 
-   "\"\<ComplexFocusElectricE[l,m,v,{x,y,z},q] gives the complex-focus field \
-of electric type, with complex-focus parameter q, angular momentum numbers \
-l,m and seed polarization vector v.\>\""}], ";"}], "\[IndentingNewLine]", 
+   "\"\<ComplexFocusElectricE[l,m,v,{x,y,z},\[Zeta]] gives the complex-focus \
+field of electric type, with complex-focus parameter \[Zeta], angular \
+momentum numbers l,m and seed polarization vector v.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
     RowBox[{"ComplexFocusMagneticE", "::", "usage"}], "=", 
-    "\"\<ComplexFocusMagneticE[l,m,v,{x,y,z},q] gives the complex-focus field \
-of magnetic type, with complex-focus parameter q, angular momentum numbers \
-l,m and seed polarization vector v.\>\""}], ";"}], 
+    "\"\<ComplexFocusMagneticE[l,m,v,{x,y,z},\[Zeta]] gives the complex-focus \
+field of magnetic type, with complex-focus parameter \[Zeta], angular \
+momentum numbers l,m and seed polarization vector v.\>\""}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
@@ -3046,19 +3044,19 @@ l,m and seed polarization vector v.\>\""}], ";"}],
       RowBox[{"1", "|", 
        RowBox[{"-", "1"}]}], ")"}]}], ",", 
     RowBox[{"{", 
-     RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], ",", "q_"}], "]"}], ":=", 
+     RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], ",", "\[Zeta]_"}], "]"}], ":=", 
   RowBox[{"Block", "[", 
    RowBox[{
     RowBox[{"{", 
-     RowBox[{"xInt", ",", "yInt", ",", "zInt", ",", "qInt"}], "}"}], ",", 
-    "\[IndentingNewLine]", 
+     RowBox[{"xInt", ",", "yInt", ",", "zInt", ",", "\[Zeta]Int"}], "}"}], 
+    ",", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{
       RowBox[{"ComplexFocusHelicityE", "[", 
        RowBox[{"l", ",", "m", ",", "s", ",", 
         RowBox[{"{", 
-         RowBox[{"xInt_", ",", "yInt_", ",", "zInt_"}], "}"}], ",", "qInt_"}],
-        "]"}], "=", 
+         RowBox[{"xInt_", ",", "yInt_", ",", "zInt_"}], "}"}], ",", 
+        "\[Zeta]Int_"}], "]"}], "=", 
       RowBox[{"Simplify", "[", 
        RowBox[{"PolarizationVHelicity", "[", 
         RowBox[{"s", ",", 
@@ -3067,32 +3065,33 @@ l,m and seed polarization vector v.\>\""}], ";"}],
            RowBox[{"{", 
             RowBox[{"xInt", ",", "yInt", ",", 
              RowBox[{"zInt", "-", 
-              RowBox[{"\[ImaginaryI]", " ", "qInt"}]}]}], "}"}]}], "]"}], ",", 
+              RowBox[{"\[ImaginaryI]", " ", "\[Zeta]Int"}]}]}], "}"}]}], 
+          "]"}], ",", 
          RowBox[{"{", 
           RowBox[{"xInt", ",", "yInt", ",", "zInt"}], "}"}]}], "]"}], "]"}]}],
       ";", "\[IndentingNewLine]", 
      RowBox[{"ComplexFocusHelicityE", "[", 
       RowBox[{"l", ",", "m", ",", "s", ",", 
        RowBox[{"{", 
-        RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "q"}], "]"}]}]}], 
-   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+        RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "\[Zeta]"}], "]"}]}]}],
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"ComplexFocusElectricE", "[", 
    RowBox[{"l_", ",", "m_", ",", "vector_", ",", 
     RowBox[{"{", 
-     RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], ",", "q_"}], "]"}], ":=", 
+     RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], ",", "\[Zeta]_"}], "]"}], ":=", 
   RowBox[{"Block", "[", 
    RowBox[{
     RowBox[{"{", 
-     RowBox[{"xInt", ",", "yInt", ",", "zInt", ",", "qInt"}], "}"}], ",", 
-    "\[IndentingNewLine]", 
+     RowBox[{"xInt", ",", "yInt", ",", "zInt", ",", "\[Zeta]Int"}], "}"}], 
+    ",", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{
       RowBox[{"ComplexFocusElectricE", "[", 
        RowBox[{"l", ",", "m", ",", "vector", ",", 
         RowBox[{"{", 
-         RowBox[{"xInt_", ",", "yInt_", ",", "zInt_"}], "}"}], ",", "qInt_"}],
-        "]"}], "=", 
+         RowBox[{"xInt_", ",", "yInt_", ",", "zInt_"}], "}"}], ",", 
+        "\[Zeta]Int_"}], "]"}], "=", 
       RowBox[{"Simplify", "[", 
        RowBox[{"PolarizationVElectric", "[", 
         RowBox[{"vector", ",", 
@@ -3101,32 +3100,33 @@ l,m and seed polarization vector v.\>\""}], ";"}],
            RowBox[{"{", 
             RowBox[{"xInt", ",", "yInt", ",", 
              RowBox[{"zInt", "-", 
-              RowBox[{"\[ImaginaryI]", " ", "qInt"}]}]}], "}"}]}], "]"}], ",", 
+              RowBox[{"\[ImaginaryI]", " ", "\[Zeta]Int"}]}]}], "}"}]}], 
+          "]"}], ",", 
          RowBox[{"{", 
           RowBox[{"xInt", ",", "yInt", ",", "zInt"}], "}"}]}], "]"}], "]"}]}],
       ";", "\[IndentingNewLine]", 
      RowBox[{"ComplexFocusElectricE", "[", 
       RowBox[{"l", ",", "m", ",", "vector", ",", 
        RowBox[{"{", 
-        RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "q"}], "]"}]}]}], 
-   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+        RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "\[Zeta]"}], "]"}]}]}],
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"ComplexFocusMagneticE", "[", 
    RowBox[{"l_", ",", "m_", ",", "vector_", ",", 
     RowBox[{"{", 
-     RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], ",", "q_"}], "]"}], ":=", 
+     RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], ",", "\[Zeta]_"}], "]"}], ":=", 
   RowBox[{"Block", "[", 
    RowBox[{
     RowBox[{"{", 
-     RowBox[{"xInt", ",", "yInt", ",", "zInt", ",", "qInt"}], "}"}], ",", 
-    "\[IndentingNewLine]", 
+     RowBox[{"xInt", ",", "yInt", ",", "zInt", ",", "\[Zeta]Int"}], "}"}], 
+    ",", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{
       RowBox[{"ComplexFocusMagneticE", "[", 
        RowBox[{"l", ",", "m", ",", "vector", ",", 
         RowBox[{"{", 
-         RowBox[{"xInt_", ",", "yInt_", ",", "zInt_"}], "}"}], ",", "qInt_"}],
-        "]"}], "=", 
+         RowBox[{"xInt_", ",", "yInt_", ",", "zInt_"}], "}"}], ",", 
+        "\[Zeta]Int_"}], "]"}], "=", 
       RowBox[{"Simplify", "[", 
        RowBox[{"PolarizationVMagnetic", "[", 
         RowBox[{"vector", ",", 
@@ -3135,15 +3135,16 @@ l,m and seed polarization vector v.\>\""}], ";"}],
            RowBox[{"{", 
             RowBox[{"xInt", ",", "yInt", ",", 
              RowBox[{"zInt", "-", 
-              RowBox[{"\[ImaginaryI]", " ", "qInt"}]}]}], "}"}]}], "]"}], ",", 
+              RowBox[{"\[ImaginaryI]", " ", "\[Zeta]Int"}]}]}], "}"}]}], 
+          "]"}], ",", 
          RowBox[{"{", 
           RowBox[{"xInt", ",", "yInt", ",", "zInt"}], "}"}]}], "]"}], "]"}]}],
       ";", "\[IndentingNewLine]", 
      RowBox[{"ComplexFocusMagneticE", "[", 
       RowBox[{"l", ",", "m", ",", "vector", ",", 
        RowBox[{"{", 
-        RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "q"}], "]"}]}]}], 
-   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+        RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "\[Zeta]"}], "]"}]}]}],
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
@@ -3542,9 +3543,7 @@ plots a field-arrow plot with an offset of {tx,ty,tz}.\>\""}], ";"}],
       RowBox[{"{", "\[IndentingNewLine]", 
        RowBox[{
         RowBox[{"Arrowheads", "[", "0.02", "]"}], ",", "\[IndentingNewLine]", 
-        
         RowBox[{"Thickness", "[", "0.005", "]"}], ",", "\[IndentingNewLine]", 
-        
         RowBox[{"Table", "[", 
          RowBox[{
           RowBox[{"Table", "[", "\[IndentingNewLine]", 
@@ -4912,9 +4911,9 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
           DateString[], "\";\nEnd[];"]}]], "Input", InitializationCell -> 
       True, CellTags -> "version-timestamp"], None, AutoScroll -> False]; 
    NotebookSave[]), PassEventsDown -> True},
-WindowSize->{1152., 598.4516129032257},
-WindowMargins->{{Automatic, -7.741935483870975}, {
-  30.315789473684276`, Automatic}},
+WindowSize->{1152., 586.5},
+WindowMargins->{{
+  Automatic, -4.7999999999999545`}, {-4.7999999999999545`, Automatic}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
@@ -4953,7 +4952,7 @@ SpellingDictionaries->{"CorrectWords"->{
  "subpackage", "Pisanty", "subpackages"}},
 Magnification:>0.75 Inherited,
 Background->None,
-FrontEndVersion->"12.1 for Linux x86 (64-bit) (March 18, 2020)",
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]], 
@@ -4963,7 +4962,7 @@ StyleDefinitions->Notebook[{
     FontVariations -> {
      "Outline" -> False, "Shadow" -> False, "StrikeThrough" -> False, 
       "Underline" -> False}]}, Visible -> False, FrontEndVersion -> 
-  "12.1 for Linux x86 (64-bit) (March 18, 2020)", StyleDefinitions -> 
+  "12.1 for Microsoft Windows (64-bit) (June 19, 2020)", StyleDefinitions -> 
   "PrivateStylesheetFormatting.nb"],
 ExpressionUUID->"0068b283-5296-4e9a-909d-6a8830b1cd95"
 ]
