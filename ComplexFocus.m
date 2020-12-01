@@ -40,7 +40,7 @@ $ComplexFocusVersion:="ComplexFocus v0.2, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Tue 1 Dec 2020 11:06:27";
+$ComplexFocusTimestamp="Tue 1 Dec 2020 11:07:30";
 End[];
 
 

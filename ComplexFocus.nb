@@ -91,7 +91,7 @@ R. Guti\[EAcute]rrez-Cuevas and M.A. Alonso. ",
     URL["https://doi.org/10.1364/OE.25.014856"], None},
   ButtonNote->"https://doi.org/10.1364/OE.25.014856"],
  ".\n       - Optical polarization skyrmionic fields in free space. R. Guti\
-\[EAcute]rrez-Cuevas and E. Pisanty. In preparation (2020).\n",
+\[EAcute]rrez-Cuevas and E. Pisanty. Under review (2020).\n",
  StyleBox[" ",
   FontSize->5]
 }], "Text",ExpressionUUID->"573bc852-ad26-4d6f-a777-1b0aaf2d6d36"],
@@ -523,13 +523,13 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 11:06:27\>\""}], 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 11:07:30\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"7c48e0c2-7b63-478c-b7d8-a4aeb3ab2956"]
+  "version-timestamp",ExpressionUUID->"728f2c41-40d0-44c1-90af-c64f98119abc"]
 }, Open  ]],
 
 Cell[CellGroupData[{
