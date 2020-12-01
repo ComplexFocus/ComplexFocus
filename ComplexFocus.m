@@ -36,11 +36,11 @@ $ComplexFocusTimestamp::usage="$ComplexFocusTimestamp prints the timestamp of th
 
 (* ::Input::Initialization:: *)
 Begin["`Private`"];
-$ComplexFocusVersion:="ComplexFocus v0.2, "<>$ComplexFocusTimestamp;
+$ComplexFocusVersion:="ComplexFocus v1.0, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Tue 1 Dec 2020 12:24:02";
+$ComplexFocusTimestamp="Tue 1 Dec 2020 19:46:55";
 End[];
 
 
@@ -365,6 +365,53 @@ End[];
 
 
 (* ::Input::Initialization:: *)
+UniformRadialGrid::usage="UniformRadialGrid[n] produces a uniform radial grid with n rings.
+UniformRadialGrid[n,m] produces a uniform radial grid with n rings and m points on the first ring.
+UniformRadialGrid[n,m,\[CapitalDelta]r] produces a uniform radial grid with n rings, m points on the first ring, and spacing of \[CapitalDelta]r between the rings.";
+
+Begin["`Private`"];
+
+UniformRadialGrid[nRings_?IntegerQ,nCircle_?IntegerQ,\[CapitalDelta]r_]:=Times[\[CapitalDelta]r,
+Join[{{0,0}},
+Flatten[
+Table[
+Table[
+{n Cos[\[Phi]],n Sin[\[Phi]]}
+,{\[Phi],Most[Subdivide[0,2\[Pi],(nCircle-1)n+1]]}]
+,{n,1,nRings}]
+,1]
+]
+]
+
+UniformRadialGrid[nRings_?IntegerQ,nCircle_?IntegerQ]:=UniformRadialGrid[nRings,nCircle,1]
+UniformRadialGrid[nRings_?IntegerQ]:=UniformRadialGrid[nRings,7,1]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+If[
+$VersionNumber<10.1,
+
+Subdivide::usage=\!\(\*
+TagBox[
+StyleBox["\"\<\\!\\(\\*RowBox[{\\\"Subdivide\\\", \\\"[\\\", StyleBox[\\\"n\\\", \\\"TI\\\"], \\\"]\\\"}]\\) generates the list \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"0\\\", \\\",\\\", RowBox[{\\\"1\\\", \\\"/\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\",\\\", RowBox[{\\\"2\\\", \\\"/\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\",\\\", StyleBox[\\\"\\[Ellipsis]\\\", \\\"TR\\\"], \\\",\\\", \\\"1\\\"}], \\\"}\\\"}]\\).\\n\\!\\(\\*RowBox[{\\\"Subdivide\\\", \\\"[\\\", RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \\\"TI\\\"]], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) generates the list of values obtained by subdividing the interval 0 to \\!\\(\\*SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \\\"TI\\\"]]\\) into \\!\\(\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\) equal parts.\\n\\!\\(\\*RowBox[{\\\"Subdivide\\\", \\\"[\\\", RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \\\"TI\\\"]], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) generates the list of values from subdividing the interval \\!\\(\\*SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \\\"TI\\\"]]\\) to \\!\\(\\*SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \\\"TI\\\"]]\\).\>\"",
+ShowSpecialCharacters->False,
+ShowStringCharacters->True,
+NumberMarks->True],
+FullForm]\);
+
+Begin["`Private`"];
+
+Subdivide[xmin_,xmax_,n_]:=xmin+(xmax-xmin)Range[0,n]/n;
+Subdivide[xmax_,n_]:=Subdivide[0,xmax,n];
+Subdivide[n_]:=Subdivide[0,1,n];
+
+End[];
+]
+
+
+(* ::Input::Initialization:: *)
 FieldArrow::usage="FieldArrow[kind,f,{x,y,z}] produces a field arrow associated with the field function f at the position (x,y,z), where the kind can be \"major\" (for a major-axis arrow) or \"spin\" (for the electric spin vector).
 FieldArrow[kind,f,{x,y,z},zoom] magnifies the position by the specified zoom factor.
 FieldArrow[kind,f,{x,y,z},zoom,{tx,ty,tz}] translates the position of the arrow by an offset {tx,ty,tz}.";
@@ -393,16 +440,19 @@ PlotFieldArrows[f,kind,sm,zoom] plots a field-arrow plot with a magnification zo
 PlotFieldArrows[f,kind,sm,zoom,{tx,ty,tz}] plots a field-arrow plot with an offset of {tx,ty,tz}.";
 
 Begin["`Private`"];
-Options[PlotFieldArrows]={RadialPoints->10};
+Options[PlotFieldArrows]={RadialPoints->10,FirstRingPoints->4};
 
 PlotFieldArrows[fieldFunction_,kind_,rmax_,zoom_:1,translation_:{0,0,0},opts:OptionsPattern[]]:=Block[{},
 Graphics3D[{
 Arrowheads[0.02],
 Thickness[0.005],
-Table[Table[
+(*Table[Table[
 FieldArrow[kind,fieldFunction,{r Cos[\[Phi]],r Sin[\[Phi]],0},zoom,translation]
 ,{\[Phi],0,2\[Pi],2\[Pi]/(6r +1)}],
-{r,0,rmax,rmax/OptionValue[RadialPoints]}]
+{r,0,rmax,rmax/OptionValue[RadialPoints]}]*)
+Table[
+FieldArrow[kind,fieldFunction,Join[point,{0}],zoom,translation]
+,{point,UniformRadialGrid[OptionValue[RadialPoints],OptionValue[FirstRingPoints],rmax/OptionValue[RadialPoints]]}]
 }]
 ]
 
@@ -416,7 +466,7 @@ FieldEllipse[f,{x,y,z},a,normFunction,zoom] magnifies the position by the specif
 FieldEllipse[f,{x,y,z},a,normFunction,zoom,{tx,ty,tz}] translates the position of the ellipse by an offset {tx,ty,tz}.";
 
 Begin["`Private`"];
-Options[FieldEllipse]={PlotStyle->{},PlotPoints->72+1,RadialPoints->None};
+Options[FieldEllipse]={(*PlotStyle\[Rule]{},*)PlotPoints->72+1(*,RadialPoints\[Rule]None*)};
 (*PlotStyle included here just so PlotFieldEllipses can pass the options without worrying about unacceptable values.*)
 
 FieldEllipse[fieldFunction_,{x_,y_,z_},amplitude_,normFunction_:(1&),zoom_:1,translation_:{0,0,0},opts:OptionsPattern[]]:=Block[{field,points,norm},
@@ -439,21 +489,25 @@ PlotFieldEllipses[f,amplitude,rmax,normFunction] uses the given normFunction to 
 PlotFieldEllipses[f,amplitude,rmax,normFunction,zoom] uses a magnification zoom on the ellipse positions.
 PlotFieldEllipses[f,amplitude,rmax,normFunction,{tx,ty,tz}] translates the ellipses by an offset {tx,ty,tz}.";
 
-RadialPoints::usage="RadialPoints is an option for PlotFieldEllipses that indicates how many radial points to use.";
+RadialPoints::usage="RadialPoints is an option for PlotFieldArrows and PlotFieldEllipses that indicates how many radial points to use.";
+FirstRingPoints::usage="FirstRingPoints is an option for PlotFieldArrows and PlotFieldEllipses that indicates how many points to use on the first ring.";
 
 Begin["`Private`"];
 Protect[RadialPoints];
-Options[PlotFieldEllipses]={PlotStyle->{},PlotPoints->72+1,RadialPoints->10};
+Options[PlotFieldEllipses]={PlotStyle->{},PlotPoints->72+1,RadialPoints->10,FirstRingPoints->4};
 
 PlotFieldEllipses[fieldFunction_,amplitude_,rmax_,normFunction_:Norm,zoom_:1,translation_:{0,0,0},opts:OptionsPattern[]]:=Block[{},
 Graphics3D[{
 EdgeForm[{Thick,Black}],
 FaceForm[{RGBColor[0.25, 0.75, 0.75],Specularity[0]}],
 OptionValue[PlotStyle],
-Table[Table[
+(*Table[Table[
 FieldEllipse[fieldFunction,{r Cos[\[Phi]],r Sin[\[Phi]],0},amplitude,normFunction,zoom,translation,opts]
 ,{\[Phi],0,2\[Pi],2\[Pi]/(6r +1)}],
-{r,0,rmax,rmax/OptionValue[RadialPoints]}]
+{r,0,rmax,rmax/OptionValue[RadialPoints]}]*)
+Table[
+FieldEllipse[fieldFunction,Join[point,{0}],amplitude,normFunction,zoom,translation,(*opts*)Sequence@@FilterRules[{opts},Options[FieldEllipse]]]
+,{point,UniformRadialGrid[OptionValue[RadialPoints],OptionValue[FirstRingPoints],rmax/OptionValue[RadialPoints]]}]
 }]
 ]
 

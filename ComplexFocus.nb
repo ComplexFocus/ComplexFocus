@@ -516,20 +516,20 @@ Cell[BoxData[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\n", 
  RowBox[{
   RowBox[{"$ComplexFocusVersion", ":=", 
-   RowBox[{"\"\<ComplexFocus v0.2, \>\"", "<>", "$ComplexFocusTimestamp"}]}], 
+   RowBox[{"\"\<ComplexFocus v1.0, \>\"", "<>", "$ComplexFocusTimestamp"}]}], 
   ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"90617182-59d4-4545-b4c7-e01a2308359e"],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 12:24:02\>\""}], 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 19:46:55\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"57467cd4-34fb-4080-b960-0d6e5ea970dc"]
+  "version-timestamp",ExpressionUUID->"a41ec57d-60bd-4205-b6ad-cee02e21fc30"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3468,6 +3468,157 @@ Cell["Visualization functions", \
 
 Cell[CellGroupData[{
 
+Cell["UniformRadialGrid", \
+"Subsubsection",ExpressionUUID->"7cb50fa9-4b5d-49b2-83cf-d4517ba000a8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"UniformRadialGrid", "::", "usage"}], "=", 
+    "\"\<UniformRadialGrid[n] produces a uniform radial grid with n rings.\n\
+UniformRadialGrid[n,m] produces a uniform radial grid with n rings and m \
+points on the first ring.\nUniformRadialGrid[n,m,\[CapitalDelta]r] produces a \
+uniform radial grid with n rings, m points on the first ring, and spacing of \
+\[CapitalDelta]r between the rings.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UniformRadialGrid", "[", 
+    RowBox[{
+     RowBox[{"nRings_", "?", "IntegerQ"}], ",", 
+     RowBox[{"nCircle_", "?", "IntegerQ"}], ",", "\[CapitalDelta]r_"}], "]"}],
+    ":=", 
+   RowBox[{"Times", "[", 
+    RowBox[{"\[CapitalDelta]r", ",", "\[IndentingNewLine]", 
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Flatten", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Table", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Table", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"n", " ", 
+                RowBox[{"Cos", "[", "\[Phi]", "]"}]}], ",", 
+               RowBox[{"n", " ", 
+                RowBox[{"Sin", "[", "\[Phi]", "]"}]}]}], "}"}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"{", 
+              RowBox[{"\[Phi]", ",", 
+               RowBox[{"Most", "[", 
+                RowBox[{"Subdivide", "[", 
+                 RowBox[{"0", ",", 
+                  RowBox[{"2", "\[Pi]"}], ",", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"nCircle", "-", "1"}], ")"}], "n"}], "+", "1"}]}],
+                  "]"}], "]"}]}], "}"}]}], "]"}], "\[IndentingNewLine]", ",", 
+           RowBox[{"{", 
+            RowBox[{"n", ",", "1", ",", "nRings"}], "}"}]}], "]"}], 
+         "\[IndentingNewLine]", ",", "1"}], "]"}]}], "\[IndentingNewLine]", 
+      "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"UniformRadialGrid", "[", 
+   RowBox[{
+    RowBox[{"nRings_", "?", "IntegerQ"}], ",", 
+    RowBox[{"nCircle_", "?", "IntegerQ"}]}], "]"}], ":=", 
+  RowBox[{"UniformRadialGrid", "[", 
+   RowBox[{"nRings", ",", "nCircle", ",", "1"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UniformRadialGrid", "[", 
+    RowBox[{"nRings_", "?", "IntegerQ"}], "]"}], ":=", 
+   RowBox[{"UniformRadialGrid", "[", 
+    RowBox[{"nRings", ",", "7", ",", "1"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"7de7f457-59cf-4799-bcb9-c03b7b7486af"],
+
+Cell["\<\
+This requires the function Subdivide, which dates from v10.1, so here is a \
+fill-in substitute if running from v10.0 or earlier:\
+\>", "Text",ExpressionUUID->"a556de0d-5570-422c-9766-7d9e5a7d1fa5"],
+
+Cell[BoxData[
+ RowBox[{"If", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"$VersionNumber", "<", "10.1"}], ",", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Subdivide", "::", "usage"}], "=", 
+     TagBox[
+      StyleBox[
+       "\"\<\\!\\(\\*RowBox[{\\\"Subdivide\\\", \\\"[\\\", \
+StyleBox[\\\"n\\\", \\\"TI\\\"], \\\"]\\\"}]\\) generates the list \
+\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"0\\\", \\\",\\\", RowBox[{\\\"1\\\", \
+\\\"/\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\",\\\", RowBox[{\\\"2\\\", \
+\\\"/\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\",\\\", \
+StyleBox[\\\"\\[Ellipsis]\\\", \\\"TR\\\"], \\\",\\\", \\\"1\\\"}], \
+\\\"}\\\"}]\\).\\n\\!\\(\\*RowBox[{\\\"Subdivide\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \
+\\\"TI\\\"]], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) \
+generates the list of values obtained by subdividing the interval 0 to \\!\\(\
+\\*SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \\\"TI\
+\\\"]]\\) into \\!\\(\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\) equal parts.\\n\\!\
+\\(\\*RowBox[{\\\"Subdivide\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]], \\\",\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) generates the list of values from subdividing \
+the interval \\!\\(\\*SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\
+\\\"min\\\", \\\"TI\\\"]]\\) to \\!\\(\\*SubscriptBox[StyleBox[\\\"x\\\", \
+\\\"TI\\\"], StyleBox[\\\"max\\\", \\\"TI\\\"]]\\).\>\"",
+       ShowSpecialCharacters->False,
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      FullForm]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Subdivide", "[", 
+      RowBox[{"xmin_", ",", "xmax_", ",", "n_"}], "]"}], ":=", 
+     RowBox[{"xmin", "+", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"xmax", "-", "xmin"}], ")"}], 
+       RowBox[{
+        RowBox[{"Range", "[", 
+         RowBox[{"0", ",", "n"}], "]"}], "/", "n"}]}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Subdivide", "[", 
+      RowBox[{"xmax_", ",", "n_"}], "]"}], ":=", 
+     RowBox[{"Subdivide", "[", 
+      RowBox[{"0", ",", "xmax", ",", "n"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Subdivide", "[", "n_", "]"}], ":=", 
+     RowBox[{"Subdivide", "[", 
+      RowBox[{"0", ",", "1", ",", "n"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"End", "[", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"19d50526-5dd0-4e9b-be71-0f0dc46643e8"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
 Cell["FieldArrow", \
 "Subsubsection",ExpressionUUID->"b1a1efdf-95b0-4db4-bc66-0ee8c7c12d44"],
 
@@ -3581,7 +3732,9 @@ plots a field-arrow plot with an offset of {tx,ty,tz}.\>\""}], ";"}],
    RowBox[{
     RowBox[{"Options", "[", "PlotFieldArrows", "]"}], "=", 
     RowBox[{"{", 
-     RowBox[{"RadialPoints", "\[Rule]", "10"}], "}"}]}], ";"}], 
+     RowBox[{
+      RowBox[{"RadialPoints", "\[Rule]", "10"}], ",", 
+      RowBox[{"FirstRingPoints", "\[Rule]", "4"}]}], "}"}]}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -3601,41 +3754,59 @@ plots a field-arrow plot with an offset of {tx,ty,tz}.\>\""}], ";"}],
        RowBox[{
         RowBox[{"Arrowheads", "[", "0.02", "]"}], ",", "\[IndentingNewLine]", 
         RowBox[{"Thickness", "[", "0.005", "]"}], ",", "\[IndentingNewLine]", 
-        RowBox[{"Table", "[", 
+        RowBox[{"(*", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"FieldArrow", "[", 
+              RowBox[{"kind", ",", "fieldFunction", ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"r", " ", 
+                  RowBox[{"Cos", "[", "\[Phi]", "]"}]}], ",", 
+                 RowBox[{"r", " ", 
+                  RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ",", "0"}], "}"}], 
+               ",", "zoom", ",", "translation"}], "]"}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"{", 
+              RowBox[{"\[Phi]", ",", "0", ",", 
+               RowBox[{"2", "\[Pi]"}], ",", 
+               RowBox[{"2", 
+                RowBox[{"\[Pi]", "/", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"6", "r"}], " ", "+", "1"}], ")"}]}]}]}], "}"}]}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{"r", ",", "0", ",", "rmax", ",", 
+             RowBox[{"rmax", "/", 
+              RowBox[{"OptionValue", "[", "RadialPoints", "]"}]}]}], "}"}]}], 
+          "]"}], "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
          RowBox[{
-          RowBox[{"Table", "[", "\[IndentingNewLine]", 
-           RowBox[{
-            RowBox[{"FieldArrow", "[", 
-             RowBox[{"kind", ",", "fieldFunction", ",", 
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"r", " ", 
-                 RowBox[{"Cos", "[", "\[Phi]", "]"}]}], ",", 
-                RowBox[{"r", " ", 
-                 RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ",", "0"}], "}"}], 
-              ",", "zoom", ",", "translation"}], "]"}], "\[IndentingNewLine]",
-             ",", 
-            RowBox[{"{", 
-             RowBox[{"\[Phi]", ",", "0", ",", 
-              RowBox[{"2", "\[Pi]"}], ",", 
-              RowBox[{"2", 
-               RowBox[{"\[Pi]", "/", 
-                RowBox[{"(", 
-                 RowBox[{
-                  RowBox[{"6", "r"}], " ", "+", "1"}], ")"}]}]}]}], "}"}]}], 
-           "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"FieldArrow", "[", 
+           RowBox[{"kind", ",", "fieldFunction", ",", 
+            RowBox[{"Join", "[", 
+             RowBox[{"point", ",", 
+              RowBox[{"{", "0", "}"}]}], "]"}], ",", "zoom", ",", 
+            "translation"}], "]"}], "\[IndentingNewLine]", ",", 
           RowBox[{"{", 
-           RowBox[{"r", ",", "0", ",", "rmax", ",", 
-            RowBox[{"rmax", "/", 
-             RowBox[{"OptionValue", "[", "RadialPoints", "]"}]}]}], "}"}]}], 
-         "]"}]}], "\[IndentingNewLine]", "}"}], "]"}]}], 
+           RowBox[{"point", ",", 
+            RowBox[{"UniformRadialGrid", "[", 
+             RowBox[{
+              RowBox[{"OptionValue", "[", "RadialPoints", "]"}], ",", 
+              RowBox[{"OptionValue", "[", "FirstRingPoints", "]"}], ",", 
+              RowBox[{"rmax", "/", 
+               RowBox[{"OptionValue", "[", "RadialPoints", "]"}]}]}], "]"}]}],
+            "}"}]}], "]"}]}], "\[IndentingNewLine]", "}"}], "]"}]}], 
     "\[IndentingNewLine]", "]"}]}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"240f1009-43a0-4a8f-85d9-defc48aedd7d"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -3665,12 +3836,15 @@ position of the ellipse by an offset {tx,ty,tz}.\>\""}], ";"}],
    RowBox[{
     RowBox[{"Options", "[", "FieldEllipse", "]"}], "=", 
     RowBox[{"{", 
-     RowBox[{
-      RowBox[{"PlotStyle", "\[Rule]", 
-       RowBox[{"{", "}"}]}], ",", 
-      RowBox[{"PlotPoints", "\[Rule]", 
-       RowBox[{"72", "+", "1"}]}], ",", 
-      RowBox[{"RadialPoints", "\[Rule]", "None"}]}], "}"}]}], ";"}], 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", "}"}]}], ","}], "*)"}], 
+     RowBox[{"PlotPoints", "\[Rule]", 
+      RowBox[{"72", "+", "1"}]}], 
+     RowBox[{"(*", 
+      RowBox[{",", 
+       RowBox[{"RadialPoints", "\[Rule]", "None"}]}], "*)"}], "}"}]}], ";"}], 
   "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{
@@ -3743,7 +3917,7 @@ position of the ellipse by an offset {tx,ty,tz}.\>\""}], ";"}],
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"f504af73-2cdd-4939-bc73-e19bbaa2f2ed"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -3766,11 +3940,17 @@ ellipses by an offset {tx,ty,tz}.\>\""}], ";"}],
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
+   RowBox[{"RadialPoints", "::", "usage"}], "=", 
+   "\"\<RadialPoints is an option for PlotFieldArrows and PlotFieldEllipses \
+that indicates how many radial points to use.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
    RowBox[{
-    RowBox[{"RadialPoints", "::", "usage"}], "=", 
-    "\"\<RadialPoints is an option for PlotFieldEllipses that indicates how \
-many radial points to use.\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    RowBox[{"FirstRingPoints", "::", "usage"}], "=", 
+    "\"\<FirstRingPoints is an option for PlotFieldArrows and \
+PlotFieldEllipses that indicates how many points to use on the first \
+ring.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
   ";"}], "\[IndentingNewLine]", 
@@ -3786,7 +3966,8 @@ many radial points to use.\>\""}], ";"}],
        RowBox[{"{", "}"}]}], ",", 
       RowBox[{"PlotPoints", "\[Rule]", 
        RowBox[{"72", "+", "1"}]}], ",", 
-      RowBox[{"RadialPoints", "\[Rule]", "10"}]}], "}"}]}], ";"}], 
+      RowBox[{"RadialPoints", "\[Rule]", "10"}], ",", 
+      RowBox[{"FirstRingPoints", "\[Rule]", "4"}]}], "}"}]}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -3861,41 +4042,67 @@ many radial points to use.\>\""}], ";"}],
         "\[IndentingNewLine]", 
         RowBox[{"OptionValue", "[", "PlotStyle", "]"}], ",", 
         "\[IndentingNewLine]", 
-        RowBox[{"Table", "[", 
+        RowBox[{"(*", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"FieldEllipse", "[", 
+              RowBox[{"fieldFunction", ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"r", " ", 
+                  RowBox[{"Cos", "[", "\[Phi]", "]"}]}], ",", 
+                 RowBox[{"r", " ", 
+                  RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ",", "0"}], "}"}], 
+               ",", "amplitude", ",", "normFunction", ",", "zoom", ",", 
+               "translation", ",", "opts"}], "]"}], "\[IndentingNewLine]", 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{"\[Phi]", ",", "0", ",", 
+               RowBox[{"2", "\[Pi]"}], ",", 
+               RowBox[{"2", 
+                RowBox[{"\[Pi]", "/", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"6", "r"}], " ", "+", "1"}], ")"}]}]}]}], "}"}]}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{"r", ",", "0", ",", "rmax", ",", 
+             RowBox[{"rmax", "/", 
+              RowBox[{"OptionValue", "[", "RadialPoints", "]"}]}]}], "}"}]}], 
+          "]"}], "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
          RowBox[{
-          RowBox[{"Table", "[", "\[IndentingNewLine]", 
-           RowBox[{
-            RowBox[{"FieldEllipse", "[", 
-             RowBox[{"fieldFunction", ",", 
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"r", " ", 
-                 RowBox[{"Cos", "[", "\[Phi]", "]"}]}], ",", 
-                RowBox[{"r", " ", 
-                 RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ",", "0"}], "}"}], 
-              ",", "amplitude", ",", "normFunction", ",", "zoom", ",", 
-              "translation", ",", "opts"}], "]"}], "\[IndentingNewLine]", ",", 
-            RowBox[{"{", 
-             RowBox[{"\[Phi]", ",", "0", ",", 
-              RowBox[{"2", "\[Pi]"}], ",", 
-              RowBox[{"2", 
-               RowBox[{"\[Pi]", "/", 
-                RowBox[{"(", 
-                 RowBox[{
-                  RowBox[{"6", "r"}], " ", "+", "1"}], ")"}]}]}]}], "}"}]}], 
-           "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"FieldEllipse", "[", 
+           RowBox[{"fieldFunction", ",", 
+            RowBox[{"Join", "[", 
+             RowBox[{"point", ",", 
+              RowBox[{"{", "0", "}"}]}], "]"}], ",", "amplitude", ",", 
+            "normFunction", ",", "zoom", ",", "translation", ",", 
+            RowBox[{"(*", "opts", "*)"}], 
+            RowBox[{"Sequence", "@@", 
+             RowBox[{"FilterRules", "[", 
+              RowBox[{
+               RowBox[{"{", "opts", "}"}], ",", 
+               RowBox[{"Options", "[", "FieldEllipse", "]"}]}], "]"}]}]}], 
+           "]"}], "\[IndentingNewLine]", ",", 
           RowBox[{"{", 
-           RowBox[{"r", ",", "0", ",", "rmax", ",", 
-            RowBox[{"rmax", "/", 
-             RowBox[{"OptionValue", "[", "RadialPoints", "]"}]}]}], "}"}]}], 
-         "]"}]}], "\[IndentingNewLine]", "}"}], "]"}]}], 
+           RowBox[{"point", ",", 
+            RowBox[{"UniformRadialGrid", "[", 
+             RowBox[{
+              RowBox[{"OptionValue", "[", "RadialPoints", "]"}], ",", 
+              RowBox[{"OptionValue", "[", "FirstRingPoints", "]"}], ",", 
+              RowBox[{"rmax", "/", 
+               RowBox[{"OptionValue", "[", "RadialPoints", "]"}]}]}], "]"}]}],
+            "}"}]}], "]"}]}], "\[IndentingNewLine]", "}"}], "]"}]}], 
     "\[IndentingNewLine]", "]"}]}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"28850af2-7d13-46ce-802c-0ea6e18535a1"]
-}, Closed]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
