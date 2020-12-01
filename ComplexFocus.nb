@@ -523,13 +523,13 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 11:22:08\>\""}], 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 12:24:02\>\""}], 
   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"e15f2ca3-ede3-48b4-b9a9-7d27e462029b"]
+  "version-timestamp",ExpressionUUID->"57467cd4-34fb-4080-b960-0d6e5ea970dc"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3154,44 +3154,8 @@ momentum numbers l,m and seed polarization vector v.\>\""}], ";"}],
 
 Cell[CellGroupData[{
 
-Cell["Visualization functions", \
+Cell["Polarization analysis functions", \
 "Subsection",ExpressionUUID->"8a8dc1bc-2218-4913-b28b-2e1859938a3b"],
-
-Cell[CellGroupData[{
-
-Cell["SpinE", \
-"Subsubsection",ExpressionUUID->"66caace8-3ec1-4dd8-b1a8-1a63629ac4b2"],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"SpinE", "::", "usage"}], "=", 
-    "\"\<SpinE[E] gives the electric spin angular momentum vector \
-\!\(\*FractionBox[\(1\), \(\(|\)\(E\)\*SuperscriptBox[\(|\), \(2\)]\)]\)Im(E\
-\[Conjugate]\[Cross]E) for a complex electric-field amplitude E.\>\""}], 
-   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"SpinE", "[", "vec_", "]"}], ":=", 
-   RowBox[{
-    RowBox[{"Im", "[", 
-     RowBox[{"Cross", "[", 
-      RowBox[{
-       RowBox[{"Conjugate", "[", "vec", "]"}], ",", "vec"}], "]"}], "]"}], 
-    "/", 
-    SuperscriptBox[
-     RowBox[{"Norm", "[", "vec", "]"}], "2"]}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"f8b485a1-8b21-4f80-b8fb-239014de9345"]
-}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -3270,7 +3234,7 @@ normalizes the ellipse by normFunction[v].\>\""}], ";"}],
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"110c80e3-a235-4497-98ce-7cfa58f6e56a"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -3321,8 +3285,81 @@ normalizes the ellipse by normFunction[v].\>\""}], ";"}],
 
 Cell[CellGroupData[{
 
+Cell["SpinE", \
+"Subsubsection",ExpressionUUID->"66caace8-3ec1-4dd8-b1a8-1a63629ac4b2"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SpinE", "::", "usage"}], "=", 
+    "\"\<SpinE[E] gives the electric spin angular momentum vector \
+\!\(\*FractionBox[\(1\), \(\(|\)\(E\)\*SuperscriptBox[\(|\), \(2\)]\)]\)Im(E\
+\[Conjugate]\[Cross]E) for a complex electric-field amplitude E.\>\""}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SpinE", "[", "vec_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Im", "[", 
+     RowBox[{"Cross", "[", 
+      RowBox[{
+       RowBox[{"Conjugate", "[", "vec", "]"}], ",", "vec"}], "]"}], "]"}], 
+    "/", 
+    SuperscriptBox[
+     RowBox[{"Norm", "[", "vec", "]"}], "2"]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"f8b485a1-8b21-4f80-b8fb-239014de9345"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
 Cell["Poincarana", \
 "Subsubsection",ExpressionUUID->"55ba8731-ed80-4d8b-a43b-8746a95404ac"],
+
+Cell[TextData[{
+ "Poincarana description of the polarization, as described in\n",
+ StyleBox[" ",
+  FontSize->1],
+ "\n    Geometric phases in 2D and 3D polarized fields: geometrical, \
+dynamical, and topological aspects. KY Bliokh, MA Alonso and MR Dennis. ",
+ StyleBox[ButtonBox["Rep. Prog. Phys.",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://doi.org/10.1088/1361-6633/ab4415"], None},
+  ButtonNote->"https://doi.org/10.1088/1361-6633/ab4415"],
+  FontSlant->"Italic"],
+ ButtonBox[" ",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://doi.org/10.1088/1361-6633/ab4415"], None},
+  ButtonNote->"https://doi.org/10.1088/1361-6633/ab4415"],
+ StyleBox[ButtonBox["82",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://doi.org/10.1088/1361-6633/ab4415"], None},
+  ButtonNote->"https://doi.org/10.1088/1361-6633/ab4415"],
+  FontWeight->"Bold"],
+ ButtonBox[", 122401 (2019)",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://doi.org/10.1088/1361-6633/ab4415"], None},
+  ButtonNote->"https://doi.org/10.1088/1361-6633/ab4415"],
+ ", ",
+ ButtonBox["HAL:02342161",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://hal.archives-ouvertes.fr/hal-02342161/"], None},
+  ButtonNote->"https://hal.archives-ouvertes.fr/hal-02342161/"],
+ "."
+}], "Text",ExpressionUUID->"83738154-95ea-4389-b0ec-b54ceadb74f9"],
 
 Cell[BoxData[{
  RowBox[{
@@ -3333,11 +3370,25 @@ Cell[BoxData[{
 {\!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \
 \(1\)]\),\!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \
 \(2\)]\)} for the electric-field complex amplitude \
-E=\!\(\*OverscriptBox[\(E\), \(\[RightArrow]\)]\)={Ex,Ey,Ez}, given by \
+E=\!\(\*OverscriptBox[\(E\), \
+\(\[RightArrow]\)]\)={Ex,Ey,Ez}=\!\(\*SuperscriptBox[\(e\), \(\[ImaginaryI]\
+\[CurlyPhi]\)]\)(\!\(\*OverscriptBox[\(A\), \
+\(\[RightArrow]\)]\)+\[ImaginaryI]\!\(\*OverscriptBox[\(B\), \
+\(\[RightArrow]\)]\)) (in the Jones decomposition), given by \
 \!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \(i\)]\)=\
 \[PlusMinus]\!\(\*SuperscriptBox[\(f\), \(2\)]\)\!\(\*OverscriptBox[\(a\), \(\
-\[RightArrow]\)]\)+\!\(\*OverscriptBox[\(S\), \(\[RightArrow]\)]\), \
-where\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+\[RightArrow]\)]\)+\!\(\*OverscriptBox[\(S\), \(\[RightArrow]\)]\), where \
+\!\(\*OverscriptBox[\(S\), \(\[RightArrow]\)]\)=Im(\!\(\*OverscriptBox[\(E\), \
+\(\[RightArrow]\)]\)\[Conjugate]\[Cross]\!\(\*OverscriptBox[\(E\), \(\
+\[RightArrow]\)]\))/|\!\(\*OverscriptBox[\(E\), \
+\(\[RightArrow]\)]\)\!\(\*SuperscriptBox[\(|\), \(2\)]\) is the spin angular \
+momentum, \!\(\*SuperscriptBox[\(f\), \(2\)]\)=|\!\(\*OverscriptBox[\(A\), \(\
+\[RightArrow]\)]\)|-|\!\(\*OverscriptBox[\(B\), \(\[RightArrow]\)]\)| is the \
+focal distance of the intensity-normalized ellipse, and \
+\!\(\*OverscriptBox[\(a\), \(\[RightArrow]\)]\)=\!\(\*OverscriptBox[\(A\), \(\
+\[RightArrow]\)]\)/|\!\(\*OverscriptBox[\(A\), \(\[RightArrow]\)]\)| is the \
+normalized major-axis direction.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -3407,7 +3458,13 @@ where\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"d254f39d-34f6-4ca0-84d8-83214ee749d7"]
+}, Closed]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Visualization functions", \
+"Subsection",ExpressionUUID->"49bc826f-9b81-4834-bd4f-f42ce17c601a"],
 
 Cell[CellGroupData[{
 
@@ -3497,7 +3554,7 @@ position of the arrow by an offset {tx,ty,tz}.\>\""}], ";"}],
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"42526ef0-5e98-4039-9c36-83d13323a7f0"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -3578,7 +3635,7 @@ plots a field-arrow plot with an offset of {tx,ty,tz}.\>\""}], ";"}],
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"240f1009-43a0-4a8f-85d9-defc48aedd7d"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -3686,7 +3743,7 @@ position of the ellipse by an offset {tx,ty,tz}.\>\""}], ";"}],
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"f504af73-2cdd-4939-bc73-e19bbaa2f2ed"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -3838,7 +3895,7 @@ many radial points to use.\>\""}], ";"}],
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"28850af2-7d13-46ce-802c-0ea6e18535a1"]
-}, Open  ]]
+}, Closed]]
 }, Open  ]]
 }, Open  ]],
 

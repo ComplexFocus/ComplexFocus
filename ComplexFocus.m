@@ -40,7 +40,7 @@ $ComplexFocusVersion:="ComplexFocus v0.2, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Tue 1 Dec 2020 11:22:08";
+$ComplexFocusTimestamp="Tue 1 Dec 2020 12:24:02";
 End[];
 
 
@@ -299,16 +299,6 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-SpinE::usage="SpinE[E] gives the electric spin angular momentum vector \!\(\*FractionBox[\(1\), \(\(|\)\(E\)\*SuperscriptBox[\(|\), \(2\)]\)]\)Im(E\[Conjugate]\[Cross]E) for a complex electric-field amplitude E.";
-
-Begin["`Private`"];
-
-SpinE[vec_]:=Im[Cross[Conjugate[vec],vec]]/Norm[vec]^2
-
-End[];
-
-
-(* ::Input::Initialization:: *)
 JonesPhase::usage="JonesPhase[v] gives the Jones phase of the vector v, \!\(\*FractionBox[\(1\), \(2\)]\)arg(v\[CenterDot]v).";
 
 Begin["`Private`"];
@@ -347,7 +337,17 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Poincarana::usage="Poincarana[E] gives the Poincarana-representation vectors {\!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \(1\)]\),\!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \(2\)]\)} for the electric-field complex amplitude E=\!\(\*OverscriptBox[\(E\), \(\[RightArrow]\)]\)={Ex,Ey,Ez}, given by \!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \(i\)]\)=\[PlusMinus]\!\(\*SuperscriptBox[\(f\), \(2\)]\)\!\(\*OverscriptBox[\(a\), \(\[RightArrow]\)]\)+\!\(\*OverscriptBox[\(S\), \(\[RightArrow]\)]\), where";
+SpinE::usage="SpinE[E] gives the electric spin angular momentum vector \!\(\*FractionBox[\(1\), \(\(|\)\(E\)\*SuperscriptBox[\(|\), \(2\)]\)]\)Im(E\[Conjugate]\[Cross]E) for a complex electric-field amplitude E.";
+
+Begin["`Private`"];
+
+SpinE[vec_]:=Im[Cross[Conjugate[vec],vec]]/Norm[vec]^2
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+Poincarana::usage="Poincarana[E] gives the Poincarana-representation vectors {\!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \(1\)]\),\!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \(2\)]\)} for the electric-field complex amplitude E=\!\(\*OverscriptBox[\(E\), \(\[RightArrow]\)]\)={Ex,Ey,Ez}=\!\(\*SuperscriptBox[\(e\), \(\[ImaginaryI]\[CurlyPhi]\)]\)(\!\(\*OverscriptBox[\(A\), \(\[RightArrow]\)]\)+\[ImaginaryI]\!\(\*OverscriptBox[\(B\), \(\[RightArrow]\)]\)) (in the Jones decomposition), given by \!\(\*SubscriptBox[OverscriptBox[\(u\), \(\[RightArrow]\)], \(i\)]\)=\[PlusMinus]\!\(\*SuperscriptBox[\(f\), \(2\)]\)\!\(\*OverscriptBox[\(a\), \(\[RightArrow]\)]\)+\!\(\*OverscriptBox[\(S\), \(\[RightArrow]\)]\), where \!\(\*OverscriptBox[\(S\), \(\[RightArrow]\)]\)=Im(\!\(\*OverscriptBox[\(E\), \(\[RightArrow]\)]\)\[Conjugate]\[Cross]\!\(\*OverscriptBox[\(E\), \(\[RightArrow]\)]\))/|\!\(\*OverscriptBox[\(E\), \(\[RightArrow]\)]\)\!\(\*SuperscriptBox[\(|\), \(2\)]\) is the spin angular momentum, \!\(\*SuperscriptBox[\(f\), \(2\)]\)=|\!\(\*OverscriptBox[\(A\), \(\[RightArrow]\)]\)|-|\!\(\*OverscriptBox[\(B\), \(\[RightArrow]\)]\)| is the focal distance of the intensity-normalized ellipse, and \!\(\*OverscriptBox[\(a\), \(\[RightArrow]\)]\)=\!\(\*OverscriptBox[\(A\), \(\[RightArrow]\)]\)/|\!\(\*OverscriptBox[\(A\), \(\[RightArrow]\)]\)| is the normalized major-axis direction.";
 
 Begin["`Private`"];
 
