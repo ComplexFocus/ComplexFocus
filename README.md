@@ -19,9 +19,9 @@ In short, Complex Focus fields are built by:
 
  - using the scalar multipolar solutions of the Helmholtz equation, Λ<sub>*ℓ,m*</sub>(***r***) = *j*<sub>*ℓ*</sub>(kr) *Y*<sub>*ℓ,m*</sub>(*θ,ϕ*);
  - using suitable vector differential operators to produce transversal vector solutions of the Helmholtz equation; and then
- - introducing an imaginary offset (***r***→***r***-*iq***e**<sub>*z*</sub>) to the Cartesian coordinate along the optical axis.
+ - introducing an imaginary offset (***r***→***r***-*iζ***e**<sub>*z*</sub>) to the Cartesian coordinate along the optical axis.
 
-The resulting solutions approach a focused Gaussian beam (for Λ<sub>0,0</sub>) and the Laguerre-Gauss solutions without radial nodes (for Λ<sub>*ℓ,ℓ*</sub>) in the limit of *q*→∞. For finite *q*, this parameter takes the role of the Rayleigh range.
+The resulting solutions approach a focused Gaussian beam (for Λ<sub>0,0</sub>) and the Laguerre-Gauss solutions without radial nodes (for Λ<sub>*ℓ,ℓ*</sub>) in the limit of *ζ*→∞. For finite *ζ*, this parameter takes the role of the Rayleigh range.
  
 
 ### Licensing
