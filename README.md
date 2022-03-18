@@ -7,12 +7,12 @@ ComplexFocus: Non-paraxial vector beams in Mathematica
 [<img src="https://licensebuttons.net/l/by-sa/3.0/88x31.png" title="licensed under CC BY-SA" height="20">](https://creativecommons.org/licenses/by-sa/4.0)
 [![GitHub release](https://img.shields.io/github/v/release/ComplexFocus/ComplexFocus.svg)](https://github.com/ComplexFocus/ComplexFocus/releases/)
 
-© Rodrigo Gutiérrez-Cuevas and Emilio Pisanty, 2020
+© Rodrigo Gutiérrez-Cuevas and Emilio Pisanty, 2020-2022
 
 ComplexFocus is a Mathematica package that implements the Complex Focus fields, a family of vector beam solutions in nonparaxial optics, as described in the papers
 
  - Scalar and electromagnetic nonparaxial bases composed as superpositions of simple vortex fields with complex foci. R. Gutiérrez-Cuevas and M.A. Alonso. [*Optics Express* **25**, 14856 (2017)](https://doi.org/10.1364/OE.25.014856).
- - Optical polarization skyrmionic fields in free space. R. Gutiérrez-Cuevas and E. Pisanty. Under review (2020).
+ - Optical polarization skyrmionic fields in free space. R. Gutiérrez-Cuevas and E. Pisanty. [*Journal of Optics* **23**, 024004 (2021)](https://doi.org/10.1088/2040-8986/abe8b2).
 
 
 In short, Complex Focus fields are built by:
