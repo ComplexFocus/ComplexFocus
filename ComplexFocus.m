@@ -21,7 +21,7 @@
 
 (* ::Input::Initialization:: *)
 (*
-This is the ComplexFocus package, \[Copyright] Rodrigo Guti\[EAcute]rrez-Cuevas& Emilio Pisanty (2020). For the notebook that generated this package file and additional documentaion, see https://github.com/ComplexFocus/ComplexFocus.
+This is the ComplexFocus package, \[Copyright] Rodrigo Guti\[EAcute]rrez-Cuevas & Emilio Pisanty (2020-2022). For the notebook that generated this package file and additional documentaion, see https://github.com/ComplexFocus/ComplexFocus.
 *)
 
 
@@ -40,7 +40,7 @@ $ComplexFocusVersion:="ComplexFocus v1.0, "<>$ComplexFocusTimestamp;
 
 
 (* ::Input::Initialization:: *)
-$ComplexFocusTimestamp="Tue 1 Dec 2020 22:39:54";
+$ComplexFocusTimestamp="Fri 18 Mar 2022 10:06:42";
 End[];
 
 
@@ -353,7 +353,7 @@ Begin["`Private`"];
 
 Poincarana[vectorE_]:=Module[{vectorF,comp,\[Alpha],\[Beta],avec,jvec},
 vectorF=-Exp[-I JonesPhase[vectorE]]vectorE;
-\[Alpha]=Chop[vectorF.vectorF/Norm[vectorF]^2];
+\[Alpha]=Chop[vectorF . vectorF/Norm[vectorF]^2];
 \[Beta]=Sqrt[1-\[Alpha]^2];
 avec=Re[vectorF]/Norm[Re[vectorF]];
 jvec=If[Norm[Im[vectorF]]==0,0,Cross[avec,Im[vectorF]/Norm[Im[vectorF]]]];

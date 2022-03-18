@@ -9,7 +9,7 @@ Mathematica",
 Cell[CellGroupData[{
 
 Cell[TextData[{
- "\[Copyright] Rodrigo Guti\[EAcute]rrez-Cuevas & Emilio Pisanty (2020). \
+ "\[Copyright] Rodrigo Guti\[EAcute]rrez-Cuevas & Emilio Pisanty (2020-2022). \
 Licensed under GPL and CC BY-SA.\n",
  StyleBox[" ",
   FontSize->3],
@@ -36,12 +36,13 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
       RowBox[{"\[Copyright]", " ", "Rodrigo", " ", "Guti\[EAcute]rrez"}], "-",
-       "Cuevas"}], "&"}], " ", "Emilio", " ", "Pisanty", " ", 
+       "Cuevas"}], " ", "&"}], " ", "Emilio", " ", "Pisanty", " ", 
     RowBox[{
-     RowBox[{"(", "2020", ")"}], ".", " ", "For"}], " ", "the", " ", 
-    "notebook", " ", "that", " ", "generated", " ", "this", " ", "package", 
-    " ", "file", " ", "and", " ", "additional", " ", "documentaion"}], ",", 
-   " ", 
+     RowBox[{"(", 
+      RowBox[{"2020", "-", "2022"}], ")"}], ".", " ", "For"}], " ", "the", 
+    " ", "notebook", " ", "that", " ", "generated", " ", "this", " ", 
+    "package", " ", "file", " ", "and", " ", "additional", " ", 
+    "documentaion"}], ",", " ", 
    RowBox[{
     RowBox[{"see", " ", 
      RowBox[{"https", ":"}]}], "//", 
@@ -51,8 +52,8 @@ Cell[BoxData[
      RowBox[{"ComplexFocus", "."}]}]}]}], "\[IndentingNewLine]", 
   "*)"}]], "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.},
- InitializationCell->True,
- CellLabel->"In[1]:=",ExpressionUUID->"82d38177-9df9-4b82-9d60-a29240b5c273"]
+ InitializationCell->
+  True,ExpressionUUID->"82d38177-9df9-4b82-9d60-a29240b5c273"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -94,7 +95,35 @@ R. Guti\[EAcute]rrez-Cuevas and M.A. Alonso. ",
     URL["https://doi.org/10.1364/OE.25.014856"], None},
   ButtonNote->"https://doi.org/10.1364/OE.25.014856"],
  ".\n       - Optical polarization skyrmionic fields in free space. R. Guti\
-\[EAcute]rrez-Cuevas and E. Pisanty. Under review (2020).\n",
+\[EAcute]rrez-Cuevas and E. Pisanty. ",
+ StyleBox[ButtonBox["Journal of Optics",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://doi.org/10.1088/2040-8986/abe8b2"], None},
+  ButtonNote->"https://doi.org/10.1088/2040-8986/abe8b2"],
+  FontSlant->"Italic"],
+ ButtonBox[" ",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://doi.org/10.1088/2040-8986/abe8b2"], None},
+  ButtonNote->"https://doi.org/10.1088/2040-8986/abe8b2"],
+ StyleBox[ButtonBox["23",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://doi.org/10.1088/2040-8986/abe8b2"], None},
+  ButtonNote->"https://doi.org/10.1088/2040-8986/abe8b2"],
+  FontWeight->"Bold"],
+ ButtonBox[",",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://doi.org/10.1088/2040-8986/abe8b2"], None},
+  ButtonNote->"https://doi.org/10.1088/2040-8986/abe8b2"],
+ ButtonBox[" 024004 (2021)",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://doi.org/10.1088/2040-8986/abe8b2"], None},
+  ButtonNote->"https://doi.org/10.1088/2040-8986/abe8b2"],
+ ".\n",
  StyleBox[" ",
   FontSize->5]
 }], "Text",ExpressionUUID->"573bc852-ad26-4d6f-a777-1b0aaf2d6d36"],
@@ -131,8 +160,7 @@ functions, ",
 an imaginary-valued offset. This transformation thus keeps them as solutions \
 of the wave equation, while at the same time turning them into focused \
 beam-like solutions and eventually, in the large-offset limit, into Gaussian \
-beam functions. The package thus implements:\n\n - The multipolar functions \
-",
+beam functions. The package thus implements:\n\n - The multipolar functions ",
  Cell[BoxData[
   FormBox[
    SubscriptBox["\[CapitalLambda]", 
@@ -527,13 +555,13 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Tue 1 Dec 2020 22:39:54\>\""}], 
-  ";"}], "\n", 
+  RowBox[{"$ComplexFocusTimestamp", "=", "\"\<Fri 18 Mar 2022 10:06:42\>\""}],
+   ";"}], "\n", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"caa2493d-0f25-4780-b00e-c63522af6c2e"]
+  "version-timestamp",ExpressionUUID->"c027b7b2-84cd-4c7f-a85c-5c3246c730ed"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -603,8 +631,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[10]:=",ExpressionUUID->"f4003c50-c4bf-43a7-96de-6f1292ddff7e"]
+ CellLabel->"In[10]:=",ExpressionUUID->"f4003c50-c4bf-43a7-96de-6f1292ddff7e"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -653,8 +680,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[15]:=",ExpressionUUID->"56b69d2c-3f13-4848-bcc7-6db05f85bf58"]
+ CellLabel->"In[15]:=",ExpressionUUID->"56b69d2c-3f13-4848-bcc7-6db05f85bf58"]
 }, Closed]]
 }, Open  ]]
 }, Open  ]],
@@ -827,8 +853,7 @@ does the same.\>\""}], ";"}], "\[IndentingNewLine]",
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[18]:=",ExpressionUUID->"53f36aab-68fb-4989-8c67-cfe0a0e9f7dd"]
+ CellLabel->"In[18]:=",ExpressionUUID->"53f36aab-68fb-4989-8c67-cfe0a0e9f7dd"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -971,8 +996,7 @@ spherical Bessel function, \!\(\*SubscriptBox[\(aj\), \
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[23]:=",ExpressionUUID->"2595089e-5a75-43d8-87be-ae8274f74fca"]
+ CellLabel->"In[23]:=",ExpressionUUID->"2595089e-5a75-43d8-87be-ae8274f74fca"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -1015,8 +1039,7 @@ m\)]\)(x,y,z)=4\!\(\*SuperscriptBox[\(\[Pi]i\), \
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[31]:=",ExpressionUUID->"97bacd18-5916-4ffd-9528-2285cc18b967"]
+ CellLabel->"In[31]:=",ExpressionUUID->"97bacd18-5916-4ffd-9528-2285cc18b967"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -1119,8 +1142,7 @@ polar coordinates (\[Theta],\[Phi]).\>\""}], ";"}], "\[IndentingNewLine]",
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[35]:=",ExpressionUUID->"4c3f4462-b199-44ef-ba89-fc0bf84bfd63"]
+ CellLabel->"In[35]:=",ExpressionUUID->"4c3f4462-b199-44ef-ba89-fc0bf84bfd63"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -1301,7 +1323,6 @@ gives the functional form of \!\(\*SuperscriptBox[\(V\), \
       RowBox[{"(", 
        RowBox[{"1", "|", 
         RowBox[{"-", "1"}]}], ")"}]}], ",", "scalarFunction_"}], "]"}], ":=", 
-   
    RowBox[{"Block", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -1332,8 +1353,7 @@ gives the functional form of \!\(\*SuperscriptBox[\(V\), \
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[45]:=",ExpressionUUID->"80eb1906-037d-4820-a34f-a0b6806a2832"]
+ CellLabel->"In[45]:=",ExpressionUUID->"80eb1906-037d-4820-a34f-a0b6806a2832"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -1468,8 +1488,7 @@ coordinates (\[Theta],\[Phi]) of the unit direction vector u.\>\""}], ";"}],
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[58]:=",ExpressionUUID->"cb2890dd-d4d3-4448-9579-76a6088a8f5a"]
+ CellLabel->"In[58]:=",ExpressionUUID->"cb2890dd-d4d3-4448-9579-76a6088a8f5a"]
 }, Closed]]
 }, Open  ]],
 
@@ -1579,8 +1598,7 @@ complex-focus fields.\>\""}], ";"}],
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[69]:=",ExpressionUUID->"7b97419a-30b2-4c66-a884-1d467c588673"]
+ CellLabel->"In[69]:=",ExpressionUUID->"7b97419a-30b2-4c66-a884-1d467c588673"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -2216,8 +2234,7 @@ quasi-circular complex-focus fields.\>\""}], ";"}],
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[95]:=",ExpressionUUID->"b67db601-638a-4878-a6ff-13759b1c50ac"]
+ CellLabel->"In[95]:=",ExpressionUUID->"b67db601-638a-4878-a6ff-13759b1c50ac"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -3537,7 +3554,6 @@ uniform radial grid with n rings, m points on the first ring, and spacing of \
                     RowBox[{"(", 
                     RowBox[{"nCircle", "-", "1"}], ")"}], "n"}], "+", "1"}]}],
                   "]"}], "]"}]}], "}"}]}], "]"}], "\[IndentingNewLine]", ",", 
-           
            RowBox[{"{", 
             RowBox[{"n", ",", "1", ",", "nRings"}], "}"}]}], "]"}], 
          "\[IndentingNewLine]", ",", "1"}], "]"}]}], "\[IndentingNewLine]", 
@@ -3777,7 +3793,6 @@ that should output the tube diameter of the arrows.\>\""}], ";"}],
           RowBox[{"Arrowheads", "[", 
            RowBox[{
             RowBox[{"OptionValue", "[", "FieldArrowheadFunction", "]"}], "[", 
-            
             RowBox[{"amplitude", " ", 
              RowBox[{"Norm", "[", "vect", "]"}]}], "]"}], "]"}], ",", 
           "\[IndentingNewLine]", 
@@ -3820,7 +3835,6 @@ that should output the tube diameter of the arrows.\>\""}], ";"}],
                "translation", "+", 
                RowBox[{"amplitude", "\[Times]", "vect"}]}]}], 
              "\[IndentingNewLine]", "}"}], "]"}], ",", "\[IndentingNewLine]", 
-           
            RowBox[{"If", "[", "\[IndentingNewLine]", 
             RowBox[{
              RowBox[{"Not", "[", 
@@ -3933,9 +3947,7 @@ offset of {tx,ty,tz}.\>\""}], ";"}],
       RowBox[{"{", "\[IndentingNewLine]", 
        RowBox[{
         RowBox[{"Arrowheads", "[", "0.02", "]"}], ",", "\[IndentingNewLine]", 
-        
         RowBox[{"Thickness", "[", "0.005", "]"}], ",", "\[IndentingNewLine]", 
-        
         RowBox[{"Table", "[", "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{"FieldArrow", "[", 
@@ -4861,7 +4873,6 @@ Cell[BoxData[
              RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], 
            "\[IndentingNewLine]", ",", 
            RowBox[{"PlotLabel", "\[Rule]", "q"}], "\[IndentingNewLine]", ",", 
-           
            RowBox[{"PlotRange", "\[Rule]", 
             RowBox[{"{", 
              RowBox[{
@@ -5326,7 +5337,6 @@ Cell[BoxData[{
              RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], 
            "\[IndentingNewLine]", ",", 
            RowBox[{"PlotLabel", "\[Rule]", "q"}], "\[IndentingNewLine]", ",", 
-           
            RowBox[{"PlotRange", "\[Rule]", 
             RowBox[{"{", 
              RowBox[{
@@ -5349,7 +5359,7 @@ Cell[BoxData[{
   "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
  RowBox[{"DateString", "[", "]"}]}], "Input",
  CellLabel->"In[199]:=",ExpressionUUID->"46399c4c-79fb-4909-879f-4cc54f8a15ba"]
-}, Closed]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -5395,8 +5405,8 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
           DateString[], "\";\nEnd[];"]}]], "Input", InitializationCell -> 
       True, CellTags -> "version-timestamp"], None, AutoScroll -> False]; 
    NotebookSave[]), PassEventsDown -> True},
-WindowSize->{1152, 549},
-WindowMargins->{{0, Automatic}, {0, Automatic}},
+WindowSize->{1142.3999999999999`, 581.1},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
@@ -5453,9 +5463,8 @@ TaggingRules->{
 TrackCellChangeTimes->False,
 SpellingDictionaries->{"CorrectWords"->{
  "subpackage", "Pisanty", "subpackages"}},
-Magnification:>0.75 Inherited,
 Background->None,
-FrontEndVersion->"12.1 for Linux x86 (64-bit) (March 18, 2020)",
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (December 12, 2020)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]], 
@@ -5464,8 +5473,10 @@ StyleDefinitions->Notebook[{
     FontTracking -> "Plain", 
     FontVariations -> {
      "Outline" -> False, "Shadow" -> False, "StrikeThrough" -> False, 
-      "Underline" -> False}]}, Visible -> False, FrontEndVersion -> 
-  "12.1 for Linux x86 (64-bit) (March 18, 2020)", StyleDefinitions -> 
+      "Underline" -> False}]}, WindowSize -> {583.5, 499.2}, 
+  WindowMargins -> {{279, Automatic}, {Automatic, 53.699999999999996`}}, 
+  Visible -> False, FrontEndVersion -> 
+  "12.2 for Microsoft Windows (64-bit) (December 12, 2020)", StyleDefinitions -> 
   "PrivateStylesheetFormatting.nb"],
 ExpressionUUID->"0068b283-5296-4e9a-909d-6a8830b1cd95"
 ]
